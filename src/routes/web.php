@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('/login', [User::class, 'login']);
+// calls method from User controller
+
+//Route::get('/login', Login::class);
+// calls class Login directly (complexe method = direct controller)
+
