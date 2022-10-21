@@ -15,11 +15,19 @@ Build a simple laravel development environment with docker-compose. Compatible w
 
 ## Usage
 
+### GitHub user configuration
+
+1. Execute the following command to configure your GitHub user configuration when collaborating
+
+```bash
+$ git config --global user.email "yourGitHub@emailAccount.com"
+```
+
 ### Laravel install
 
 1. Click [Use this template](https://github.com/ucan-lab/docker-laravel/generate)
 2. Git clone & change directory
-3. Execute the following command
+3. Execute the following command (only when initializing project)
 
 ```bash
 $ mkdir -p src
