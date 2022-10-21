@@ -17,9 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/login', [User::class, 'login']);
-// calls method from User controller
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-//Route::get('/login', Login::class);
-// calls class Login directly (complexe method = direct controller)
-
+require __DIR__.'/auth.php';
