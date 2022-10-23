@@ -43,7 +43,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'id'=> 'string',
+        'id' => 'string',
         'email_verified_at' => 'datetime',
     ];
     public $incrementing = false;
