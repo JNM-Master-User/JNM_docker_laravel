@@ -47,4 +47,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public $incrementing = false;
+
+    public function userSensitiveData()
+    {
+        return $this->hasOne(UserSensitiveData::class);
+    }
 }
