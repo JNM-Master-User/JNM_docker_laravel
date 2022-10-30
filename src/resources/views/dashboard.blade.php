@@ -17,14 +17,14 @@
                             {{ session()->get('success') }}
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('user.user-sensitive-data.save') }}">
+                    <form method="POST" action="{{ route('user-sensitive-data.save') }}">
                         @csrf
                         <!-- Name -->
                         <div>
                             <x-input-label for="name" :value="__('Name')"/>
 
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                          :value="old('name')" required autofocus/>
+                                          :value="old('name', Auth::user()->userSensitiveData->name ?? null)" autofocus/>
 
                             <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                         </div>
@@ -33,7 +33,7 @@
                             <x-input-label for="last_name" :value="__('Last Name')"/>
 
                             <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name"
-                                          :value="old('last_name')" required autofocus/>
+                                          :value="old('last_name', Auth::user()->userSensitiveData->last_name ?? null)" autofocus/>
 
                             <x-input-error :messages="$errors->get('last_name')" class="mt-2"/>
                         </div>
@@ -43,7 +43,7 @@
                             <x-input-label for="date_of_birth" :value="__('Date of birth')"/>
 
                             <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth"
-                                          :value="old('date_of_birth')"/>
+                                          :value="old('date_of_birth', Auth::user()->userSensitiveData->date_of_birth ?? null)"/>
 
                             <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2"/>
                         </div>
@@ -52,18 +52,18 @@
                         <div class="mt-4">
                             <x-input-label for="phone_number" :value="__('Phone number')"/>
 
-                            <x-text-input id="phone_number" class="block mt-1 w-full" type="tel" name="email"
-                                          :value="old('phone_number')"/>
+                            <x-text-input id="phone_number" class="block mt-1 w-full" type="tel" name="phone_number"
+                                          :value="old('phone_number', Auth::user()->userSensitiveData->phone_number ?? null)"/>
 
                             <x-input-error :messages="$errors->get('phone_number')" class="mt-2"/>
                         </div>
 
                         <!-- Address -->
                         <div class="mt-4">
-                            <x-input-label for="address" :value="__('Adress')"/>
+                            <x-input-label for="address" :value="__('Address')"/>
 
                             <x-text-input id="address" class="block mt-1 w-full" type="tel" name="address"
-                                          :value="old('address')" required/>
+                                          :value="old('address', Auth::user()->userSensitiveData->address ?? null)" />
 
                             <x-input-error :messages="$errors->get('address')" class="mt-2"/>
                         </div>
@@ -72,7 +72,7 @@
                             <x-primary-button class="ml-4">
                                 {{ __('Save') }}
                             </x-primary-button>
-                            <x-delete-button action="{{ route('user.user-sensitive-data.destroy') }}" class="ml-4" type="button">
+                            <x-delete-button action="{{ route('user-sensitive-data.destroy') }}" class="ml-4" type="button">
                                 {{ __('Delete') }}
                             </x-delete-button>
                         </div>

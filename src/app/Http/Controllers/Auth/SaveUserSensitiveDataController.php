@@ -33,16 +33,18 @@ class SaveUserSensitiveDataController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['nullable', 'string', 'max:255'],
             'date_of_birth' => ['nullable', 'date'],
-            'phone_number' => ['nullable', 'numeric', 'digits10'],
-            'address' => ['string', 'max:255',]
+            'phone_number' => ['nullable', 'numeric', 'digits:10'],
+            'address' => ['nullable','string', 'max:255',]
         ]);
+
 
         UserSensitiveData::updateOrCreate([
             'id_user' => Auth::id()
-        ],[
+            ],[
+            'id_user' => Auth::id(),
             'name' => Str::lower($request->name),
             'last_name' => Str::lower($request->last_name),
             'date_of_birth' => $request->date_of_birth,

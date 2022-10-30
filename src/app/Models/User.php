@@ -48,8 +48,10 @@ class User extends Authenticatable
     ];
     public $incrementing = false;
 
+    protected $table = 'users';
+
     public function userSensitiveData()
     {
-        return $this->hasOne(UserSensitiveData::class);
+        return $this->hasOne(UserSensitiveData::class,'id_user');
     }
 }
