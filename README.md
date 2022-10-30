@@ -27,9 +27,14 @@ $ git config --global user.email "yourGitHub@emailAccount.com"
 
 1. Click [Use this template](https://github.com/ucan-lab/docker-laravel/generate)
 2. Git clone & change directory
-3. Execute the following command (ONLY WHEN INITIALIZING PROJECT)
+3. Execute the following command
 
 ```bash
+$ ------- V ------ PROJECT RUN
+docker compose build
+$ docker compose up -d
+$ docker compose exec app composer install
+$ ------- V ------ PROJECT CREATION
 $ mkdir -p src
 $ docker compose build
 $ docker compose up -d
@@ -40,7 +45,15 @@ $ docker compose exec app chmod -R 777 storage bootstrap/cache
 $ docker compose exec app php artisan migrate
 ```
 
-http://localhost
+### Npm setup
+
+2. Execute the following command
+
+```bash
+$ npm run dev
+```
+
+access http://localhost
 
 ### Laravel setup
 
@@ -49,14 +62,6 @@ http://localhost
 
 ```bash
 $ make install
-```
-
-### Npm setup
-
-2. Execute the following command
-
-```bash
-$ npm run dev
 ```
 
 http://localhost
