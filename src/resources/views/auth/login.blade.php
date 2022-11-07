@@ -52,9 +52,9 @@
                     {{ __('No account yet?') }}
                 </a>
 
-                <x-primary-button class="ml-3">
+                <x-buttons.primary-button class="ml-3">
                     {{ __('Log in') }}
-                </x-primary-button>
+                </x-buttons.primary-button>
             </div>
         </form>
     </x-auth-card>
