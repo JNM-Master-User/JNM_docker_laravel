@@ -20,7 +20,7 @@
                     <form method="POST" action="{{ route('user-sensitive-data.save') }}">
                         @csrf
                         <!-- Name -->
-                        <div>
+                        <div class="mt-4">
                             <x-input-label for="name" :value="__('Name')"/>
 
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
@@ -28,8 +28,9 @@
 
                             <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                         </div>
+
                         <!-- Last Name -->
-                        <div>
+                        <div class="mt-4">
                             <x-input-label for="last_name" :value="__('Last Name')"/>
 
                             <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name"
@@ -69,12 +70,12 @@
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
-                            <x-primary-button class="ml-4">
+                            <x-buttons.primary-button class="ml-4">
                                 {{ __('Save') }}
-                            </x-primary-button>
-                            <x-delete-button action="{{ route('user-sensitive-data.destroy') }}" class="ml-4" type="button">
+                            </x-buttons.primary-button>
+                            <x-buttons.delete-button href="{{ route('user-sensitive-data.destroy') }}" class="ml-4" type="button">
                                 {{ __('Delete') }}
-                            </x-delete-button>
+                            </x-buttons.delete-button>
                         </div>
                     </form>
                 </div>
