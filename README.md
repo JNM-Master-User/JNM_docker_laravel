@@ -34,6 +34,7 @@ $ ------- V ------ PROJECT RUN
 docker compose build
 $ docker compose up -d
 $ docker compose exec app composer install
+$ docker compose exec app php artisan migrate
 $ ------- V ------ PROJECT CREATION
 $ mkdir -p src
 $ docker compose build
