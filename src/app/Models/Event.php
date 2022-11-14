@@ -2,19 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Traits\CreatedUpdatedBy;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Traits\Uuid;
 
-class UserSensitiveData extends Model
+class Event extends Model
 {
-    use  HasFactory, Uuid, CreatedUpdatedBy;
+    use HasFactory, Uuid, CreatedUpdatedBy;
 
     protected $keyType = 'string';
 
@@ -24,12 +19,13 @@ class UserSensitiveData extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_user',
+        'id_event_belong',
+        'id_institution_manager',
         'name',
-        'last_name',
-        'date_of_birth',
-        'phone_number',
-        'address'
+        'address',
+        'date',
+        'path_picture',
+        'desc'
     ];
     /**
      * The attributes that should be cast.
@@ -41,11 +37,19 @@ class UserSensitiveData extends Model
     ];
     public $incrementing = false;
 
-    protected $table = 'users_sensitive_data';
+    protected $table = 'events';
 
-    public function user()
+    public function bookingsUsersEvents()
     {
-        return $this->belongsTo(User::class,'id_user');
+        return $this->hasMany(BookingUserEvent::class,'id_event');
+    }
+    public function eventBelong()
+    {
+        return $this->belongsTo(Event::class,'id_event_belong');
+    }
+    public function institutionManager()
+    {
+        return $this->belongsTo(Institution::class,'id_institution_manager');
     }
     public function creator()
     {
