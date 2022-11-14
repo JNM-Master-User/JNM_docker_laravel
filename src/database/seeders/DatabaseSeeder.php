@@ -3,10 +3,16 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Navigo;
+use App\Models\Traits\CreatedUpdatedBy;
+use App\Models\User;
+use App\Models\UserSensitiveData;
+use App\Models\UserStatus;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    use CreatedUpdatedBy;
     /**
      * Seed the application's database.
      *
@@ -14,11 +20,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        UserStatus::factory(5)->create();
+        Navigo::factory(5)->create();
+        User::factory(5)->create();
+        UserSensitiveData::factory(5)->create();
     }
 }
