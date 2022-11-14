@@ -30,18 +30,18 @@ $ git config --global user.email "yourGitHub@emailAccount.com"
 3. Execute the following command
 
 ```bash
-$ ------- V ------ PROJECT RUN
+$ ------------- PROJECT RUN
 $ docker compose build
 $ docker compose up -d
 $ docker compose exec app composer install
 $ docker compose exec app php artisan migrate
-$ ------- V ------ PROJECT UPDATE
+$ ------------- PROJECT UPDATE
 $ docker compose build
 $ docker compose up -d
 $ docker compose exec app composer install
 $ docker compose exec app php artisan migrate:refresh
 $ docker compose exec app php artisan db:seed  
-$ ------- V ------ PROJECT CREATION
+$ ------------- PROJECT CREATION
 $ mkdir -p src
 $ docker compose build
 $ docker compose up -d
