@@ -64,7 +64,7 @@ class SaveUserSensitiveDataController extends Controller
      */
     public function destroy()
     {
-        UserSensitiveData::find(['id_user' => Auth::id()])->each->delete();
+        UserSensitiveData::where(['id_user' => Auth::id()])->delete();
 
         return redirect(RouteServiceProvider::HOME)->with('success', 'Sensitive data removed successfully');
     }

@@ -2,19 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Traits\CreatedUpdatedBy;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Traits\Uuid;
 
-class UserSensitiveData extends Model
+class UserStatus extends Model
 {
-    use  HasFactory, Uuid, CreatedUpdatedBy;
+    use HasFactory, Uuid, CreatedUpdatedBy;
 
     protected $keyType = 'string';
 
@@ -24,12 +19,7 @@ class UserSensitiveData extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_user',
-        'name',
-        'last_name',
-        'date_of_birth',
-        'phone_number',
-        'address'
+        'type'
     ];
     /**
      * The attributes that should be cast.
@@ -41,11 +31,12 @@ class UserSensitiveData extends Model
     ];
     public $incrementing = false;
 
-    protected $table = 'users_sensitive_data';
+    protected $table = 'users_status';
 
-    public function user()
+    //a user_status has many users tuple linked by 'id_user_status' attribute
+    public function users()
     {
-        return $this->belongsTo(User::class,'id_user');
+        return $this->hasMany(User::class,'id_user_status');
     }
     public function creator()
     {

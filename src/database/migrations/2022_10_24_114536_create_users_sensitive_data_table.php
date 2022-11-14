@@ -14,14 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users_sensitive_data', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->uuid('id_user')->index();
+            $table->uuid('id')->primaryKey();
+            $table->foreignUuid('id_user')->index();
             $table->string('name')->nullable();
             $table->string('last_name')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
+            $table->userstamps('uuid');
         });
     }
 

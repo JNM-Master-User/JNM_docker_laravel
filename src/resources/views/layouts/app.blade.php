@@ -9,10 +9,12 @@
 
         <!-- Fonts -->
         <link rel="stylesheet">
+        @vite(['resources/css/app.css'])
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/js/app.js'])
         <script src="https://kit.fontawesome.com/03c1dbd5d5.js" crossorigin="anonymous"></script>
+        <script src="node_modules/flowbite/dist/flowbite.js"></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

@@ -2,19 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Traits\CreatedUpdatedBy;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Traits\Uuid;
 
-class UserSensitiveData extends Model
+class BookingUserEvent extends Model
 {
-    use  HasFactory, Uuid, CreatedUpdatedBy;
+    use HasFactory, Uuid, CreatedUpdatedBy;
 
     protected $keyType = 'string';
 
@@ -25,11 +20,7 @@ class UserSensitiveData extends Model
      */
     protected $fillable = [
         'id_user',
-        'name',
-        'last_name',
-        'date_of_birth',
-        'phone_number',
-        'address'
+        'id_event'
     ];
     /**
      * The attributes that should be cast.
@@ -41,11 +32,15 @@ class UserSensitiveData extends Model
     ];
     public $incrementing = false;
 
-    protected $table = 'users_sensitive_data';
+    protected $table = 'bookings_users_events';
 
     public function user()
     {
         return $this->belongsTo(User::class,'id_user');
+    }
+    public function event()
+    {
+        return $this->belongsTo(Event::class,'id_event');
     }
     public function creator()
     {

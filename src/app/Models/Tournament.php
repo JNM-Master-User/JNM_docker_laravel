@@ -2,19 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Traits\CreatedUpdatedBy;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Traits\Uuid;
 
-class UserSensitiveData extends Model
+class Tournament extends Model
 {
-    use  HasFactory, Uuid, CreatedUpdatedBy;
+    use HasFactory, Uuid, CreatedUpdatedBy;
 
     protected $keyType = 'string';
 
@@ -24,12 +19,10 @@ class UserSensitiveData extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_user',
         'name',
-        'last_name',
-        'date_of_birth',
-        'phone_number',
-        'address'
+        'date',
+        'date_end_upload',
+        'desc'
     ];
     /**
      * The attributes that should be cast.
@@ -41,11 +34,11 @@ class UserSensitiveData extends Model
     ];
     public $incrementing = false;
 
-    protected $table = 'users_sensitive_data';
+    protected $table = 'tournaments';
 
-    public function user()
+    public function participationsInstitutionsTournaments()
     {
-        return $this->belongsTo(User::class,'id_user');
+        return $this->hasMany(ParticipationInstitutionTournament::class,'id_tournament');
     }
     public function creator()
     {
