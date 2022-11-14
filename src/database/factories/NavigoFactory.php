@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,8 @@ class NavigoFactory extends Factory
     {
         return [
             'zone' => $this->faker->unique()->numberBetween(1,5),
+            'created_by' => User::all()->random(1)->first(),
+            'updated_by' => User::all()->random(1)->first()
         ];
     }
 }

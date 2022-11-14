@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class UserStatusFactory extends Factory
     public function definition()
     {
         return [
-            'type' => $this->faker->unique()->randomElement(['étudiant','admin','membre CA','directeur miage','ancien étudiant'])
+            'type' => $this->faker->unique()->randomElement(['étudiant','admin','membre CA','directeur miage','ancien étudiant']),
+            'created_by' => User::all()->random(1)->first(),
+            'updated_by' => User::all()->random(1)->first()
         ];
     }
 }

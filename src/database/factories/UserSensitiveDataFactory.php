@@ -19,6 +19,8 @@ class UserSensitiveDataFactory extends Factory
     {
         return [
             'id_user' => User::all()->random(1)->first(),
+            'created_by' => User::all()->random(1)->first(),
+            'updated_by' => User::all()->random(1)->first()
             //
         ];
     }
