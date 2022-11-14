@@ -31,10 +31,16 @@ $ git config --global user.email "yourGitHub@emailAccount.com"
 
 ```bash
 $ ------- V ------ PROJECT RUN
-docker compose build
+$ docker compose build
 $ docker compose up -d
 $ docker compose exec app composer install
 $ docker compose exec app php artisan migrate
+$ ------- V ------ PROJECT UPDATE
+$ docker compose build
+$ docker compose up -d
+$ docker compose exec app composer install
+$ docker compose exec app php artisan migrate:refresh
+$ docker compose exec app php artisan db:seed  
 $ ------- V ------ PROJECT CREATION
 $ mkdir -p src
 $ docker compose build
