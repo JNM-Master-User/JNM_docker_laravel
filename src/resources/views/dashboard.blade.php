@@ -18,13 +18,14 @@
                         </div>
                     @endif
                     <form method="POST" action="{{ route('user-sensitive-data.save') }}">
+                        <fieldset id="sensitive_data_fieldset">
                         @csrf
                         <!-- Name -->
                         <div class="mt-4">
                             <x-input-label for="name" :value="__('Name')"/>
 
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                          :value="old('name', Auth::user()->userSensitiveData->name ?? null)" autofocus/>
+                                          :value="Auth::user()->userSensitiveData->name ?? null" autofocus/>
 
                             <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                         </div>
@@ -73,10 +74,16 @@
                             <x-buttons.primary-button class="ml-4">
                                 {{ __('Save') }}
                             </x-buttons.primary-button>
-                            <x-buttons.delete-button href="{{ route('user-sensitive-data.destroy') }}" class="ml-4" type="button">
+                            <x-buttons.delete-button class="ml-4" href="{{ route('user-sensitive-data.destroy') }}" class="ml-4" type="button">
                                 {{ __('Delete') }}
                             </x-buttons.delete-button>
+                            <legend>
+                            <x-buttons.success-button class="ml-4" onclick="toggleEdit(this.id)">
+                                {{ __('Edit') }}
+                            </x-buttons.success-button>
+                            </legend>
                         </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
