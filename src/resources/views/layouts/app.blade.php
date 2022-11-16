@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        @include('components.partials.header')
 
         <!-- Fonts -->
         <link rel="stylesheet">
@@ -19,20 +20,32 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
+            <!-- main -->
+            <main class="bg-gray-50">
+                <main class="flex overflow-hidden bg-white pt-16">
+                    <!-- sidebar -->
+                    @include('layouts.sidebar')
+                    <!-- end sidebar -->
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                    <!-- body -->
+                    <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+                        <!-- breadcrumb -->
+                        @if (isset($header))
+                            <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
+                                <x-breadcrumb :viewName="$header">
+                                </x-breadcrumb>
+                            </div>
+                        @endif
+                        <!-- end breadcrumb -->
+
+                        <!-- content -->
+                        {{ $slot }}
+                        <!-- end content -->
                     </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
+                    <!-- end body -->
+                </main>
             </main>
+            <!-- end main -->
         </div>
     </body>
 </html>
