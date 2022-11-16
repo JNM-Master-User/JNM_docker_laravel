@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -68,5 +69,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('user-sensitive-data', [SaveUserSensitiveDataController::class, 'destroy'])
             ->name('user-sensitive-data.destroy');
+
+        Route::get('roles',[AdminController::class, 'renderRoles'])
+            ->name('roles');
+        Route::post('roles',[AdminController::class, 'storeRoles']);
     });
 });
