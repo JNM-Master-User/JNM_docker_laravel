@@ -19,7 +19,6 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'id_user_status' => UserStatus::all()->random(1)->first(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => bcrypt('azerty'),

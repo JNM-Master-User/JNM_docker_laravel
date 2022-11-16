@@ -7,7 +7,7 @@ use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserStatus extends Model
+class DefinitionUserUserStatus extends Model
 {
     use HasFactory, Uuid, CreatedUpdatedBy;
 
@@ -19,7 +19,8 @@ class UserStatus extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'type'
+        'id_user',
+        'id_user_status',
     ];
     /**
      * The attributes that should be cast.
@@ -31,12 +32,15 @@ class UserStatus extends Model
     ];
     public $incrementing = false;
 
-    protected $table = 'users_status';
+    protected $table = 'definitions_users_users_status';
 
-    //a user_status has many users tuple linked by 'id_user_status' attribute
-    public function users()
+    public function institution()
     {
-        return $this->hasMany(DefinitionUserUserStatus::class,'id_user_status');
+        return $this->belongsTo(User::class,'id_user');
+    }
+    public function tournament()
+    {
+        return $this->belongsTo(UserStatus::class,'id_user_status');
     }
     public function creator()
     {

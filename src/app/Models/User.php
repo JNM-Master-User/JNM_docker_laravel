@@ -14,12 +14,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, Uuid;
 
-    const DEFAULT_USER_STATUS_ = "etudiant";
     protected $keyType = 'string';
-
-    protected $attributes = [
-        'id_user_status' => self::DEFAULT_USER_STATUS_,
-        ];
 
     /**
      * The attributes that are mass assignable.
@@ -54,17 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $table = 'users';
 
-    //a user belongs to §§
-    public function userStatus()
-    {
-        return $this->belongsTo(UserStatus::class);
-    }
-
-    //a user has §§ tuple linked by 'id_user' attribute
-    public function bookingsUsersEvents()
-    {
-        return $this->hasMany(BookingUserEvent::class,'id_user');
-    }
+    // user has one
     public function userSensitiveData()
     {
         return $this->hasOne(UserSensitiveData::class,'id_user');
@@ -73,12 +58,22 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(SubscriptionUserNavigo::class,'id_user');
     }
-    public function allotment()
+
+    //user has many
+    public function DefinitionsUsersUsersStatus()
     {
-            return $this->hasOne(Allotment::class,'id_user');
+        return $this->hasMany(DefinitionUserUserStatus::class,'id_user');
     }
-    public function creator()
+    public function bookingsUsersEvents()
     {
-        return $this->belongsTo(User::class,'created_by');
+        return $this->hasMany(BookingUserEvent::class,'id_user');
+    }
+    public function allotmentsCreations()
+    {
+        return $this->hasMany(Allotment::class,'created_by');
+    }
+    public function contactsCreations()
+    {
+        return $this->hasMany(Contact::class,'created_by');
     }
 }

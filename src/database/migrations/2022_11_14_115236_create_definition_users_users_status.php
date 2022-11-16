@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users_status', function (Blueprint $table) {
+        Schema::create('definitions_users_users_status', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->string('type')->unique();
+            $table->foreignUuid('id_user')->references('id')->on('users');
+            $table->foreignUuid('id_user_status')->references('id')->on('users_status');
             $table->timestamps();
             $table->userstamps('uuid');
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_status');
+        Schema::dropIfExists('definitions_users_users_status');
     }
 };
