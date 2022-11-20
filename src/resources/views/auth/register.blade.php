@@ -46,7 +46,8 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-buttons.primary-button class="ml-4">
+                <x-buttons.primary-button id="button_w_toggling_spinner_register">
+                    <x-icons.spinner class="hidden"></x-icons.spinner>
                     {{ __('Register') }}
                 </x-buttons.primary-button>
             </div>

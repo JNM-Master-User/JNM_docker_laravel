@@ -20,11 +20,11 @@
                                   clip-rule="evenodd">
                             </path>
                         </svg>
-                        <a href="#" class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">test</a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">{{ $content ?? ''}}</a>
                     </div>
                 </li>
             </ol>
         </nav>
-        <h1 class="text-xl sm:text-2xl font-semibold text-gray-900">{{ $viewName }}</h1>
+        <h1 class="text-xl sm:text-2xl font-semibold text-gray-900">{{ $content ?? ''}}</h1>
     </div>
 </div>

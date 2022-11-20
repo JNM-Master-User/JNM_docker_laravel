@@ -35,25 +35,32 @@
 
             <!-- Remember Me -->
             <div class="flex justify-between mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                <label for="remember_me"
+                       class="inline-flex items-center">
+                    <input id="remember_me"
+                           type="checkbox"
+                           class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                           name="remember">
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             @if (Route::has('password.request'))
                 <span></span>
-                <a class="underline items-right text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                <a class="underline items-right text-sm text-gray-600 hover:text-gray-900"
+                   href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900"
+                   href="{{ route('register') }}">
                     {{ __('No account yet?') }}
                 </a>
-
-                <x-buttons.primary-button class="ml-3">
-                    {{ __('Log in') }}
+                <x-buttons.primary-button id="button_w_toggling_spinner_login">
+                    <x-icons.spinner class="hidden"></x-icons.spinner>
+                    <span >{{ __('Log in') }}</span>
+                    <span class="sr-only"> {{ __('Log in') }}</span>
                 </x-buttons.primary-button>
             </div>
         </form>

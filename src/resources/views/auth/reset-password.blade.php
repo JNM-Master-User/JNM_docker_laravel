@@ -42,7 +42,8 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-buttons.primary-button>
+                <x-buttons.primary-button id="button_w_toggling_spinner_reset_password">
+                    <x-icons.spinner class="hidden"></x-icons.spinner>
                     {{ __('Reset Password') }}
                 </x-buttons.primary-button>
             </div>

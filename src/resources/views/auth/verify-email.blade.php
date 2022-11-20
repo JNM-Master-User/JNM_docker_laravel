@@ -21,7 +21,8 @@
                 @csrf
 
                 <div>
-                    <x-buttons.primary-button>
+                    <x-buttons.primary-button id="button_w_toggling_spinner_verify_email">
+                        <x-icons.spinner class="hidden"></x-icons.spinner>
                         {{ __('Resend Verification Email') }}
                     </x-buttons.primary-button>
                 </div>
