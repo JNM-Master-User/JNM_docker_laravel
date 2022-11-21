@@ -1,11 +1,11 @@
 <x-app-layout>
-    <x-content.dashboard id="content_dashboard">
+    <x-content.dashboard id="content_dashboard" class="{{isset($content_dashboard) ? 'shown' : 'hidden' }}">
     </x-content.dashboard>
-    <x-content.users id="content_users" class="hidden">
+    <x-content.users id="content_users" class="{{isset($content_users) ? 'shown' : 'hidden' }}">
     </x-content.users>
-    <x-content.partners id="content_partners" class="hidden">
+    <x-content.partners id="content_partners" class="{{isset($content_partners) ? 'shown' : 'hidden'  }}">
     </x-content.partners>
-    <x-content.transports id="content_transports" class="hidden">
+    <x-content.transports id="content_transports" class="{{isset($content_transports) ? 'shown' : 'hidden'  }}">
     </x-content.transports>
     <script type="text/javascript">
         const button_menu_toggle_dashboard = document.getElementById('button_menu_toggle_dashboard');
@@ -21,15 +21,14 @@
 
 
         const show = (element) =>{
-            element.classList.add('hidden');
             element.classList.remove('hidden');
-            element.classList.add('unique');
+            element.classList.add('shown');
         }
         const reset = () =>{
-            content_users.classList.remove('unique', 'hidden');
-            content_partners.classList.remove('unique','hidden');
-            content_transports.classList.remove('unique','hidden');
-            content_dashboard.classList.remove('unique','hidden');
+            content_users.classList.remove('shown', 'hidden');
+            content_partners.classList.remove('shown','hidden');
+            content_transports.classList.remove('shown','hidden');
+            content_dashboard.classList.remove('shown','hidden');
             content_users.classList.add('hidden');
             content_partners.classList.add('hidden');
             content_transports.classList.add('hidden');

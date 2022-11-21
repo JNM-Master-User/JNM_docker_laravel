@@ -62,6 +62,12 @@
                     <span >{{ __('Log in') }}</span>
                     <span class="sr-only"> {{ __('Log in') }}</span>
                 </x-buttons.primary-button>
+                <script type="text/javascript">
+                    const button_w_toggling_spinner_login = document.getElementById("button_w_toggling_spinner_login");
+                    button_w_toggling_spinner_login.addEventListener('click', () => {
+                        button_w_toggling_spinner_login.firstElementChild.classList.toggle('hidden');
+                    });
+                </script>
             </div>
         </form>
     </x-auth-card>
