@@ -41,6 +41,10 @@
             <x-icons.poles></x-icons.poles>
             <span class="ml-3 flex-1 whitespace-nowrap">{{__("Poles")}}</span>
           </x-sidebar.menu>
+            <x-sidebar.menu id="button_menu_toggle_institutions">
+                <x-icons.institutions></x-icons.institutions>
+                <span class="ml-3 flex-1 whitespace-nowrap">{{__("Institutions")}}</span>
+            </x-sidebar.menu>
         </ul>
         <div class="space-y-2 pt-2">
           <ul class="space-y-2 pb-2">

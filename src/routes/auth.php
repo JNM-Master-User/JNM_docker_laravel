@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\InstitutionController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -64,10 +65,30 @@ Route::middleware('auth')->group(function () {
             ->name('user-sensitive-data.destroy');
     });
     Route::prefix('dashboard')->group(function () {
-        Route::post('roles',[AdminController::class, 'storeRoles'])
+        Route::post('roles',[DashboardController::class, 'storeRoles'])
             ->name('roles.save');
+        Route::post('partners',[DashboardController::class, 'storePartners'])
+            ->name('partners.save');
+        Route::post('poles',[DashboardController::class, 'storePoles'])
+            ->name('poles.save');
 
-        Route::get('home',[AdminController::class, 'renderDashboard'])
+        Route::post('institutions',[InstitutionController::class, 'storeInstitutions'])
+            ->name('institutions.save');
+
+
+        Route::get('home',[DashboardController::class, 'renderHome'])
             ->name('home');
+        Route::get('users',[DashboardController::class, 'renderUsers'])
+            ->name('users');
+        Route::get('roles',[DashboardController::class, 'renderRoles'])
+            ->name('roles');
+        Route::get('poles',[DashboardController::class, 'renderPoles'])
+            ->name('poles');
+        Route::get('partners',[DashboardController::class, 'renderPartners'])
+            ->name('partners');
+        Route::get('transports',[DashboardController::class, 'renderTransports'])
+            ->name('transports');
+        Route::get('institutions',[DashboardController::class, 'renderInstitutions'])
+            ->name('institutions');
     });
 });
