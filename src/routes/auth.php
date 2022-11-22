@@ -63,15 +63,11 @@ Route::middleware('auth')->group(function () {
         Route::get('user-sensitive-data', [SaveUserSensitiveDataController::class, 'destroy'])
             ->name('user-sensitive-data.destroy');
     });
-    Route::prefix('admin')->group(function () {
-        Route::post('user-sensitive-data', [SaveUserSensitiveDataController::class, 'store'])
-            ->name('user-sensitive-data.save');
+    Route::prefix('dashboard')->group(function () {
+        Route::post('roles',[AdminController::class, 'storeRoles'])
+            ->name('roles.save');
 
-        Route::get('user-sensitive-data', [SaveUserSensitiveDataController::class, 'destroy'])
-            ->name('user-sensitive-data.destroy');
-
-        Route::get('roles',[AdminController::class, 'renderRoles'])
-            ->name('roles');
-        Route::post('roles',[AdminController::class, 'storeRoles']);
+        Route::get('home',[AdminController::class, 'renderDashboard'])
+            ->name('home');
     });
 });

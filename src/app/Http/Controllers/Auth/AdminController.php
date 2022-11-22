@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Partner;
 use App\Models\Role;
+use App\Models\Transport;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
@@ -14,11 +17,14 @@ class AdminController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function renderRoles()
+    public function renderDashboard()
     {
         $roles = Role::all();
 
-        return view('pages.roles', ['roles' => $roles]);
+        return view('pages.dashboard')->with(array(
+            'content_dashboard' => false,
+            'roles' => $roles
+        ));
     }
 
     /**

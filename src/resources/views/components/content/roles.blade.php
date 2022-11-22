@@ -1,17 +1,17 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('roles') }}
-        </h2>
-    </x-slot>
-
+<div {{$attributes->merge(['class'=>''])}}>
+    <!-- breadcrumb -->
+    <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
+        <x-breadcrumb content="{{__('Roles')}}">
+        </x-breadcrumb>
+    </div>
+    <!-- end breadcrumb -->
     <div class="pt-6 px-6">
         @if(session()->get('success'))
             <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
                 {{ session()->get('success') }}
             </div>
         @endif
-        <form method="POST" action="{{ route('roles') }}">
+        <form method="POST" action="{{ route('roles.save') }}">
             <fieldset id="sensitive_data_fieldset">
                 @csrf
                 <!-- Name -->
@@ -29,16 +29,5 @@
                 </div>
             </fieldset>
         </form>
-        @foreach ($roles as $role)
-            <div>
-                {{$role->name}}
-            </div>
-            <div>
-                {{$role->created_at}}
-            </div>
-            <div>
-                {{$role->created_by}}
-            </div>
-        @endforeach
     </div>
-</x-app-layout>
+</div>

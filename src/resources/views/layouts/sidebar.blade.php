@@ -21,6 +21,10 @@
             <x-icons.dashboard></x-icons.dashboard>
             <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Dashboard") }}</span>
           </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_roles">
+            <x-icons.partners></x-icons.partners>
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Roles") }}</span>
+          </x-sidebar.menu>
           <x-sidebar.menu id="button_menu_toggle_users">
             <x-icons.users></x-icons.users>
             <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Users") }}</span>
@@ -32,6 +36,10 @@
           <x-sidebar.menu id="button_menu_toggle_transports">
             <x-icons.transports></x-icons.transports>
             <span class="ml-3 flex-1 whitespace-nowrap">{{__("Transports")}}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_poles">
+            <x-icons.poles></x-icons.poles>
+            <span class="ml-3 flex-1 whitespace-nowrap">{{__("Poles")}}</span>
           </x-sidebar.menu>
         </ul>
         <div class="space-y-2 pt-2">

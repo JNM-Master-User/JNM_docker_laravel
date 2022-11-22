@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard/home', function () {
     return view('pages.dashboard')->with(array('content_dashboard'=>true));
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard/users', function () {
+    return view('pages.dashboard')->with(array('content_users'=>true));
+})->middleware(['auth', 'verified'])->name('dashboard');*/
 
 require __DIR__.'/auth.php';
