@@ -12,7 +12,6 @@
 
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/03c1dbd5d5.js" crossorigin="anonymous"></script>
-        @include('components.partials.header')
         @vite(['resources/css/app.css','resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">

@@ -4,24 +4,31 @@
     "The :attribute must contain at least one symbol.": "Le champ :attribute doit contenir au moins un symbole.",
     "The :attribute must contain at least one uppercase and one lowercase letter.": "Le champ :attribute doit contenir au moins une lettre majuscule et une lettre minuscule.",
     "The given :attribute has appeared in a data leak. Please choose a different :attribute.": "Le champ :attribute donné est apparu dans une fuite de données. Veuillez choisir un autre :attribute.",
-
-    "Password": "Mot de passe",
-    "Confirm Password": "Confirmer mot de passe",
-    "Remember me": "Se Souvenir de moi",
-    "Forgot your password?": "Mot de passe oublié?",
-    "Log in": "Connexion",
-    "Log Out": "Déconnexion",
-    "You're logged in!": "Vous êtes connecté",
     "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "Mot de passe oublié? Aucuns problèmes. Indiquez-nous simplement votre adresse e-mail et nous vous enverrons par e-mail un lien de réinitialisation de mot de passe qui vous permettra d'en choisir un nouveau.",
-    "Email Password Reset Link": "Envoyer le lien",
-    "Confirm" : "Confirmer",
-    "Name": "Nom",
     "This is a secure area of the application. Please confirm your password before continuing.This is a secure area of the application. Please confirm your password before continuing.": "Zone sécurisée de l'application. Veuillez confirmer votre mot de passe avant de continuer.",
     "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\\'t receive the email, we will gladly send you another.": "Merci pour votre inscription! Avant de commencer, vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer. Si vous n'avez pas reçu de mail, nous vous en enverrons un autre.",
     "A new verification link has been sent to the email address you provided during registration.": "Un nouveau lien de vérification a été envoyé à l'adresse e-mail que vous avez fournie lors de l'inscription.",
-    "Resend Verification Email": "Renvoyer",
+
+    "Users": "Utilisateurs",
+    "Partners": "Partenaires",
+    "Poles":"Poles",
+    "Roles": "Roles",
+
+    "Password": "Mot de passe",
+    "Email": "Email",
+    "Name": "Nom",
+
+    "Log in": "Connexion",
+    "Log Out": "Déconnexion",
+
     "Register": "Créer un compte",
+    "Confirm Password": "Confirmer mot de passe",
+    "Remember me": "Se Souvenir de moi",
+    "Forgot your password?": "Mot de passe oublié?",
+    "You're logged in!": "Vous êtes connecté",
+    "Email Password Reset Link": "Envoyer le lien",
+    "Confirm" : "Confirmer",
+    "Resend Verification Email": "Renvoyer",
     "Already registered?": "Déjà un compte?",
-    "No account yet?": "Pas encore de compte?",
-    "Users": "Utilisateurs"
+    "No account yet?": "Pas encore de compte?"
 }
