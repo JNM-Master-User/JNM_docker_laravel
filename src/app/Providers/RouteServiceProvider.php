@@ -23,6 +23,8 @@ class RouteServiceProvider extends ServiceProvider
     public const PARTNERS = '/dashboard/partners';
     public const USERS = '/dashboard/users';
     public const ROLES = '/dashboard/roles';
+    public const POLES = '/dashboard/poles';
+
 
 
     /**

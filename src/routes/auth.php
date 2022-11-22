@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\DashboardController;
+use App\Http\Controllers\Auth\PoleController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -64,10 +65,26 @@ Route::middleware('auth')->group(function () {
             ->name('user-sensitive-data.destroy');
     });
     Route::prefix('dashboard')->group(function () {
-        Route::post('roles',[AdminController::class, 'storeRoles'])
+
+        Route::post('roles',[DashboardController::class, 'storeRoles'])
             ->name('roles.save');
 
-        Route::get('home',[AdminController::class, 'renderDashboard'])
+        Route::post('partners',[DashboardController::class, 'storePartners'])
+            ->name('partners.save');
+
+        Route::post('poles',[PoleController::class, 'storePoles'])
+            ->name('poles.save');
+
+        Route::get('home',[DashboardController::class, 'renderHome'])
             ->name('home');
-    });
+        Route::get('users',[DashboardController::class, 'renderUsers'])
+            ->name('users');
+        Route::get('roles',[DashboardController::class, 'renderRoles'])
+            ->name('roles');
+        Route::get('poles',[DashboardController::class, 'renderPoles'])
+            ->name('poles');
+        Route::get('partners',[DashboardController::class, 'renderPartners'])
+            ->name('partners');
+        Route::get('transports',[DashboardController::class, 'renderTransports'])
+            ->name('transports');});
 });

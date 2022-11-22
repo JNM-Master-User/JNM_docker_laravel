@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-content.home id="content_dashboard" class="{{isset($content_dashboard) ? 'shown' : 'hidden' }}">
     </x-content.home>
-    <x-content.roles id="content_roles" class="{{isset($content_roles) ? 'shown' : 'hidden' }}">
+    <x-content.roles :roles="$data['roles']" id="content_roles" class="{{isset($content_roles) ? 'shown' : 'hidden' }}">
     </x-content.roles>
-    <x-content.users id="content_users" class="{{isset($content_users) ? 'shown' : 'hidden' }}">
+    <x-content.users :users="$data['users']" id="content_users" class="{{isset($content_users) ? 'shown' : 'hidden' }}">
     </x-content.users>
-    <x-content.partners id="content_partners" class="{{isset($content_partners) ? 'shown' : 'hidden'  }}">
+    <x-content.partners :partners="$data['partners']" id="content_partners" class="{{isset($content_partners) ? 'shown' : 'hidden'  }}">
     </x-content.partners>
-    <x-content.transports id="content_transports" class="{{isset($content_transports) ? 'shown' : 'hidden'  }}">
+    <x-content.transports :transports="$data['transports']" id="content_transports" class="{{isset($content_transports) ? 'shown' : 'hidden'  }}">
     </x-content.transports>
-    <x-content.poles id="content_poles" class="{{isset($content_poles) ? 'shown' : 'hidden'  }}">
+    <x-content.poles :poles="$data['poles']" id="content_poles" class="{{isset($content_poles) ? 'shown' : 'hidden'  }}">
     </x-content.poles>
     <script type="text/javascript">
         const button_menu_toggle_dashboard = document.getElementById('button_menu_toggle_dashboard');
