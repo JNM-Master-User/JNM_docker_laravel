@@ -43,7 +43,11 @@
                                 {{ __('Save') }}
                             </x-buttons.primary-button>
                         </div>
-                        {{isset($partners) ?? $partners}}
+                        @foreach($partners as $partner)
+                            {{$partner->name}}
+                            {{$partner->company}}
+                            {{$partner->path_picture}}
+                        @endforeach
                     </fieldset>
                 </form>
             </div>

@@ -60,9 +60,9 @@ Route::middleware('auth')->group(function () {
                 ->name('logout');
 
     Route::prefix('user')->group(function () {
-
         Route::post('user-sensitive-data', [SaveUserSensitiveDataController::class, 'store'])
             ->name('user-sensitive-data.save');
+
         Route::get('user-sensitive-data', [SaveUserSensitiveDataController::class, 'destroy'])
             ->name('user-sensitive-data.destroy');
     });

@@ -29,7 +29,17 @@
                                 {{ __('Save') }}
                             </x-buttons.primary-button>
                         </div>
-                        {{isset($poles) ?? $poles }}
+                        @foreach($poles as $pole)
+                        <div>
+                            {{$pole->name}}
+                        </div>
+                        <div>
+                            {{$pole->created_at}}
+                        </div>
+                        <div>
+                            {{$pole->updated_at}}
+                        </div>
+                        @endforeach
                     </fieldset>
                 </form>
             </div>
