@@ -13,7 +13,7 @@
                         {{ session()->get('success_institutions') }}
                     </div>
                 @endif
-                <form method="POST" action="{{ route('institutions') }}">
+                <form method="POST" action="{{ route('institutions.save') }}">
                     <fieldset id="sensitive_data_fieldset">
                         @csrf
                         <!-- Name -->

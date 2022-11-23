@@ -81,16 +81,16 @@ Route::middleware('auth')->group(function () {
         Route::get('home',[DashboardController::class, 'renderHome'])
             ->name('home');
         Route::get('users',[DashboardController::class, 'renderUsers'])
-            ->name('users');
+            ->name('home');
         Route::get('roles',[DashboardController::class, 'renderRoles'])
-            ->name('roles');
+            ->name('home');
         Route::get('poles',[DashboardController::class, 'renderPoles'])
-            ->name('poles');
+            ->name('home');
         Route::get('partners',[DashboardController::class, 'renderPartners'])
-            ->name('partners');
+            ->name('home');
         Route::get('transports',[DashboardController::class, 'renderTransports'])
-            ->name('transports');
+            ->name('home');
         Route::get('institutions',[DashboardController::class, 'renderInstitutions'])
-            ->name('institutions');
+            ->name('home');
     });
 });

@@ -2,7 +2,7 @@
   <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
       <div class="flex-1 px-3 bg-white divide-y space-y-1">
-        <ul class="space-y-2 pb-2">
+        <ul class=" pb-2">
           <li>
             <form action="#" method="GET" class="lg:hidden">
               <label for="mobile-search" class="sr-only">Search</label>
@@ -21,13 +21,40 @@
             <x-icons.dashboard></x-icons.dashboard>
             <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Dashboard") }}</span>
           </x-sidebar.menu>
-          <x-sidebar.menu id="button_menu_toggle_roles">
-            <x-icons.partners></x-icons.partners>
-            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Roles") }}</span>
-          </x-sidebar.menu>
           <x-sidebar.menu id="button_menu_toggle_users">
             <x-icons.users></x-icons.users>
             <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Users") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_users_status">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Users Status") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_allotments">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Allotments") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_contacts">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Contacts") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_events">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Events") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_services">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Services") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_tournaments">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Tournaments") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_pictures">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Pictures") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_videos">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Videos") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_transports">
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Transports") }}</span>
+          </x-sidebar.menu>
+          <x-sidebar.menu id="button_menu_toggle_roles">
+            <x-icons.partners></x-icons.partners>
+            <span class="ml-3 flex-1 whitespace-nowrap">{{ __("Roles") }}</span>
           </x-sidebar.menu>
           <x-sidebar.menu id="button_menu_toggle_partners">
             <x-icons.partners></x-icons.partners>
