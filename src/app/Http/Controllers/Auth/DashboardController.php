@@ -38,7 +38,7 @@ class DashboardController extends Controller
             "services"=>Service::all(),
             "tournaments"=>Tournament::all(),
             "transports"=>Transport::all(),
-            "users"=>User::all(),
+            "users"=>User::all()->load('userSensitiveData')->load('subscriptionUserNavigo'),
             "users_status"=>UserStatus::all(),
             "users_sensitive_data"=>UserSensitiveData::all(),
             "videos"=>Video::all(),

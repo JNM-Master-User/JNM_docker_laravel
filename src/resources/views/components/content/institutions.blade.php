@@ -54,7 +54,7 @@
                 </form>
                 @foreach($institutions as $institutions)
                     {{$institutions->name}}
-                    {{$institutions->adress}}
+                    {{$institutions->address}}
                     {{$institutions->path_picture}}
                     {{$institutions->desc}}
                 @endforeach
