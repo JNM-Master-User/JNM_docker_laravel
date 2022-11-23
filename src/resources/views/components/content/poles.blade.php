@@ -8,9 +8,9 @@
 
     <div class="pt-6 px-6">
 
-        @if(session()->get('success'))
+        @if(session()->get('success_poles'))
             <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                {{ session()->get('success') }}
+                {{ session()->get('success_poles') }}
             </div>
         @endif
         <form method="POST" action="{{ route('poles.save') }}">
