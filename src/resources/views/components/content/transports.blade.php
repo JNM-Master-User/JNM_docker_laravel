@@ -8,9 +8,9 @@
     <div class="pt-6 px-6">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
-                @if(session()->get('success'))
+                @if(session()->get('success_transports'))
                     <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                        {{ session()->get('success') }}
+                        {{ session()->get('success_transports') }}
                     </div>
                 @endif
             </div>

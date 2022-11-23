@@ -7,7 +7,9 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\PoleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\PartnerController;
 use App\Http\Controllers\Auth\RoleController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
 use App\Http\Controllers\Auth\VerifyEmailController;
@@ -68,9 +70,9 @@ Route::middleware('auth')->group(function () {
 
         Route::post('roles',[RoleController::class, 'storeRoles'])
             ->name('roles.save');
-        Route::post('partners',[DashboardController::class, 'storePartners'])
+        Route::post('partners',[PartnerController::class, 'storePartners'])
             ->name('partners.save');
-        Route::post('poles',[DashboardController::class, 'storePoles'])
+        Route::post('poles',[PoleController::class, 'storePoles'])
             ->name('poles.save');
 
         Route::get('home',[DashboardController::class, 'renderHome'])
