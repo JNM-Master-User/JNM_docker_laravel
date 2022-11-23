@@ -111,4 +111,13 @@ class DashboardController extends Controller
             'data'=>$data
         ]);
     }
+    public function renderInstitutions()
+    {
+        $data= $this->getData();
+
+        return view('pages.dashboard',[
+            'content_institutions'=>true,
+            'data'=>$data
+        ]);
+    }
 }

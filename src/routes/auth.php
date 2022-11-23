@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\InstitutionController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\PoleController;
@@ -74,6 +75,8 @@ Route::middleware('auth')->group(function () {
             ->name('partners.save');
         Route::post('poles',[PoleController::class, 'storePoles'])
             ->name('poles.save');
+        Route::post('institutions',[InstitutionController::class, 'storeInstitutions'])
+            ->name('institutions.save');
 
         Route::get('home',[DashboardController::class, 'renderHome'])
             ->name('home');
@@ -87,5 +90,7 @@ Route::middleware('auth')->group(function () {
             ->name('partners');
         Route::get('transports',[DashboardController::class, 'renderTransports'])
             ->name('transports');
+        Route::get('institutions',[DashboardController::class, 'renderInstitutions'])
+            ->name('institutions');
     });
 });

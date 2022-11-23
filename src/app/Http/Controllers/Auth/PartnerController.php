@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class PartnerController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created partner in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
@@ -21,14 +21,19 @@ class PartnerController extends Controller
     {
         $request->validate([
             'name' => [ 'string', 'max:255'],
+            'company' => [ 'string', 'max:255'],
+            'path_picture' => [ 'string', 'max:255']
         ]);
 
         Partner::updateOrCreate([
-            'name' => Partner::where('name', $request->name)->first(),
+            'name' => Partner::where('name', $request->name)->first()
         ],[
             'name' => $request->name,
+            'company' => $request->company,
+            'path_picture' => $request->path_picture
         ]);
 
-        return redirect(RouteServiceProvider::PARTNERS)->with('success_Partners', 'Partners saved successfully');
+        return redirect(RouteServiceProvider::PARTNERS)->with('success_partners', 'Partners saved successfully');
     }
 }
+

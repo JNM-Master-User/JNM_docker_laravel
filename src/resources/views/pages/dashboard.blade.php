@@ -11,6 +11,8 @@
     </x-content.partners>
     <x-content.transports :transports="$data['transports']" id="content_transports" class="{{isset($content_transports) ? 'shown' : 'hidden'  }}">
     </x-content.transports>
+    <x-content.institutions :institutions="$data['institutions']" id="content_institutions" class="{{isset($content_institutions) ? 'shown' : 'hidden'  }}">
+    </x-content.institutions>
     <script type="text/javascript">
         const button_menu_toggle_dashboard = document.getElementById('button_menu_toggle_dashboard');
         const button_menu_toggle_users = document.getElementById('button_menu_toggle_users');
@@ -18,6 +20,7 @@
         const button_menu_toggle_partners = document.getElementById('button_menu_toggle_partners');
         const button_menu_toggle_transports = document.getElementById('button_menu_toggle_transports');
         const button_menu_toggle_poles = document.getElementById('button_menu_toggle_poles');
+        const button_menu_toggle_institutions = document.getElementById('button_menu_toggle_institutions');
 
         const content_dashboard = document.getElementById('content_dashboard');
         const content_users = document.getElementById('content_users');
@@ -25,6 +28,7 @@
         const content_partners = document.getElementById('content_partners');
         const content_transports = document.getElementById('content_transports');
         const content_poles = document.getElementById('content_poles');
+        const content_institutions = document.getElementById('content_institutions');
 
 
         const show = (element) =>{
@@ -38,12 +42,14 @@
             content_transports.classList.remove('shown','hidden');
             content_dashboard.classList.remove('shown','hidden');
             content_poles.classList.remove('shown','hidden');
+            content_institutions.classList.remove('shown','hidden');
             content_users.classList.add('hidden');
             content_roles.classList.add('hidden');
             content_partners.classList.add('hidden');
             content_transports.classList.add('hidden');
             content_dashboard.classList.add('hidden');
             content_poles.classList.add('hidden');
+            content_institutions.classList.add('hidden');
         }
 
         button_menu_toggle_dashboard.addEventListener('click', () => {
@@ -69,6 +75,10 @@
         button_menu_toggle_poles.addEventListener('click', () => {
             reset();
             show(content_poles);
+        });
+        button_menu_toggle_institutions.addEventListener('click', () => {
+            reset();
+            show(content_institutions);
         });
     </script>
 </x-app-layout>
