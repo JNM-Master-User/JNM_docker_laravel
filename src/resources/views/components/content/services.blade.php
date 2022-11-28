@@ -5,9 +5,9 @@
         </x-breadcrumb>
     </div>
     <!-- end breadcrumb -->
-    <div class="pt-6 px-6">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
+    <div class="md:pt-6 md:px-6">
+        <x-cards.card>
+            <div class="p-6">
                 @if(session()->get('success_services'))
                     <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
                         {{ session()->get('success_services') }}
@@ -43,6 +43,6 @@
                     {{$services->desc}}
                 @endforeach
             </div>
-        </div>
+        </x-cards.card>
     </div>
 </div>

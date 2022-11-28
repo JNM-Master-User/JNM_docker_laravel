@@ -5,6 +5,10 @@ use App\Http\Controllers\Admin\InstitutionController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PoleController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\TournamentController;
+use App\Http\Controllers\Admin\TransportController;
+use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -13,11 +17,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
-use App\Http\Controllers\Auth\ServiceController;
-use App\Http\Controllers\Auth\TournamentController;
-use App\Http\Controllers\Auth\TransportController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\Auth\VideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {

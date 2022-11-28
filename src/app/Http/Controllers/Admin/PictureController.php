@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Picture;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 class PictureController extends Controller

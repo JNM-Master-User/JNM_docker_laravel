@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Pole;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class PoleController extends Controller
 {
