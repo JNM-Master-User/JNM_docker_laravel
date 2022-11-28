@@ -25,6 +25,10 @@ class RouteServiceProvider extends ServiceProvider
     public const ROLES = '/dashboard/roles';
     public const POLES = '/dashboard/poles';
     public const INSTITUTIONS = '/dashboard/institutions';
+    public const SERVICES = '/dashboard/services';
+    public const TOURNAMENTS = '/dashboard/tournaments';
+    public const VIDEO = '/dashboard/videos';
+    public const TRANSPORT = '/dashboard/transports';
 
 
     /**
