@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Allotment;
 use App\Models\Contact;
 use App\Models\Pole;
 use App\Models\Role;
@@ -29,6 +28,9 @@ class ContactController extends Controller
 
         Contact::updateOrCreate([
             'name' => Contact::where('name', $request->name)->first(),
+            'last_name' => $request->last_name,
+            'id_role' => Role::where('name', $request->name_role)->value('id'),
+            'id_pole' => Pole::where('name', $request->name_pole)->value('id')
         ],[
             'name' => $request->name,
             'last_name' => $request->last_name,
@@ -37,6 +39,6 @@ class ContactController extends Controller
 
         ]);
 
-        return redirect(RouteServiceProvider::CONTACTS)->with('success_contacts', 'Contacts saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contacts saved successfully');
     }
 }

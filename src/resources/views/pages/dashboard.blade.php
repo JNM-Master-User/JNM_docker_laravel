@@ -105,6 +105,13 @@
             button_menu_toggle_dashboard.classList.remove('bg-gray-100');
             button_menu_toggle_poles.classList.remove('bg-gray-100');
             button_menu_toggle_institutions.classList.remove('bg-gray-100');
+            button_menu_toggle_services.classList.remove('bg-gray-100');
+            button_menu_toggle_tournaments.classList.remove('bg-gray-100');
+            button_menu_toggle_videos.classList.remove('bg-gray-100');
+            button_menu_toggle_users_status.classList.remove('bg-gray-100');
+            button_menu_toggle_allotments.classList.remove('bg-gray-100');
+            button_menu_toggle_contacts.classList.remove('bg-gray-100');
+            button_menu_toggle_events.classList.remove('bg-gray-100');
         }
 
         button_menu_toggle_dashboard.addEventListener('click', () => {

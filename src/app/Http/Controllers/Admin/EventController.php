@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
@@ -40,6 +40,6 @@ class EventController extends Controller
             'desc' => $request->desc
         ]);
 
-        return redirect(RouteServiceProvider::EVENTS)->with('success_events', 'Events saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_events', 'Events saved successfully');
     }
 }

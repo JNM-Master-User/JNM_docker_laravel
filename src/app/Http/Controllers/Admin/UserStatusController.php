@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;;
+use App\Http\Controllers\Controller;
 use App\Models\UserStatus;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+
+;
 
 class UserStatusController extends Controller
 {
@@ -29,6 +31,6 @@ class UserStatusController extends Controller
             'type' => $request->type,
         ]);
 
-        return redirect(RouteServiceProvider::USERS_STATUS)->with('success_users_status', 'Users status saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'Users status saved successfully');
     }
 }

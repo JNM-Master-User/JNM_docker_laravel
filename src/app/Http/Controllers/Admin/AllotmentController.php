@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Allotment;
@@ -33,6 +33,6 @@ class AllotmentController extends Controller
             'zip_code' => $request->zip_code
         ]);
 
-        return redirect(RouteServiceProvider::ALLOTMENTS)->with('success_allotments', 'Allotments saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments saved successfully');
     }
 }
