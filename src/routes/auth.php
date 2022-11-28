@@ -13,7 +13,11 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
+use App\Http\Controllers\Auth\ServiceController;
+use App\Http\Controllers\Auth\TournamentController;
+use App\Http\Controllers\Auth\TransportController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\VideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -77,6 +81,14 @@ Route::middleware('auth')->group(function () {
             ->name('poles.save');
         Route::post('institutions',[InstitutionController::class, 'storeInstitutions'])
             ->name('institutions.save');
+        Route::post('services',[ServiceController::class, 'storeServices'])
+            ->name('services.save');
+        Route::post('tournaments',[TournamentController::class, 'storeTournaments'])
+            ->name('tournaments.save');
+        Route::post('videos',[VideoController::class, 'storeVideos'])
+            ->name('videos.save');
+        Route::post('transports',[TransportController::class, 'storeTransports'])
+            ->name('transports.save');
 
         Route::get('home',[DashboardController::class, 'renderHome'])
             ->name('home');

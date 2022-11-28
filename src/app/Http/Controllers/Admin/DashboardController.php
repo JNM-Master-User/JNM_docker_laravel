@@ -58,4 +58,31 @@ class DashboardController extends Controller
             'data'=>$data
         ]);
     }
+    public function renderServices()
+    {
+        $data= $this->getData();
+
+        return view('pages.dashboard',[
+            'content_services'=>true,
+            'data'=>$data
+        ]);
+    }
+    public function renderTournaments()
+    {
+        $data= $this->getData();
+
+        return view('pages.dashboard',[
+            'content_tournaments'=>true,
+            'data'=>$data
+        ]);
+    }
+    public function renderVideos()
+    {
+        $data= $this->getData();
+
+        return view('pages.dashboard',[
+            'content_videos'=>true,
+            'data'=>$data
+        ]);
+    }
 }
