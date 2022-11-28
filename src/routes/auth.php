@@ -1,17 +1,17 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InstitutionController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\PoleController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\InstitutionController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\PoleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\PartnerController;
-use App\Http\Controllers\Auth\RoleController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -79,18 +79,6 @@ Route::middleware('auth')->group(function () {
             ->name('institutions.save');
 
         Route::get('home',[DashboardController::class, 'renderHome'])
-            ->name('home');
-        Route::get('users',[DashboardController::class, 'renderUsers'])
-            ->name('home');
-        Route::get('roles',[DashboardController::class, 'renderRoles'])
-            ->name('home');
-        Route::get('poles',[DashboardController::class, 'renderPoles'])
-            ->name('home');
-        Route::get('partners',[DashboardController::class, 'renderPartners'])
-            ->name('home');
-        Route::get('transports',[DashboardController::class, 'renderTransports'])
-            ->name('home');
-        Route::get('institutions',[DashboardController::class, 'renderInstitutions'])
             ->name('home');
     });
 });

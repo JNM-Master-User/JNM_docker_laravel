@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
@@ -19,6 +19,7 @@ class RoleController extends Controller
      */
     public function storeRoles(Request $request)
     {
+        session(['content'=>'content_roles']);
         $request->validate([
             'name' => [ 'string', 'max:255'],
         ]);
@@ -29,6 +30,6 @@ class RoleController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect(RouteServiceProvider::ROLES)->with('success_roles', 'Roles saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_roles', 'Roles saved successfully');
     }
 }

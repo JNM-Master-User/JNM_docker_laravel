@@ -19,12 +19,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/dashboard/home';
     public const LOGIN = '/login';
-    public const TRANSPORTS = '/dashboard/transports';
-    public const PARTNERS = '/dashboard/partners';
-    public const USERS = '/dashboard/users';
-    public const ROLES = '/dashboard/roles';
-    public const POLES = '/dashboard/poles';
-    public const INSTITUTIONS = '/dashboard/institutions';
 
 
     /**

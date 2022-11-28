@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Institution;
@@ -11,6 +11,7 @@ class InstitutionController extends Controller
 {
     public function storeInstitutions(Request $request)
     {
+        session(['content'=>'content_institutions']);
         $request->validate([
             'name' => [ 'string', 'max:255'],
             'address' => [ 'string', 'max:255'],
@@ -27,6 +28,6 @@ class InstitutionController extends Controller
             'desc'=> $request->desc
         ]);
 
-        return redirect(RouteServiceProvider::INSTITUTIONS)->with('success_institutions', 'Institutions saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_institutions', 'Institutions saved successfully');
     }
 }

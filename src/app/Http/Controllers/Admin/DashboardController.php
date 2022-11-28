@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Allotment;
@@ -18,8 +18,6 @@ use App\Models\User;
 use App\Models\UserSensitiveData;
 use App\Models\UserStatus;
 use App\Models\Video;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -53,70 +51,10 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function renderHome()
-    {
+    public function renderHome(){
         $data= $this->getData();
 
         return view('pages.dashboard',[
-            'content_dashboard'=>true,
-            'data'=>$data
-            ]);
-    }
-
-    public function renderUsers()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_users'=>true,
-            'data'=>$data
-        ]);
-    }
-
-    public function renderRoles()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_roles'=>true,
-            'data'=>$data
-        ]);
-    }
-
-    public function renderPoles()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_poles'=>true,
-            'data'=>$data
-        ]);
-    }
-
-    public function renderPartners()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_partners'=>true,
-            'data'=>$data
-        ]);
-    }
-    public function renderTransports()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_transports'=>true,
-            'data'=>$data
-        ]);
-    }
-    public function renderInstitutions()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_institutions'=>true,
             'data'=>$data
         ]);
     }

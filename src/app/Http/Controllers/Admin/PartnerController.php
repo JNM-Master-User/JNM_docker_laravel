@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Partner;
@@ -33,7 +33,7 @@ class PartnerController extends Controller
             'path_picture' => $request->path_picture
         ]);
 
-        return redirect(RouteServiceProvider::PARTNERS)->with('success_partners', 'Partners saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_partners', 'Partners saved successfully');
     }
 }
 

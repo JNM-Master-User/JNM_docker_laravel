@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pole;
@@ -19,16 +19,20 @@ class PoleController extends Controller
      */
     public function storePoles(Request $request)
     {
+        session(['content'=>'content_poles']);
+
         $request->validate([
             'name' => [ 'string', 'max:255'],
         ]);
 
-        Pole::updateOrCreate([
-            'name' => Pole::where('name', $request->name)->first(),
-        ],[
-            'name' => $request->name,
-        ]);
-
-        return redirect(RouteServiceProvider::POLES)->with('success_poles', 'Poles saved successfully');
+        if(Pole::where('name', $request->name)->first()){
+            return redirect(RouteServiceProvider::HOME)->with('error_poles', 'Pole already exists');
+        }
+        else{
+            Pole::create([
+                'name' => $request->name,
+            ]);
+        }
+        return redirect(RouteServiceProvider::HOME)->with('success_poles', 'Pole saved successfully');
     }
 }
