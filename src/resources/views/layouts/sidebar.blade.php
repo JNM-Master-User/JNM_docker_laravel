@@ -103,7 +103,7 @@
           <ul class="pb-2">
             <x-sidebar.menu>
               <x-icons.pictures class="{{session()->get('content')=='content_pictures' ? 'text-gray-900' : '' }}"></x-icons.pictures>
-              <span class="ml-3 flex-1 whitespace-nowrap">{{__("Pictures")}}</span>
+              <span class=" flex-1 whitespace-nowrap">{{__("Pictures")}}</span>
             </x-sidebar.menu>
             <x-sidebar.menu id="button_menu_toggle_videos" class="{{session()->get('content')=='content_videos' ? 'bg-gray-100' : '' }}">
               <x-icons.videos class="{{session()->get('content')=='content_videos' ? 'text-gray-900' : '' }}"></x-icons.videos>
