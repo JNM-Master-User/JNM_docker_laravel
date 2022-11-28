@@ -120,4 +120,40 @@ class DashboardController extends Controller
             'data'=>$data
         ]);
     }
+    public function renderUsersStatus()
+    {
+        $data= $this->getData();
+
+        return view('pages.dashboard',[
+            'content_users_status'=>true,
+            'data'=>$data
+        ]);
+    }
+    public function renderAllotments()
+    {
+        $data= $this->getData();
+
+        return view('pages.dashboard',[
+            'content_allotments'=>true,
+            'data'=>$data
+        ]);
+    }
+    public function renderContact()
+    {
+        $data= $this->getData();
+
+        return view('pages.dashboard',[
+            'content_contacts'=>true,
+            'data'=>$data
+        ]);
+    }
+    public function renderEvents()
+    {
+        $data= $this->getData();
+
+        return view('pages.dashboard',[
+            'content_events'=>true,
+            'data'=>$data
+        ]);
+    }
 }
