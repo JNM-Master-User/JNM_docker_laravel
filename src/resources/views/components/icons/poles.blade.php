@@ -1,1 +1,7 @@
-<svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
+<span class="w-10">
+    <span class="fa-stack h-1 -translate-y-3.5">
+        <i {{ $attributes->merge(["class"=>"fa-lg fa-solid fa-user text-gray-500 group-hover:text-gray-900 transition duration-75"])}}></i>
+        <i class="fa-sm text-white fa-solid fa-cube fa-stack-1x translate-y-1"></i>
+        <i {{ $attributes->merge(["class"=>"fa-xs fa-solid fa-cube fa-stack-1x translate-y-1 text-gray-500 group-hover:text-gray-900 transition duration-75"])}}></i>
+    </span>
+</span>

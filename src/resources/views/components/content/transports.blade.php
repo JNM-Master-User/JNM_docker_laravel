@@ -5,15 +5,15 @@
         </x-breadcrumb>
     </div>
     <!-- end breadcrumb -->
-    <div class="pt-6 px-6">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
+    <div class="md:pt-6 md:px-6">
+        <x-cards.card>
+            <div class="p-6">
                 @if(session()->get('success_transports'))
-                    <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                        {{ session()->get('success_transports') }}
-                    </div>
+                    <x-input-success :messages="session()->get('success_transports')" class="mt-2"/>
+                @elseif(session()->get('error_transports'))
+                    <x-input-error :messages="session()->get('error_transports')" class="mt-2"/>
                 @endif
             </div>
-        </div>
+        </x-cards.card>
     </div>
 </div>

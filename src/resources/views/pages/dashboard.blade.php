@@ -1,17 +1,17 @@
 <x-app-layout>
-    <x-content.home id="content_dashboard" class="{{isset($content_dashboard) ? 'shown' : 'hidden' }}">
+    <x-content.home id="content_dashboard" class="{{session()->get('content')=='content_dashboard' ? 'shown' : 'hidden' }}">
     </x-content.home>
-    <x-content.users :users="$data['users']" id="content_users" class="{{isset($content_users) ? 'shown' : 'hidden' }}">
+    <x-content.users :users="$data['users']" id="content_users" class="{{session()->get('content')=='content_user' ? 'shown' : 'hidden' }}">
     </x-content.users>
-    <x-content.roles :roles="$data['roles']" id="content_roles" class="{{isset($content_roles) ? 'shown' : 'hidden' }}">
+    <x-content.roles :roles="$data['roles']" id="content_roles" class="{{session()->get('content')=='content_roles' ? 'shown' : 'hidden' }}">
     </x-content.roles>
-    <x-content.poles :poles="$data['poles']" id="content_poles" class="{{isset($content_poles) ? 'shown' : 'hidden'  }}">
+    <x-content.poles :poles="$data['poles']" id="content_poles" class="{{session()->get('content')=='content_poles' ? 'shown' : 'hidden'  }}">
     </x-content.poles>
-    <x-content.partners :partners="$data['partners']" id="content_partners" class="{{isset($content_partners) ? 'shown' : 'hidden'  }}">
+    <x-content.partners :partners="$data['partners']" id="content_partners" class="{{session()->get('content')=='content_partners' ? 'shown' : 'hidden'  }}">
     </x-content.partners>
-    <x-content.transports :transports="$data['transports']" id="content_transports" class="{{isset($content_transports) ? 'shown' : 'hidden'  }}">
+    <x-content.transports :transports="$data['transports']" id="content_transports" class="{{session()->get('content')=='content_transports' ? 'shown' : 'hidden'  }}">
     </x-content.transports>
-    <x-content.institutions :institutions="$data['institutions']" id="content_institutions" class="{{isset($content_institutions) ? 'shown' : 'hidden'  }}">
+    <x-content.institutions :institutions="$data['institutions']" id="content_institutions" class="{{session()->get('content')=='content_institutions' ? 'shown' : 'hidden'  }}">
     </x-content.institutions>
     <script type="text/javascript">
         const button_menu_toggle_dashboard = document.getElementById('button_menu_toggle_dashboard');
@@ -35,6 +35,9 @@
             element.classList.remove('hidden');
             element.classList.add('shown');
         }
+        const select = (element) =>{
+            element.classList.add('bg-gray-100');
+        }
         const reset = () =>{
             content_users.classList.remove('shown', 'hidden');
             content_roles.classList.remove('shown', 'hidden');
@@ -43,6 +46,7 @@
             content_dashboard.classList.remove('shown','hidden');
             content_poles.classList.remove('shown','hidden');
             content_institutions.classList.remove('shown','hidden');
+
             content_users.classList.add('hidden');
             content_roles.classList.add('hidden');
             content_partners.classList.add('hidden');
@@ -50,35 +54,50 @@
             content_dashboard.classList.add('hidden');
             content_poles.classList.add('hidden');
             content_institutions.classList.add('hidden');
+
+            button_menu_toggle_users.classList.remove('bg-gray-100');
+            button_menu_toggle_roles.classList.remove('bg-gray-100');
+            button_menu_toggle_partners.classList.remove('bg-gray-100');
+            button_menu_toggle_transports.classList.remove('bg-gray-100');
+            button_menu_toggle_dashboard.classList.remove('bg-gray-100');
+            button_menu_toggle_poles.classList.remove('bg-gray-100');
+            button_menu_toggle_institutions.classList.remove('bg-gray-100');
         }
 
         button_menu_toggle_dashboard.addEventListener('click', () => {
             reset();
             show(content_dashboard);
+            select(button_menu_toggle_dashboard);
         });
         button_menu_toggle_users.addEventListener('click', () => {
             reset();
             show(content_users);
+            select(button_menu_toggle_users);
         });
         button_menu_toggle_roles.addEventListener('click', () => {
             reset();
             show(content_roles);
+            select(button_menu_toggle_roles);
         });
         button_menu_toggle_partners.addEventListener('click', () => {
             reset();
             show(content_partners);
+            select(button_menu_toggle_partners);
         });
         button_menu_toggle_transports.addEventListener('click', () => {
             reset();
             show(content_transports);
+            select(button_menu_toggle_transports);
         });
         button_menu_toggle_poles.addEventListener('click', () => {
             reset();
             show(content_poles);
+            select(button_menu_toggle_poles);
         });
         button_menu_toggle_institutions.addEventListener('click', () => {
             reset();
             show(content_institutions);
+            select(button_menu_toggle_institutions);
         });
     </script>
 </x-app-layout>
