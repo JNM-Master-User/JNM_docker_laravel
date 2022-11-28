@@ -33,7 +33,7 @@ class Allotment extends Model
     ];
     public $incrementing = false;
 
-    protected $table = 'bookings_users_events';
+    protected $table = 'allotments';
 
     public function user()
     {

@@ -19,6 +19,14 @@
     </x-content.tournaments>
     <x-content.videos :videos="$data['videos']" id="content_videos" class="{{session()->get('content')=='content_videos' ? 'shown' : 'hidden'  }}">
     </x-content.videos>
+    <x-content.users_status :usersStatus="$data['users_status']" id="content_users_status" class="{{session()->get('content')=='content_users_status' ? 'shown' : 'hidden'  }}">
+    </x-content.users_status>
+    <x-content.allotments :allotments="$data['allotments']" id="content_allotments" class="{{session()->get('content')=='content_allotments' ? 'shown' : 'hidden'  }}">
+    </x-content.allotments>
+    <x-content.contacts :contacts="$data['contacts']" :poles="$data['poles']" :roles="$data['roles']" id="content_contacts" class="{{session()->get('content')=='content_contacts' ? 'shown' : 'hidden'  }}">
+    </x-content.contacts>
+    <x-content.events :events="$data['events']" id="content_events" class="{{session()->get('content')=='content_events' ? 'shown' : 'hidden'  }}">
+    </x-content.events>
 
     <script type="text/javascript">
         const button_menu_toggle_dashboard = document.getElementById('button_menu_toggle_dashboard');
@@ -31,6 +39,10 @@
         const button_menu_toggle_services = document.getElementById('button_menu_toggle_services');
         const button_menu_toggle_tournaments = document.getElementById('button_menu_toggle_tournaments');
         const button_menu_toggle_videos = document.getElementById('button_menu_toggle_videos');
+        const button_menu_toggle_users_status = document.getElementById('button_menu_toggle_users_status');
+        const button_menu_toggle_allotments = document.getElementById('button_menu_toggle_allotments');
+        const button_menu_toggle_contacts = document.getElementById('button_menu_toggle_contacts');
+        const button_menu_toggle_events = document.getElementById('button_menu_toggle_events');
 
         const content_dashboard = document.getElementById('content_dashboard');
         const content_users = document.getElementById('content_users');
@@ -42,6 +54,10 @@
         const content_services = document.getElementById('content_services');
         const content_tournaments = document.getElementById('content_tournaments');
         const content_videos = document.getElementById('content_videos');
+        const content_users_status = document.getElementById('content_users_status');
+        const content_allotments = document.getElementById('content_allotments');
+        const content_contacts = document.getElementById('content_contacts');
+        const content_events = document.getElementById('content_events');
 
 
         const show = (element) =>{
@@ -62,6 +78,10 @@
             content_services.classList.remove('shown','hidden');
             content_tournaments.classList.remove('shown','hidden');
             content_videos.classList.remove('shown','hidden');
+            content_users_status.classList.remove('shown','hidden');
+            content_allotments.classList.remove('shown','hidden');
+            content_contacts.classList.remove('shown','hidden');
+            content_events.classList.remove('shown','hidden');
 
             content_users.classList.add('hidden');
             content_roles.classList.add('hidden');
@@ -73,6 +93,10 @@
             content_services.classList.add('hidden');
             content_tournaments.classList.add('hidden');
             content_videos.classList.add('hidden');
+            content_users_status.classList.add('hidden');
+            content_allotments.classList.add('hidden');
+            content_contacts.classList.add('hidden');
+            content_events.classList.add('hidden');
 
             button_menu_toggle_users.classList.remove('bg-gray-100');
             button_menu_toggle_roles.classList.remove('bg-gray-100');
@@ -133,5 +157,25 @@
             show(content_videos);
             select(button_menu_toggle_videos);
         })
+        button_menu_toggle_users_status.addEventListener('click', () => {
+            reset();
+            show(content_users_status);
+            select(button_menu_toggle_users_status);
+        });
+        button_menu_toggle_allotments.addEventListener('click', () => {
+            reset();
+            show(content_allotments);
+            select(button_menu_toggle_allotments);
+        });
+        button_menu_toggle_contacts.addEventListener('click', () => {
+            reset();
+            show(content_contacts);
+            select(button_menu_toggle_contacts);
+        });
+        button_menu_toggle_events.addEventListener('click', () => {
+            reset();
+            show(content_events);
+            select(button_menu_toggle_events);
+        });
     </script>
 </x-app-layout>
