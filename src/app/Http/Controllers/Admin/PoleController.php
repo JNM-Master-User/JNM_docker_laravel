@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Exceptions\Handler;
 use App\Http\Controllers\Controller;
 use App\Models\Pole;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Exception;
 
