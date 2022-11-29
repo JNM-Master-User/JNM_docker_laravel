@@ -23,6 +23,6 @@ class ServiceController extends Controller
             'desc'=> $request->desc
         ]);
 
-        return redirect(RouteServiceProvider::SERVICES)->with('success_services', 'Services saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_services', 'Services saved successfully');
     }
 }

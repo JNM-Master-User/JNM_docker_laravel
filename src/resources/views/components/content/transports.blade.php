@@ -40,8 +40,17 @@
                     </fieldset>
                 </form>
                 @foreach($transports as $transports)
+                    <x-cards.input>
                     {{$transports->name}}
                     {{$transports->path_picture}}
+                        <form method="POST" action="{{ route('transports.destroy') }}">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$transports->id}}">
+                            <x-buttons.delete-button type="submit">
+                                {{ __('Delete') }}
+                            </x-buttons.delete-button>
+                        </form>
+                        </x-cards.input>
                 @endforeach
             </div>
         </x-cards.card>
