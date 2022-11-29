@@ -27,6 +27,6 @@ class TournamentController extends Controller
             'desc'=> $request->desc
         ]);
 
-        return redirect(RouteServiceProvider::TOURNAMENTS)->with('success_tournaments', 'Tournaments saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_tournaments', 'Tournaments saved successfully');
     }
 }

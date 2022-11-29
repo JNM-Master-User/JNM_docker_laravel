@@ -39,8 +39,17 @@
                     </fieldset>
                 </form>
                 @foreach($videos as $videos)
-                    {{$videos->title}}
-                    {{$videos->path_youtube}}
+                    <x-cards.input>
+                        {{$videos->title}}
+                        {{$videos->path_youtube}}
+                        <form method="POST" action="{{ route('videos.destroy') }}">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$videos->id}}">
+                            <x-buttons.delete-button type="submit">
+                                {{ __('Delete') }}
+                            </x-buttons.delete-button>
+                        </form>
+                    </x-cards.input>
                 @endforeach
             </div>
         </div>
