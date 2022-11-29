@@ -20,20 +20,42 @@ class PoleController extends Controller
      */
     public function storePoles(Request $request)
     {
-        session(['content'=>'content_poles']);
+        try{
+            session(['content'=>'content_poles']);
+
+            $request->validate([
+                'name' => [ 'string', 'max:255'],
+            ]);
+
+            if(Pole::where('name', $request->name)->first()){
+                return redirect(RouteServiceProvider::HOME)->with('error_poles', 'Pole already exists');
+            }
+            else{
+                Pole::create([
+                    'name' => $request->name,
+                ]);
+            }
+            return redirect(RouteServiceProvider::HOME)->with('success_poles', 'Pole saved successfully');
+        } catch (\Illuminate\Database\QueryException $e){
+            $error = $e->errorInfo;
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyPoles(Request $request)
+    {
 
         $request->validate([
-            'name' => [ 'string', 'max:255'],
+            'id' => ['string', 'max:255'],
         ]);
 
-        if(Pole::where('name', $request->name)->first()){
-            return redirect(RouteServiceProvider::HOME)->with('error_poles', 'Pole already exists');
-        }
-        else{
-            Pole::create([
-                'name' => $request->name,
-            ]);
-        }
-        return redirect(RouteServiceProvider::HOME)->with('success_poles', 'Pole saved successfully');
+        Pole::where('id' , $request->id)->delete();
+
+        return redirect(RouteServiceProvider::HOME)->with('success_poles', 'Pole removed successfully');
     }
 }

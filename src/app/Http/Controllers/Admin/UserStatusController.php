@@ -33,4 +33,23 @@ class UserStatusController extends Controller
 
         return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'Users status saved successfully');
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyUsersStatus(Request $request)
+    {
+
+        $request->validate([
+            'id' => ['string', 'max:255'],
+        ]);
+
+        UserStatus::where('id' , $request->id)->delete();
+
+        return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'User status removed successfully');
+    }
 }

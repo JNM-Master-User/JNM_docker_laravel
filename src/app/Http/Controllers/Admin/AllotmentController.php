@@ -35,4 +35,23 @@ class AllotmentController extends Controller
 
         return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments saved successfully');
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyAllotments(Request $request)
+    {
+
+        $request->validate([
+            'id' => ['string', 'max:255'],
+        ]);
+
+        Allotment::where('id' , $request->id)->delete();
+
+        return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments removed successfully');
+    }
 }

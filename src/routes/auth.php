@@ -15,11 +15,11 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PartnerController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\PoleController;
+use App\Http\Controllers\Admin\PoleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\RoleController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -81,8 +81,12 @@ Route::middleware('auth')->group(function () {
             ->name('roles.save');
         Route::post('partners',[PartnerController::class, 'storePartners'])
             ->name('partners.save');
-        Route::post('poles',[PoleController::class, 'storePoles'])
+
+        Route::post('poles_save',[PoleController::class, 'storePoles'])
             ->name('poles.save');
+        Route::post('poles_destroy', [PoleController::class, 'destroyPoles'])
+            ->name('poles.destroy');
+
         Route::post('institutions',[InstitutionController::class, 'storeInstitutions'])
             ->name('institutions.save');
         Route::post('services',[ServiceController::class, 'storeServices'])
@@ -93,10 +97,17 @@ Route::middleware('auth')->group(function () {
             ->name('videos.save');
         Route::post('transports',[TransportController::class, 'storeTransports'])
             ->name('transports.save');
+
         Route::post('users_status',[UserStatusController::class, 'storeUsersStatus'])
             ->name('users_status.save');
-        Route::post('allotments',[AllotmentController::class, 'storeAllotments'])
+        Route::post('users_status_destroy', [UserStatusController::class, 'destroyUsersStatus'])
+            ->name('users_status.destroy');
+
+        Route::post('allotments_save',[AllotmentController::class, 'storeAllotments'])
             ->name('allotments.save');
+        Route::post('allotments_destroy', [AllotmentController::class, 'destroyAllotments'])
+            ->name('allotments.destroy');
+
         Route::post('contacts',[ContactController::class, 'storeContacts'])
             ->name('contacts.save');
         Route::post('events',[EventController::class, 'storeEvents'])
