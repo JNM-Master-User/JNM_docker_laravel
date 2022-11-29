@@ -10,9 +10,19 @@
     "A new verification link has been sent to the email address you provided during registration.": "Un nouveau lien de vérification a été envoyé à l'adresse e-mail que vous avez fournie lors de l'inscription.",
 
     "Users": "Utilisateurs",
+    "Poles":"Pôles",
+    "Roles": "Rôles",
+    "Contacts": "Contacts",
+    "Allotments": "Logements",
+    "Events": "Évènements",
+    "Institutions": "Établissements",
     "Partners": "Partenaires",
-    "Poles":"Poles",
-    "Roles": "Roles",
+    "Pictures": "Images",
+    "Services": "Services",
+    "Tournaments": "Tournois",
+    "Transports": "Transports",
+    "Users Status": "Status Utilisateurs",
+    "Videos": "Vidéos",
 
     "Password": "Mot de passe",
     "Email": "Email",
@@ -30,5 +40,11 @@
     "Confirm" : "Confirmer",
     "Resend Verification Email": "Renvoyer",
     "Already registered?": "Déjà un compte?",
-    "No account yet?": "Pas encore de compte?"
+    "No account yet?": "Pas encore de compte?",
+
+
+    "Deletion impossible, :attribute is assigned.": "Suppression impossible, :attribute est assigné.",
+    ":attribute add impossible, :attribute already exists": "Ajout impossible, :attribute existe déjà.",
+    ":attribute saved sucessfully.": ":attribut enregistré avec succés.",
+    ":attribute deleted sucessfully.": ":attribut supprimé avec succés."
 }

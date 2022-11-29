@@ -29,7 +29,8 @@ class UserSensitiveData extends Model
         'last_name',
         'date_of_birth',
         'phone_number',
-        'address'
+        'address',
+        'path_picture'
     ];
     /**
      * The attributes that should be cast.

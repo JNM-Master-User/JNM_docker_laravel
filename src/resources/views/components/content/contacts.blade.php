@@ -37,7 +37,6 @@
                         @endforeach
                     </x-select>
                 </div>
-
                 <div>
                     <x-input-label for="last_name" :value="__('Roles')"/>
                     <x-select>
@@ -54,10 +53,14 @@
             </div>
         </form>
     </x-cards.input>
+
+
     <x-cards.input>
-        @foreach($contacts as $contact)
-            {{$contact->name}}
-            {{$contact->last_name}}
-        @endforeach
+        <x-table.contacts>
+            @foreach($contacts as $contact)
+                <x-items.contact :contact="$contact">
+                </x-items.contact>
+            @endforeach
+        </x-table.contacts>
     </x-cards.input>
 </div>

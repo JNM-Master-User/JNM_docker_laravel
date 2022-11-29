@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\InstitutionController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\PoleController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TournamentController;
 use App\Http\Controllers\Admin\TransportController;
@@ -15,11 +18,8 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PartnerController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\PoleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\RoleController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -81,8 +81,12 @@ Route::middleware('auth')->group(function () {
             ->name('roles.save');
         Route::post('partners',[PartnerController::class, 'storePartners'])
             ->name('partners.save');
-        Route::post('poles',[PoleController::class, 'storePoles'])
+
+        Route::post('poles.save',[PoleController::class, 'storePoles'])
             ->name('poles.save');
+        Route::post('poles.destroy',[PoleController::class, 'destroyPoles'])
+            ->name('poles.destroy');
+
         Route::post('institutions',[InstitutionController::class, 'storeInstitutions'])
             ->name('institutions.save');
         Route::post('services',[ServiceController::class, 'storeServices'])

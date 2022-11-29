@@ -47,4 +47,11 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public static function handle($code,$object_name){
+        return match ($code) {
+            23000 => $object_name . "_error_23000",
+            default => $object_name . "_unknown_error_23000",
+        };
+    }
 }

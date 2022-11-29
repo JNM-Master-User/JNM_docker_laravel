@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
+            $table->string('path_picture')->nullable();
             $table->timestamps();
             $table->userstamps('uuid');
         });

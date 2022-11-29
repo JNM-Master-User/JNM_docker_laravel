@@ -27,4 +27,5 @@
         </nav>
         <h1 class="text-xl sm:text-2xl font-semibold text-gray-900">{{ $content ?? ''}}</h1>
     </div>
+    {{$slot}}
 </div>
