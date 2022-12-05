@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -19,17 +20,18 @@ class RoleController extends Controller
      */
     public function storeRoles(Request $request)
     {
-        session(['content'=>'content_roles']);
-        $request->validate([
-            'name' => [ 'string', 'max:255'],
-        ]);
-
-        Role::updateOrCreate([
-            'name' => Role::where('name', $request->name)->first(),
-        ],[
-            'name' => $request->name,
-        ]);
-
-        return redirect(RouteServiceProvider::HOME)->with('success_roles', 'Roles saved successfully');
+        try{
+            session(['content'=>'content_roles']);
+            $request->validate([
+                'name' => ['required','string', 'max:255', 'unique:roles'],
+            ]);
+            Role::create([
+                'name' => $request->name,
+            ]);
+            return redirect(RouteServiceProvider::HOME)->with('success_roles', 'Role saved successfully');
+        }
+        catch (QueryException $e){
+            return redirect(RouteServiceProvider::HOME)->with('error_roles', $e->errorInfo);
+        }
     }
 }

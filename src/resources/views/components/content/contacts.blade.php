@@ -34,7 +34,7 @@
                 </div>
                 <div>
                     <x-input-label :value="__('Roles')"/>
-                    <x-select class="block mt-1 w-full" name="name_role">
+                    <x-select name="name_role">
                         @foreach($roles as $role)
                             <option value="{{ $role->id }}"> {{ $role->name }} </option>
                         @endforeach

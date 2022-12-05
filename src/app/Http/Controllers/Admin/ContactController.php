@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Pole;
 use App\Models\Role;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,55 +15,60 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function storeContacts(Request $request)
     {
-        $request->validate([
-            'name' => [ '','string', 'max:255'],
-            'last_name' => [ 'string', 'max:255'],
-            'name_role' => [ 'string', 'max:255'],
-            'name_pole' => [ 'string', 'max:255']
-        ]);
+        try {
+            session(['content'=>'content_contacts']);
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'name_role' => ['required', 'string', 'max:255'],
+                'name_pole' => ['required', 'string', 'max:255']
+            ]);
 
-        Contact::updateOrCreate([
-            'name' => Contact::where('name', $request->name)->first(),
-            'last_name' => Contact::where('name', $request->last_name)->first(),
-            'id_role' => Role::where('id', $request->name_role)->value('id'),
-            'id_pole' => Pole::where('id', $request->name_pole)->value('id')
-        ],[
-            'name' => $request->name,
-            'last_name' => $request->last_name,
-            'id_role' => Role::where('id', $request->name_role)->value('id'),
-            'id_pole' => Pole::where('id', $request->name_pole)->value('id')
+            if(Contact::where([
+                'id_role' => Role::where('id', $request->name_role)->value('id'),
+                'id_pole' => Pole::where('id', $request->name_pole)->value('id')
+            ])){
+                return redirect(RouteServiceProvider::HOME)->with('error_contacts', 'Contact already exists');
+            }
 
-        ]);
+            Contact::create([
+                'name' => $request->name,
+                'last_name' => $request->last_name,
+                'id_role' => Role::where('id', $request->name_role)->value('id'),
+                'id_pole' => Pole::where('id', $request->name_pole)->value('id')
 
-        return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contacts saved successfully');
+            ]);
+
+            return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contacts saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::HOME)->with('error_contacts', 'Contact could not be saved successfully');
+        }
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroyContacts(Request $request)
     {
 
-        try{
+        try {
             $request->validate([
                 'id' => ['string', 'max:255'],
             ]);
-            Contact::where('id' , $request->id)->delete();
+            Contact::where('id', $request->id)->delete();
             return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contact removed successfully');
-        }
-
-        catch (QueryException $e) {
+        } catch (QueryException $e) {
             return redirect(RouteServiceProvider::HOME)->with('error_contacts', 'Contact could not be removed successfully');
         }
     }
