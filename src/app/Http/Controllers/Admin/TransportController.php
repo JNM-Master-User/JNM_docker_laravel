@@ -21,7 +21,7 @@ class TransportController extends Controller
     public function storeTransports(Request $request)
     {
         try{
-            session(['content'=>'content_poles']);
+            session(['content'=>'content_transports']);
 
             $request->validate([
                 'name' => [ 'string', 'max:255'],

@@ -64,4 +64,12 @@
             </form>
         </x-cards.input>
     @endforeach
+    <x-cards.input>
+        <x-table.allotments>
+            @foreach($allotments as $allotment)
+                <x-items.allotment :allotment="$allotment">
+                </x-items.allotment>
+            @endforeach
+        </x-table.allotments>
+    </x-cards.input>
 </div>

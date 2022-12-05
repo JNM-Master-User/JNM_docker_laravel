@@ -53,4 +53,12 @@
             </div>
         </x-cards.card>
     </div>
+    <x-cards.input>
+        <x-table.institutions>
+            @foreach($institutions as $institution)
+                <x-items.institution :tournament="$tournament">
+                </x-items.institution>
+            @endforeach
+        </x-table.institutions>
+    </x-cards.input>
 </div>

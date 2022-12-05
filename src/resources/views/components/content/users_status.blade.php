@@ -30,18 +30,26 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-    @foreach($usersStatus as $user_status)
+    @foreach($usersStatus as $userStatus)
         <x-cards.input>
             <div>
-                {{$user_status->type}}
+                {{$userStatus->type}}
             </div>
             <form method="POST" action="{{ route('users_status.destroy') }}">
                 @csrf
-                <input type="hidden" name="id" value="{{$user_status->id}}">
+                <input type="hidden" name="id" value="{{$userStatus->id}}">
                 <x-buttons.delete-button type="submit">
                     {{ __('Delete') }}
                 </x-buttons.delete-button>
             </form>
         </x-cards.input>
     @endforeach
+    <x-cards.input>
+        <x-table.users_status>
+            @foreach($usersStatus as $userStatus)
+                <x-items.user_status :userStatus="$userStatus">
+                </x-items.user_status>
+            @endforeach
+        </x-table.users_status>
+    </x-cards.input>
 </div>

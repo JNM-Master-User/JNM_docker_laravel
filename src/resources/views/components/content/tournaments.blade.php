@@ -52,15 +52,15 @@
                         </div>
                     </fieldset>
                 </form>
-                @foreach($tournaments as $tournaments)
+                @foreach($tournaments as $tournament)
                     <x-cards.input>
-                        {{$tournaments->name}}
-                        {{$tournaments->desc}}
-                        {{$tournaments->date}}
-                        {{$tournaments->date_end_upload}}
-                        <form method="POST" action="{{ route('services.destroy') }}">
+                        {{$tournament->name}}
+                        {{$tournament->date}}
+                        {{$tournament->date_end_upload}}
+                        {{$tournament->desc}}
+                        <form method="POST" action="{{ route('tournaments.destroy') }}">
                             @csrf
-                            <input type="hidden" name="id" value="{{$tournaments->id}}">
+                            <input type="hidden" name="id" value="{{$tournament->id}}">
                             <x-buttons.delete-button type="submit">
                                 {{ __('Delete') }}
                             </x-buttons.delete-button>
@@ -70,4 +70,12 @@
             </div>
         </x-cards.card>
     </div>
+    <x-cards.input>
+        <x-table.tournaments>
+            @foreach($tournaments as $tournament)
+                <x-items.tournament :tournament="$tournament">
+                </x-items.tournament>
+            @endforeach
+        </x-table.tournaments>
+    </x-cards.input>
 </div>

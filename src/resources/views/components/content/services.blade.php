@@ -38,13 +38,13 @@
                         </div>
                     </fieldset>
                 </form>
-                @foreach($services as $services)
+                @foreach($services as $service)
                     <x-cards.input>
-                        {{$services->name}}
-                        {{$services->desc}}
+                        {{$service->name}}
+                        {{$service->desc}}
                         <form method="POST" action="{{ route('services.destroy') }}">
                             @csrf
-                            <input type="hidden" name="id" value="{{$services->id}}">
+                            <input type="hidden" name="id" value="{{$service->id}}">
                             <x-buttons.delete-button type="submit">
                                 {{ __('Delete') }}
                             </x-buttons.delete-button>
@@ -54,5 +54,13 @@
             </div>
         </x-cards.card>
     </div>
+    <x-cards.input>
+        <x-table.services>
+            @foreach($services as $service)
+                <x-items.service :service="$service">
+                </x-items.service>
+            @endforeach
+        </x-table.services>
+    </x-cards.input>
 </div>
 

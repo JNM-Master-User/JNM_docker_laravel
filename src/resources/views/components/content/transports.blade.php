@@ -39,13 +39,13 @@
                         </div>
                     </fieldset>
                 </form>
-                @foreach($transports as $transports)
+                @foreach($transports as $transport)
                     <x-cards.input>
-                    {{$transports->name}}
-                    {{$transports->path_picture}}
+                    {{$transport->name}}
+                    {{$transport->path_picture}}
                         <form method="POST" action="{{ route('transports.destroy') }}">
                             @csrf
-                            <input type="hidden" name="id" value="{{$transports->id}}">
+                            <input type="hidden" name="id" value="{{$transport->id}}">
                             <x-buttons.delete-button type="submit">
                                 {{ __('Delete') }}
                             </x-buttons.delete-button>
@@ -55,4 +55,12 @@
             </div>
         </x-cards.card>
     </div>
+    <x-cards.input>
+        <x-table.transports>
+            @foreach($transports as $transport)
+                <x-items.transport :transport="$transport">
+                </x-items.transport>
+            @endforeach
+        </x-table.transports>
+    </x-cards.input>
 </div>

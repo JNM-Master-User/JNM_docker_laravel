@@ -51,4 +51,12 @@
         </form>
     </x-cards.input>
     @endforeach
+    <x-cards.input>
+        <x-table.poles>
+            @foreach($poles as $pole)
+                <x-items.pole :pole="$pole">
+                </x-items.pole>
+            @endforeach
+        </x-table.poles>
+    </x-cards.input>
 </div>

@@ -47,4 +47,12 @@
             </div>
         </x-cards.card>
     </div>
+    <x-cards.input>
+        <x-table.partners>
+            @foreach($partners as $partner)
+                <x-items.partner :partner="$partner">
+                </x-items.partner>
+            @endforeach
+        </x-table.partners>
+    </x-cards.input>
 </div>

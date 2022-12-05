@@ -35,4 +35,12 @@
             </div>
         </x-cards.card>
     </div>
+    <x-cards.input>
+        <x-table.roles>
+            @foreach($roles as $role)
+                <x-items.role :role="$role">
+                </x-items.role>
+            @endforeach
+        </x-table.roles>
+    </x-cards.input>
 </div>

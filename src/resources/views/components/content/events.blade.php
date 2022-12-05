@@ -55,5 +55,13 @@
         {{$event->path_picture}}
         {{$event->desc}}
     @endforeach
+    <x-cards.input>
+        <x-table.events>
+            @foreach($events as $event)
+                <x-items.event :envent="$event">
+                </x-items.event>
+            @endforeach
+        </x-table.events>
+    </x-cards.input>
 </div>
 
