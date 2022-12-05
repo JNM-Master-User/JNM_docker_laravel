@@ -1,7 +1,6 @@
 <div {{$attributes->merge(['class'=>''])}}>
     <!-- breadcrumb -->
-    <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5
-    dark:bg-gray-800 ark:border-gray-600">
+    <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
         <x-breadcrumb content="{{__('Allotments')}}">
         </x-breadcrumb>
     </div>
@@ -45,12 +44,11 @@
                 </x-cards.fieldset>
             </form>
     </x-cards.input>
-
     <x-cards.input>
         <x-table.allotments>
             @foreach($allotments as $allotment)
-                <x-items.allotments :allotment="$allotment">
-                </x-items.allotments>
+                <x-items.allotment :allotment="$allotment">
+                </x-items.allotment>
             @endforeach
         </x-table.allotments>
     </x-cards.input>

@@ -1,7 +1,7 @@
 <div {{$attributes->merge(['class'=>''])}}>
 <!-- breadcrumb -->
     <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
-        <x-breadcrumb content="{{__('Users_status')}}">
+        <x-breadcrumb content="{{__('Users status')}}">
         </x-breadcrumb>
     </div>
     <!-- end breadcrumb -->
@@ -14,7 +14,6 @@
         <form method="POST" action="{{ route('users_status.save') }}">
             <x-cards.fieldset>
                 @csrf
-                <!-- Name -->
                 <div class="mt-4">
                     <x-input-label for="type" :value="__('Type')"/>
 
@@ -30,12 +29,11 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-
     <x-cards.input>
         <x-table.users_status>
             @foreach($usersStatus as $user_status)
-                <x-items.users_status :userStatus="$user_status">
-                </x-items.users_status>
+                <x-items.user_status :userStatus="$user_status">
+                </x-items.user_status>
             @endforeach
         </x-table.users_status>
     </x-cards.input>

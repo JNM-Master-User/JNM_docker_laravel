@@ -15,10 +15,7 @@
                             Name
                         </th>
                         <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Address
-                        </th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Zip code
+                            Desc
                         </th>
                         <th scope="col" class="p-4">
                         </th>

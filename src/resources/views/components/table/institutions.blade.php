@@ -15,10 +15,13 @@
                             Name
                         </th>
                         <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Address
+                            Adress
                         </th>
                         <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Zip code
+                            Path picture
+                        </th>
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+                            Desc
                         </th>
                         <th scope="col" class="p-4">
                         </th>

@@ -7,14 +7,13 @@
     <!-- end breadcrumb -->
     <x-cards.input>
         @if(session()->get('success_tournaments'))
-            <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                {{ session()->get('success_tournaments') }}
-            </div>
+            <x-input-success :messages="session()->get('success_tournaments')" class="mt-2"/>
+        @elseif(session()->get('error_tournaments'))
+            <x-input-error :messages="session()->get('error_tournaments')" class="mt-2"/>
         @endif
         <form method="POST" action="{{ route('tournaments.save') }}">
             <x-cards.fieldset>
                 @csrf
-                <!-- Name -->
                 <div>
                     <x-input-label for="name" :value="__('Name')"/>
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" autofocus/>
@@ -42,20 +41,13 @@
                 </x-buttons.primary-button>
             </div>
         </form>
-        @foreach($tournaments as $tournaments)
-            <x-cards.input>
-                {{$tournaments->name}}
-                {{$tournaments->desc}}
-                {{$tournaments->date}}
-                {{$tournaments->date_end_upload}}
-                <form method="POST" action="{{ route('services.destroy') }}">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$tournaments->id}}">
-                    <x-buttons.delete-button type="submit">
-                        {{ __('Delete') }}
-                    </x-buttons.delete-button>
-                </form>
-            </x-cards.input>
-        @endforeach
+    </x-cards.input>
+    <x-cards.input>
+        <x-table.tournaments>
+            @foreach($tournaments as $tournament)
+                <x-items.tournament :tournament="$tournament">
+                </x-items.tournament>
+            @endforeach
+        </x-table.tournaments>
     </x-cards.input>
 </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Allotment;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class AllotmentController extends Controller
 {
@@ -19,28 +20,27 @@ class AllotmentController extends Controller
      */
     public function storeAllotments(Request $request)
     {
+        try{
+            session(['content'=>'content_allotments']);
 
-        try {
             $request->validate([
                 'name' => [ 'string', 'max:255'],
                 'address' => [ 'string', 'max:255'],
                 'zip_code' => [ 'string', 'max:255']
             ]);
 
-            if(Allotment::where('name', $request->type)->first()){
+            if(Allotment::where('name', $request->name)->first()){
                 return redirect(RouteServiceProvider::HOME)->with('error_allotments', 'Allotment already exists');
             }
             else{
                 Allotment::create([
                     'name' => $request->name,
                     'address' => $request->address,
-                    'zip_code' => $request->zip_code
+                    'zip_code' =>$request->zip_code
                 ]);
             }
-
             return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments saved successfully');
         }
-
         catch (QueryException $e){
             return redirect(RouteServiceProvider::HOME)->with('error_allotments', $e->errorInfo);
         }
@@ -68,5 +68,4 @@ class AllotmentController extends Controller
             return redirect(RouteServiceProvider::HOME)->with('error_allotments', 'Allotments not removed successfully');
         }
     }
-
 }
