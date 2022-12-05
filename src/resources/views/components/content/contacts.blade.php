@@ -58,8 +58,8 @@
     <x-cards.input>
         <x-table.contacts>
             @foreach($contacts as $contact)
-                <x-items.contact :contact="$contact">
-                </x-items.contact>
+                <x-items.contacts :contact="$contact">
+                </x-items.contacts>
             @endforeach
         </x-table.contacts>
     </x-cards.input>
