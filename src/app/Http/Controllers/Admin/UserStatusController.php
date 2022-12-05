@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\UserStatus;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 ;
@@ -21,17 +22,30 @@ class UserStatusController extends Controller
      */
     public function storeUsersStatus(Request $request)
     {
-        $request->validate([
-            'type' => [ 'string', 'max:255']
-        ]);
+        try{
+            session(['content'=>'content_users_status']);
 
-        UserStatus::updateOrCreate([
-            'type' => UserStatus::where('type', $request->type)->first(),
-        ],[
-            'type' => $request->type,
-        ]);
+            $request->validate([
+                'type' => [ 'string', 'max:255']
+            ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'Users status saved successfully');
+
+            if(UserStatus::where('type', $request->type)->first()){
+                return redirect(RouteServiceProvider::HOME)->with('error_users_status', 'User status already exists');
+            }
+            else{
+                UserStatus::create([
+                    'type' => $request->type,
+                ]);
+            }
+
+            return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'Users status saved successfully');
+        }
+
+        catch (QueryException $e){
+            return redirect(RouteServiceProvider::HOME)->with('error_users_status', $e->errorInfo);
+        }
+
     }
 
 
@@ -39,17 +53,21 @@ class UserStatusController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroyUsersStatus(Request $request)
     {
+        try {
+            $request->validate([
+                'id' => ['string', 'max:255'],
+            ]);
 
-        $request->validate([
-            'id' => ['string', 'max:255'],
-        ]);
+            UserStatus::where('id', $request->id)->delete();
 
-        UserStatus::where('id' , $request->id)->delete();
-
-        return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'User status removed successfully');
+            return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'User status removed successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::HOME)->with('error_users_status', 'User status not removed successfully');
+        }
     }
+
 }

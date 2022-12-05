@@ -18,11 +18,8 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Admin\PoleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -128,6 +125,9 @@ Route::middleware('auth')->group(function () {
 
         Route::post('contacts_save',[ContactController::class, 'storeContacts'])
             ->name('contacts.save');
+        Route::post('contacts_destroy',[ContactController::class, 'destroyContacts'])
+            ->name('contacts.destroy');
+
         Route::post('events_destroy',[EventController::class, 'storeEvents'])
             ->name('events.save');
 

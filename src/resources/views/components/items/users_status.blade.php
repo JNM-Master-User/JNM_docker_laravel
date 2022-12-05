@@ -6,25 +6,24 @@
     </td>
     <td class="p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
         <div class="text-sm font-normal text-gray-500">
-            <div class="text-base font-semibold text-gray-900">{{$contact->name}}</div>
+            <div class="text-base font-semibold text-gray-900">{{$userStatus->type}}</div>
         </div>
     </td>
-    <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
-        <div class="text-sm font-normal text-gray-500">
-            <div class="text-base font-semibold text-gray-900">{{$contact->last_name}}</div>
-        </div>
-    </td>
-    <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">??</td>
-    <td class="p-2 whitespace-nowrap text-base font-normal text-gray-900">??</td>
     <td class="p-2 whitespace-nowrap space-x-2">
         <button type="button" data-modal-toggle="user-modal-" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
             <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
             {{__('Edit User')}}
         </button>
-        <button type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-            <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
-            {{__('Delete User')}}
-        </button>
+    </td>
+    <td class="p-2 whitespace-nowrap space-x-2">
+        <form method="POST" action="{{ route('users_status.destroy') }}">
+            @csrf
+            <input type="hidden" name="id" value="{{$userStatus->id}}">
+            <button type="submit" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
+                {{__('Delete User')}}
+            </button>
+        </form>
     </td>
     <!-- Modal -->
     <div id="user-modal-" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-2 md:inset-0 h-modal md:h-full">

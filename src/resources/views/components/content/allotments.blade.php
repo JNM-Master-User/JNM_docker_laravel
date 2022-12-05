@@ -6,11 +6,11 @@
     </div>
     <!-- end breadcrumb -->
     <x-cards.input>
-            @if(session()->get('success_allotments'))
-                <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                    {{ session()->get('success_allotments') }}
-                </div>
-            @endif
+        @if(session()->get('success_allotments'))
+            <x-input-success :messages="session()->get('success_allotments')" class="mt-2"/>
+        @elseif(session()->get('error_allotments'))
+            <x-input-error :messages="session()->get('error_allotments')" class="mt-2"/>
+        @endif
             <form method="POST" action="{{ route('allotments.save') }}">
                 <x-cards.fieldset>
                     @csrf
@@ -44,24 +44,13 @@
                 </x-cards.fieldset>
             </form>
     </x-cards.input>
-    @foreach($allotments as $allotment)
-        <x-cards.input>
-            <div>
-                {{$allotment->name}}
-            </div>
-            <div>
-                {{$allotment->address}}
-            </div>
-            <div>
-                {{$allotment->zip_code}}
-            </div>
-            <form method="POST" action="{{ route('allotments.destroy') }}">
-                @csrf
-                <input type="hidden" name="id" value="{{$allotment->id}}">
-                <x-buttons.delete-button type="submit">
-                    {{ __('Delete') }}
-                </x-buttons.delete-button>
-            </form>
-        </x-cards.input>
-    @endforeach
+
+    <x-cards.input>
+        <x-table.allotments>
+            @foreach($allotments as $allotment)
+                <x-items.allotments :allotment="$allotment">
+                </x-items.allotments>
+            @endforeach
+        </x-table.allotments>
+    </x-cards.input>
 </div>

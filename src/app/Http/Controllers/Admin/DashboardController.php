@@ -27,8 +27,8 @@ class DashboardController extends Controller
     public function getData(){
         $data = [
             "allotments"=>Allotment::all(),
-            "contacts"=>Contact::all(),
-            "events"=>Event::all(),
+            "contacts"=>Contact::all()->load('pole')->load('role'),
+            "events"=>Event::all()->load('institutionManager'),
             "institutions"=>Institution::all(),
             "navigos"=>Navigo::all(),
             "partners"=>Partner::all(),

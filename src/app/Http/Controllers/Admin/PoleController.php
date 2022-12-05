@@ -52,7 +52,7 @@ class PoleController extends Controller
     {
         try {
             $request->validate([
-                'id' => ['string', 'max:255'],
+                'id' => ['string', 'max:255', 'unique:poles'],
             ]);
             Pole::where('id', $request->id)->delete();
 

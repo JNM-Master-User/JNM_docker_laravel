@@ -6,7 +6,7 @@
         <span class="sr-only">{{__("Info")}}</span>
         <div class="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
             @foreach ((array) $messages as $message)
-                <li>{{ __($message, ['attribute' => $objectName]) }}</li>
+                <li>{{ __($message) }}</li>
             @endforeach
         </div>
         <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-red-200 text-red-700 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-300 inline-flex h-8 w-8 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300" data-dismiss-target="#alert-2" aria-label="Close">

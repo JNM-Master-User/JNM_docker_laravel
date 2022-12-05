@@ -7,9 +7,9 @@
     <!-- end breadcrumb -->
     <x-cards.input>
         @if(session()->get('success_contacts'))
-            <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                {{ session()->get('success_contacts') }}
-            </div>
+            <x-input-success :messages="session()->get('success_contacts')" class="mt-2"/>
+        @elseif(session()->get('error_contacts'))
+            <x-input-error :messages="session()->get('error_contacts')" class="mt-2"/>
         @endif
         <form method="POST" action="{{ route('contacts.save') }}">
             <x-cards.fieldset>
@@ -30,20 +30,20 @@
                     <x-input-error :messages="$errors->get('last_name')" class="mt-2"/>
                 </div>
                 <div>
-                    <x-input-label for="last_name" :value="__('Poles')"/>
-                    <x-select>
+                    <x-input-label  :value="__('Poles')"/>
+                    <select class="block mt-1 w-full" name="name_pole" >
                         @foreach($poles as $pole)
-                            <option value="{{ $pole->name }}"> {{ $pole->name }} </option>
+                            <option value="{{ $pole->id }}"> {{ $pole->name }} </option>
                         @endforeach
-                    </x-select>
+                    </select>
                 </div>
                 <div>
-                    <x-input-label for="last_name" :value="__('Roles')"/>
-                    <x-select>
+                    <x-input-label :value="__('Roles')"/>
+                    <select class="block mt-1 w-full" name="name_role">
                         @foreach($roles as $role)
-                            <option value="{{ $role->name }}"> {{ $role->name }} </option>
+                            <option value="{{ $role->id }}"> {{ $role->name }} </option>
                         @endforeach
-                    </x-select>
+                    </select>
                 </div>
             </x-cards.fieldset>
             <div class="flex items-center justify-end">
