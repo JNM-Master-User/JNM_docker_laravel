@@ -1,6 +1,7 @@
 <div {{$attributes->merge(['class'=>''])}}>
     <!-- breadcrumb -->
-    <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
+    <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5
+    dark:bg-gray-800 ark:border-gray-600">
         <x-breadcrumb content="{{__('Allotments')}}">
         </x-breadcrumb>
     </div>
@@ -15,21 +16,21 @@
                 <x-cards.fieldset>
                     @csrf
                     <!-- Name -->
-                    <div class="mt-4">
+                    <div>
                         <x-input-label for="name" :value="__('Name')"/>
 
                         <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" autofocus/>
 
                         <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                     </div>
-                    <div class="mt-4">
+                    <div>
                         <x-input-label for="address" :value="__('Address')"/>
 
                         <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" autofocus/>
 
                         <x-input-error :messages="$errors->get('address')" class="mt-2"/>
                     </div>
-                    <div class="mt-4">
+                    <div>
                         <x-input-label for="zip_code" :value="__('Zip_code')"/>
 
                         <x-text-input id="zip_code" class="block mt-1 w-full" type="text" name="zip_code" autofocus/>

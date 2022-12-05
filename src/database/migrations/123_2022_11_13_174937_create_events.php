@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->foreignUuid('id_institution_manager')->references('id')->on('institutions');
+            $table->string('id_institution_manager')->nullable();
             $table->string('name');
             $table->string('address');
             $table->date('date');

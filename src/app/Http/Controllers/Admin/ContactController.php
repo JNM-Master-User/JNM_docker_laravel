@@ -22,23 +22,49 @@ class ContactController extends Controller
     public function storeContacts(Request $request)
     {
         $request->validate([
-            'name' => [ 'string', 'max:255'],
-            'last_name' => [ 'string', 'max:255']
+            'name' => [ '','string', 'max:255'],
+            'last_name' => [ 'string', 'max:255'],
+            'name_role' => [ 'string', 'max:255'],
+            'name_pole' => [ 'string', 'max:255']
         ]);
 
         Contact::updateOrCreate([
             'name' => Contact::where('name', $request->name)->first(),
-            'last_name' => $request->last_name,
-            'id_role' => Role::where('name', $request->name_role)->value('id'),
-            'id_pole' => Pole::where('name', $request->name_pole)->value('id')
+            'last_name' => Contact::where('name', $request->last_name)->first(),
+            'id_role' => Role::where('id', $request->name_role)->value('id'),
+            'id_pole' => Pole::where('id', $request->name_pole)->value('id')
         ],[
             'name' => $request->name,
             'last_name' => $request->last_name,
-            'id_role' => Role::where('name', $request->name_role)->value('id'),
-            'id_pole' => Pole::where('name', $request->name_pole)->value('id')
+            'id_role' => Role::where('id', $request->name_role)->value('id'),
+            'id_pole' => Pole::where('id', $request->name_pole)->value('id')
 
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contacts saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contact saved successfully');
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroyContacts(Request $request)
+    {
+
+        try{
+            $request->validate([
+                'id' => ['string', 'max:255'],
+            ]);
+            Contact::where('id' , $request->id)->delete();
+            return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contact removed successfully');
+        }
+
+        catch (QueryException $e) {
+            return redirect(RouteServiceProvider::HOME)->with('error_contacts', 'Contact could not be removed successfully');
+        }
+    }
+
 }

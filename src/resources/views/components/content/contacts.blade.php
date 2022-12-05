@@ -1,5 +1,5 @@
 <div {{$attributes->merge(['class'=>''])}}>
-<!-- breadcrumb -->
+    <!-- breadcrumb -->
     <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
         <x-breadcrumb content="{{__('Contacts')}}">
         </x-breadcrumb>
@@ -7,60 +7,51 @@
     <!-- end breadcrumb -->
     <x-cards.input>
         @if(session()->get('success_contacts'))
-            <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                {{ session()->get('success_contacts') }}
-            </div>
+            <x-input-success :messages="session()->get('success_contacts')" class="mt-2"/>
+        @elseif(session()->get('error_contacts'))
+            <x-input-error :messages="session()->get('error_contacts')" class="mt-2"/>
         @endif
         <form method="POST" action="{{ route('contacts.save') }}">
             <x-cards.fieldset>
                 @csrf
-                <!-- Name -->
                 <div>
                     <x-input-label for="name" :value="__('Name')"/>
-
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" autofocus/>
-
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" autofocus required/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                 </div>
                 <div>
-                    <x-input-label for="last_name" :value="__('Last_name')"/>
-
-                    <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" autofocus/>
-
+                    <x-input-label for="last_name" :value="__('Last name')"/>
+                    <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" autofocus required/>
                     <x-input-error :messages="$errors->get('last_name')" class="mt-2"/>
                 </div>
                 <div>
-                    <x-input-label for="last_name" :value="__('Poles')"/>
-                    <x-select>
+                    <x-input-label :value="__('Poles')"/>
+                    <x-select name="id_pole" required>
                         @foreach($poles as $pole)
-                            <option value="{{ $pole->name }}"> {{ $pole->name }} </option>
+                            <option value="{!!$pole->id!!}"> {{$pole->name}} </option>
                         @endforeach
                     </x-select>
                 </div>
                 <div>
-                    <x-input-label for="last_name" :value="__('Roles')"/>
-                    <x-select>
+                    <x-input-label :value="__('Roles')"/>
+                    <x-select name="id_role" required>
                         @foreach($roles as $role)
-                            <option value="{{ $role->name }}"> {{ $role->name }} </option>
+                            <option value="{!!$role->id!!}"> {{$role->name}} </option>
                         @endforeach
                     </x-select>
                 </div>
             </x-cards.fieldset>
-            <div class="flex items-center justify-end">
+            <div class="flex items-center justify-end mt-4">
                 <x-buttons.primary-button class="ml-4" type="submit">
                     {{ __('Save') }}
                 </x-buttons.primary-button>
             </div>
         </form>
     </x-cards.input>
-
-
-    <x-cards.input>
-        <x-table.contacts>
-            @foreach($contacts as $contact)
-                <x-items.contact :contact="$contact">
-                </x-items.contact>
-            @endforeach
-        </x-table.contacts>
-    </x-cards.input>
+    <x-table.contacts>
+        @foreach($contacts as $contact)
+            <x-items.contact :contact="$contact">
+            </x-items.contact>
+        @endforeach
+    </x-table.contacts>
 </div>

@@ -40,12 +40,12 @@
                     <x-text-input id="desc" class="block mt-1 w-full" type="text" name="desc" autofocus/>
                     <x-input-error :messages="$errors->get('desc')" class="mt-2"/>
                 </div>
+                <div class="flex items-center justify-end mt-4">
+                    <x-buttons.primary-button class="ml-4" type="submit">
+                        {{ __('Save') }}
+                    </x-buttons.primary-button>
+                </div>
             </x-cards.fieldset>
-            <div class="flex items-center justify-end">
-                <x-buttons.primary-button class="ml-4" type="submit">
-                    {{ __('Save') }}
-                </x-buttons.primary-button>
-            </div>
         </form>
     </x-cards.input>
     @foreach($events as $event)

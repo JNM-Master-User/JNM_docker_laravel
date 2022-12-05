@@ -20,7 +20,8 @@
                                   clip-rule="evenodd">
                             </path>
                         </svg>
-                        <a href="#" class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">{{ $content ?? ''}}</a>
+                        <a href="#"
+                           class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">{{ $content ?? ''}}</a>
                     </div>
                 </li>
             </ol>

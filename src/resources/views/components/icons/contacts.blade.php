@@ -1,3 +1,3 @@
 <span class="w-10">
-<i {{ $attributes->merge(["class"=>"fa-lg fa-fw fa-solid fa-phone text-gray-500 group-hover:text-gray-900 transition duration-75"])}}></i>
+<i {{ $attributes->merge(["class"=>"fa-lg fa-fw fa-solid fa-phone transition duration-300 ease-in-out text-gray-500 group-hover:text-gray-900 dark:group-hover:text-gray-300 transition duration-75"])}}></i>
 </span>

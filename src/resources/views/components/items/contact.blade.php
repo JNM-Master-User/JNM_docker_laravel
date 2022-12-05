@@ -1,5 +1,5 @@
 <tr class="hover:bg-gray-100">
-    <td class="p-2 w-4">
+    <td class="p-4 w-4">
         <div class="flex items-center">
             <input id="checkbox-3" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
         </div>

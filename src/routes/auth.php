@@ -18,11 +18,8 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Admin\PoleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -80,11 +77,15 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('dashboard')->group(function () {
 
-        Route::post('roles',[RoleController::class, 'storeRoles'])
+        Route::post('roles_save',[RoleController::class, 'storeRoles'])
             ->name('roles.save');
+        Route::post('roles_destroy',[RoleController::class, 'destroyRoles'])
+            ->name('roles.destroy');
 
-        Route::post('partners',[PartnerController::class, 'storePartners'])
+        Route::post('partners_save',[PartnerController::class, 'storePartners'])
             ->name('partners.save');
+        Route::post('partners_destroy',[PartnerController::class, 'destroyPartners'])
+            ->name('partners.destroy');
 
         Route::post('poles_save',[PoleController::class, 'storePoles'])
             ->name('poles.save');
@@ -93,22 +94,22 @@ Route::middleware('auth')->group(function () {
 
         Route::post('institutions_save',[InstitutionController::class, 'storeInstitutions'])
             ->name('institutions.save');
-        Route::post('institutions_destroy',[InstitutionController::class, 'storeInstitutions'])
+        Route::post('institutions_destroy',[InstitutionController::class, 'destroyInstitutions'])
             ->name('institutions.destroy');
 
         Route::post('services_save',[ServiceController::class, 'storeServices'])
             ->name('services.save');
-        Route::post('services_destroy',[ServiceController::class, 'storeServices'])
+        Route::post('services_destroy',[ServiceController::class, 'destroyServices'])
             ->name('services.destroy');
 
         Route::post('tournaments_save',[TournamentController::class, 'storeTournaments'])
             ->name('tournaments.save');
-        Route::post('tournaments_destroy',[TournamentController::class, 'storeTournaments'])
+        Route::post('tournaments_destroy',[TournamentController::class, 'destroyTournaments'])
             ->name('tournaments.destroy');
 
         Route::post('videos_save',[VideoController::class, 'storeVideos'])
             ->name('videos.save');
-        Route::post('videos_destroy',[VideoController::class, 'storeVideos'])
+        Route::post('videos_destroy',[VideoController::class, 'destroyVideos'])
             ->name('videos.destroy');
 
         Route::post('transports_save',[TransportController::class, 'storeTransports'])
@@ -128,8 +129,13 @@ Route::middleware('auth')->group(function () {
 
         Route::post('contacts_save',[ContactController::class, 'storeContacts'])
             ->name('contacts.save');
-        Route::post('events_destroy',[EventController::class, 'storeEvents'])
+        Route::post('contacts_destroy',[ContactController::class, 'destroyContacts'])
+            ->name('contacts.destroy');
+
+        Route::post('events_save',[ContactController::class, 'storeEvents'])
             ->name('events.save');
+        Route::post('events_destroy',[EventController::class, 'destroyEvents'])
+            ->name('events.destroy');
 
 
         Route::get('home',[DashboardController::class, 'renderHome'])

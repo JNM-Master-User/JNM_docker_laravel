@@ -44,6 +44,21 @@
         const button_menu_toggle_contacts = document.getElementById('button_menu_toggle_contacts');
         const button_menu_toggle_events = document.getElementById('button_menu_toggle_events');
 
+        const icon_menu_toggle_dashboard = document.getElementById('icon_menu_toggle_dashboard');
+        const icon_menu_toggle_users = document.getElementById('icon_menu_toggle_users');
+        const icon_menu_toggle_roles = document.getElementById('icon_menu_toggle_roles');
+        const icon_menu_toggle_partners = document.getElementById('icon_menu_toggle_partners');
+        const icon_menu_toggle_transports = document.getElementById('icon_menu_toggle_transports');
+        const icon_menu_toggle_poles = document.getElementById('icon_menu_toggle_poles');
+        const icon_menu_toggle_institutions = document.getElementById('icon_menu_toggle_institutions');
+        const icon_menu_toggle_services = document.getElementById('icon_menu_toggle_services');
+        const icon_menu_toggle_tournaments = document.getElementById('icon_menu_toggle_tournaments');
+        const icon_menu_toggle_videos = document.getElementById('icon_menu_toggle_videos');
+        const icon_menu_toggle_users_status = document.getElementById('icon_menu_toggle_users_status');
+        const icon_menu_toggle_allotments = document.getElementById('icon_menu_toggle_allotments');
+        const icon_menu_toggle_contacts = document.getElementById('icon_menu_toggle_contacts');
+        const icon_menu_toggle_events = document.getElementById('icon_menu_toggle_events');
+
         const content_dashboard = document.getElementById('content_dashboard');
         const content_users = document.getElementById('content_users');
         const content_roles = document.getElementById('content_roles');
@@ -64,9 +79,13 @@
             element.classList.remove('hidden');
             element.classList.add('shown');
         }
-        const select = (element) =>{
-            element.classList.add('bg-gray-100');
+        const selected_menu = (element) =>{
+            element.classList.add('bg-gray-100','dark:bg-gray-600');
         }
+        const selected_icon = (element) =>{
+            element.classList.add('text-gray-900','dark:text-gray-200');
+        }
+
         const reset = () =>{
             content_users.classList.remove('shown', 'hidden');
             content_roles.classList.remove('shown', 'hidden');
@@ -98,91 +117,120 @@
             content_contacts.classList.add('hidden');
             content_events.classList.add('hidden');
 
-            button_menu_toggle_users.classList.remove('bg-gray-100');
-            button_menu_toggle_roles.classList.remove('bg-gray-100');
-            button_menu_toggle_partners.classList.remove('bg-gray-100');
-            button_menu_toggle_transports.classList.remove('bg-gray-100');
-            button_menu_toggle_dashboard.classList.remove('bg-gray-100');
-            button_menu_toggle_poles.classList.remove('bg-gray-100');
-            button_menu_toggle_institutions.classList.remove('bg-gray-100');
-            button_menu_toggle_services.classList.remove('bg-gray-100');
-            button_menu_toggle_tournaments.classList.remove('bg-gray-100');
-            button_menu_toggle_videos.classList.remove('bg-gray-100');
-            button_menu_toggle_users_status.classList.remove('bg-gray-100');
-            button_menu_toggle_allotments.classList.remove('bg-gray-100');
-            button_menu_toggle_contacts.classList.remove('bg-gray-100');
-            button_menu_toggle_events.classList.remove('bg-gray-100');
+            button_menu_toggle_users.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_roles.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_partners.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_transports.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_dashboard.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_poles.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_institutions.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_services.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_tournaments.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_videos.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_users_status.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_allotments.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_contacts.classList.remove('bg-gray-100','dark:bg-gray-600');
+            button_menu_toggle_events.classList.remove('bg-gray-100','dark:bg-gray-600');
+
+            icon_menu_toggle_dashboard.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_users.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_roles.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_partners.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_transports.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_poles.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_institutions.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_services.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_tournaments.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_videos.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_users_status.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_allotments.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_contacts.classList.remove('text-gray-900','dark:text-gray-200');
+            icon_menu_toggle_events.classList.remove('text-gray-900','dark:text-gray-200');
         }
 
         button_menu_toggle_dashboard.addEventListener('click', () => {
             reset();
             show(content_dashboard);
-            select(button_menu_toggle_dashboard);
+            selected_menu(button_menu_toggle_dashboard);
+            selected_icon(icon_menu_toggle_dashboard);
         });
         button_menu_toggle_users.addEventListener('click', () => {
             reset();
             show(content_users);
-            select(button_menu_toggle_users);
+            selected_menu(button_menu_toggle_users);
+            selected_icon(icon_menu_toggle_users);
         });
         button_menu_toggle_roles.addEventListener('click', () => {
             reset();
             show(content_roles);
-            select(button_menu_toggle_roles);
+            selected_menu(button_menu_toggle_roles);
+            selected_icon(icon_menu_toggle_roles);
         });
         button_menu_toggle_partners.addEventListener('click', () => {
             reset();
             show(content_partners);
-            select(button_menu_toggle_partners);
+            selected_menu(button_menu_toggle_partners);
+            selected_icon(icon_menu_toggle_partners);
         });
         button_menu_toggle_transports.addEventListener('click', () => {
             reset();
             show(content_transports);
-            select(button_menu_toggle_transports);
+            selected_menu(button_menu_toggle_transports);
+            selected_icon(icon_menu_toggle_transports);
         });
         button_menu_toggle_poles.addEventListener('click', () => {
             reset();
             show(content_poles);
-            select(button_menu_toggle_poles);
+            selected_menu(button_menu_toggle_poles);
+            selected_icon(icon_menu_toggle_poles);
         });
         button_menu_toggle_institutions.addEventListener('click', () => {
             reset();
             show(content_institutions);
-            select(button_menu_toggle_institutions);
+            selected_menu(button_menu_toggle_institutions);
+            selected_icon(icon_menu_toggle_institutions);
         });
         button_menu_toggle_services.addEventListener('click', () => {
             reset();
             show(content_services);
-            select(button_menu_toggle_services);
+            selected_menu(button_menu_toggle_services);
+            selected_icon(icon_menu_toggle_services);
         })
         button_menu_toggle_tournaments.addEventListener('click', () => {
             reset();
             show(content_tournaments);
-            select(button_menu_toggle_tournaments);
+            selected_menu(button_menu_toggle_tournaments);
+            selected_icon(icon_menu_toggle_tournaments);
         })
         button_menu_toggle_videos.addEventListener('click', () => {
             reset();
             show(content_videos);
-            select(button_menu_toggle_videos);
+            selected_menu(button_menu_toggle_videos);
+            selected_icon(icon_menu_toggle_videos);
         })
         button_menu_toggle_users_status.addEventListener('click', () => {
             reset();
             show(content_users_status);
-            select(button_menu_toggle_users_status);
+            selected_menu(button_menu_toggle_users_status);
+            selected_icon(icon_menu_toggle_users_status);
         });
         button_menu_toggle_allotments.addEventListener('click', () => {
             reset();
             show(content_allotments);
-            select(button_menu_toggle_allotments);
+            selected_menu(button_menu_toggle_allotments);
+            selected_icon(icon_menu_toggle_allotments);
         });
         button_menu_toggle_contacts.addEventListener('click', () => {
             reset();
             show(content_contacts);
-            select(button_menu_toggle_contacts);
+            selected_menu(button_menu_toggle_contacts);
+            selected_icon(icon_menu_toggle_contacts);
         });
         button_menu_toggle_events.addEventListener('click', () => {
             reset();
             show(content_events);
-            select(button_menu_toggle_events);
+            selected_menu(button_menu_toggle_events);
+            selected_icon(icon_menu_toggle_events);
         });
     </script>
 </x-app-layout>

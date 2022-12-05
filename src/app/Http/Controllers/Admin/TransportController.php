@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Transport;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
 
 class TransportController extends Controller
 {
@@ -21,35 +20,34 @@ class TransportController extends Controller
     public function storeTransports(Request $request)
     {
         try{
-            session(['content'=>'content_poles']);
+            session(['content'=>'content_transports']);
 
             $request->validate([
                 'name' => [ 'string', 'max:255'],
-                'path_picture' => [ 'string', 'max:255']
+                'picture' => [ 'required','image','mimes:jpeg,png,jpg,gif,svg', 'max:2048']
             ]);
 
             if(Transport::where('name', $request->name)->first()){
                 return redirect(RouteServiceProvider::HOME)->with('error_transports', 'Transport already exists');
             }
             else{
-                Transport::create([
-                    'name' => $request->name,
-                ]);
+                if($request->hasFile('picture')){
+                    $sanitized_image_name = strtolower(preg_replace("([^A-Za-z0-9])", "", $request->name)).'_'.time();
+                    $image_name = $sanitized_image_name.'.'.$request->picture->extension();
+
+                    Transport::create([
+                        'name' => $request->name,
+                        'path_picture' => $image_name
+                    ]);
+
+                    $request->picture->storeAs('public/transports',$image_name);
+                }
             }
+
             return redirect(RouteServiceProvider::HOME)->with('success_transports', 'Transport saved successfully');
         } catch (\Illuminate\Database\QueryException $e){
-            $error = $e->errorInfo;
+            return redirect(RouteServiceProvider::HOME)->with('error_transports',$e->errorInfo);
         }
-
-
-            Transport::updateOrCreate([
-                'name' => Transport::where('name', $request->name)->first(),
-            ],[
-                'name' => $request->name,
-                'path_picture' => $request->path_picture
-            ]);
-
-            return redirect(RouteServiceProvider::HOME)->with('transports_videos', 'Transport saved successfully');
     }
 
     /**

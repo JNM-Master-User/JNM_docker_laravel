@@ -21,13 +21,19 @@ use App\Models\Video;
 
 class DashboardController extends Controller
 {
+    public function getPictures(): string
+    {
+        $pictures ="";
+        return $pictures;
+    }
     /**
      * Get the data.
      */
-    public function getData(){
+    public function getData() : array
+    {
         $data = [
             "allotments"=>Allotment::all(),
-            "contacts"=>Contact::all(),
+            "contacts"=>Contact::all()->load('pole')->load('role'),
             "events"=>Event::all(),
             "institutions"=>Institution::all(),
             "navigos"=>Navigo::all(),

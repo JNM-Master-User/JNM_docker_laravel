@@ -33,10 +33,7 @@ class Role extends Model
 
     protected $table = 'roles';
 
-    public function contacts()
-    {
-        return $this->hasMany(Contact::class,'id_role');
-    }
+
     public function creator()
     {
         return $this->belongsTo(User::class,'created_by');
