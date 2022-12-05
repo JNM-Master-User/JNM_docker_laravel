@@ -137,7 +137,6 @@ Route::middleware('auth')->group(function () {
         Route::post('events_destroy',[EventController::class, 'destroyEvents'])
             ->name('events.destroy');
 
-
         Route::get('home',[DashboardController::class, 'renderHome'])
             ->name('home');
     });

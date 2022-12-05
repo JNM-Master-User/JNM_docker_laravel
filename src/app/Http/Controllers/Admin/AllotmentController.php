@@ -19,21 +19,31 @@ class AllotmentController extends Controller
      */
     public function storeAllotments(Request $request)
     {
-        $request->validate([
-            'name' => [ 'string', 'max:255'],
-            'address' => [ 'string', 'max:255'],
-            'zip_code' => [ 'string', 'max:255']
-        ]);
 
-        Allotment::updateOrCreate([
-            'name' => Allotment::where('name', $request->name)->first(),
-        ],[
-            'name' => $request->name,
-            'address' => $request->address,
-            'zip_code' => $request->zip_code
-        ]);
+        try {
+            $request->validate([
+                'name' => [ 'string', 'max:255'],
+                'address' => [ 'string', 'max:255'],
+                'zip_code' => [ 'string', 'max:255']
+            ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments saved successfully');
+            if(Allotment::where('name', $request->type)->first()){
+                return redirect(RouteServiceProvider::HOME)->with('error_allotments', 'Allotment already exists');
+            }
+            else{
+                Allotment::create([
+                    'name' => $request->name,
+                    'address' => $request->address,
+                    'zip_code' => $request->zip_code
+                ]);
+            }
+
+            return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments saved successfully');
+        }
+
+        catch (QueryException $e){
+            return redirect(RouteServiceProvider::HOME)->with('error_allotments', $e->errorInfo);
+        }
     }
 
 
@@ -46,12 +56,17 @@ class AllotmentController extends Controller
     public function destroyAllotments(Request $request)
     {
 
-        $request->validate([
-            'id' => ['string', 'max:255'],
-        ]);
+        try{
+            $request->validate([
+                'id' => ['string', 'max:255'],
+            ]);
+            Allotment::where('id' , $request->id)->delete();
+            return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments removed successfully');
+        }
 
-        Allotment::where('id' , $request->id)->delete();
-
-        return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments removed successfully');
+        catch (QueryException $e) {
+            return redirect(RouteServiceProvider::HOME)->with('error_allotments', 'Allotments not removed successfully');
+        }
     }
+
 }

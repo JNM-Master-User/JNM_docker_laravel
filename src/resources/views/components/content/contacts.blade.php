@@ -25,18 +25,18 @@
                     <x-input-error :messages="$errors->get('last_name')" class="mt-2"/>
                 </div>
                 <div>
-                    <x-input-label :value="__('Poles')"/>
-                    <x-select name="id_pole" required>
+                    <x-input-label  :value="__('Poles')"/>
+                    <x-select name="name_pole" >
                         @foreach($poles as $pole)
-                            <option value="{!!$pole->id!!}"> {{$pole->name}} </option>
+                            <option value="{{ $pole->id }}"> {{ $pole->name }} </option>
                         @endforeach
                     </x-select>
                 </div>
                 <div>
                     <x-input-label :value="__('Roles')"/>
-                    <x-select name="id_role" required>
+                    <x-select class="block mt-1 w-full" name="name_role">
                         @foreach($roles as $role)
-                            <option value="{!!$role->id!!}"> {{$role->name}} </option>
+                            <option value="{{ $role->id }}"> {{ $role->name }} </option>
                         @endforeach
                     </x-select>
                 </div>
@@ -50,8 +50,8 @@
     </x-cards.input>
     <x-table.contacts>
         @foreach($contacts as $contact)
-            <x-items.contact :contact="$contact">
-            </x-items.contact>
+            <x-items.contacts :contact="$contact">
+            </x-items.contacts>
         @endforeach
     </x-table.contacts>
 </div>

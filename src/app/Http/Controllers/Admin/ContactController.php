@@ -41,7 +41,7 @@ class ContactController extends Controller
 
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contact saved successfully');
+        return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contacts saved successfully');
     }
 
 

@@ -34,7 +34,7 @@ class DashboardController extends Controller
         $data = [
             "allotments"=>Allotment::all(),
             "contacts"=>Contact::all()->load('pole')->load('role'),
-            "events"=>Event::all(),
+            "events"=>Event::all()->load('institutionManager'),
             "institutions"=>Institution::all(),
             "navigos"=>Navigo::all(),
             "partners"=>Partner::all(),
@@ -61,69 +61,6 @@ class DashboardController extends Controller
         $data= $this->getData();
 
         return view('pages.dashboard',[
-            'data'=>$data
-        ]);
-    }
-    public function renderServices()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_services'=>true,
-            'data'=>$data
-        ]);
-    }
-    public function renderTournaments()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_tournaments'=>true,
-            'data'=>$data
-        ]);
-    }
-    public function renderVideos()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_videos'=>true,
-            'data'=>$data
-        ]);
-    }
-    public function renderUsersStatus()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_users_status'=>true,
-            'data'=>$data
-        ]);
-    }
-    public function renderAllotments()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_allotments'=>true,
-            'data'=>$data
-        ]);
-    }
-    public function renderContact()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_contacts'=>true,
-            'data'=>$data
-        ]);
-    }
-    public function renderEvents()
-    {
-        $data= $this->getData();
-
-        return view('pages.dashboard',[
-            'content_events'=>true,
             'data'=>$data
         ]);
     }

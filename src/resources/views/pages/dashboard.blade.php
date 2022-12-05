@@ -25,7 +25,7 @@
     </x-content.allotments>
     <x-content.contacts :contacts="$data['contacts']" :poles="$data['poles']" :roles="$data['roles']" id="content_contacts" class="{{session()->get('content')=='content_contacts' ? 'shown' : 'hidden'  }}">
     </x-content.contacts>
-    <x-content.events :events="$data['events']" id="content_events" class="{{session()->get('content')=='content_events' ? 'shown' : 'hidden'  }}">
+    <x-content.events :events="$data['events']" :institutions="$data['institutions']" id="content_events" class="{{session()->get('content')=='content_events' ? 'shown' : 'hidden'  }}">
     </x-content.events>
 
     <script type="text/javascript">

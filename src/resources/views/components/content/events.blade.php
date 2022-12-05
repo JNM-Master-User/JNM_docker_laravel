@@ -5,12 +5,11 @@
         </x-breadcrumb>
     </div>
     <!-- end breadcrumb -->
-
     <x-cards.input>
         @if(session()->get('success_events'))
-            <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                {{ session()->get('success_events') }}
-            </div>
+            <x-input-success :messages="session()->get('success_events')" class="mt-2"/>
+        @elseif(session()->get('error_events'))
+            <x-input-error :messages="session()->get('error_events')" class="mt-2"/>
         @endif
         <form method="POST" action="{{ route('events.save') }}">
             <x-cards.fieldset>
@@ -40,6 +39,22 @@
                     <x-text-input id="desc" class="block mt-1 w-full" type="text" name="desc" autofocus/>
                     <x-input-error :messages="$errors->get('desc')" class="mt-2"/>
                 </div>
+                <div>
+                    <x-input-label  :value="__('Institutions')"/>
+                    <select class="block mt-1 w-full" name="name_institution" >
+                        @foreach($institutions as $institution)
+                            <option value="{{ $institution->id }}"> {{ $institution->name }} </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div>
+                    <x-input-label :value="__('Events')"/>
+                    <select class="block mt-1 w-full" name="name_event_belong">
+                        @foreach($events as $event)
+                            <option value="{{ $event->id }}"> {{ $event->name }} </option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="flex items-center justify-end mt-4">
                     <x-buttons.primary-button class="ml-4" type="submit">
                         {{ __('Save') }}
@@ -48,12 +63,13 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-    @foreach($events as $event)
-        {{$event->name}}
-        {{$event->address}}
-        {{$event->date}}
-        {{$event->path_picture}}
-        {{$event->desc}}
-    @endforeach
+    <x-cards.input>
+        <x-table.events>
+            @foreach($events as $event)
+                <x-items.events :event="$event">
+                </x-items.events>
+            @endforeach
+        </x-table.events>
+    </x-cards.input>
 </div>
 

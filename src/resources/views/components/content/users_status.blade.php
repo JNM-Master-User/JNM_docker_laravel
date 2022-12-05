@@ -1,15 +1,15 @@
 <div {{$attributes->merge(['class'=>''])}}>
 <!-- breadcrumb -->
     <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
-        <x-breadcrumb content="{{__('Users status')}}">
+        <x-breadcrumb content="{{__('Users_status')}}">
         </x-breadcrumb>
     </div>
     <!-- end breadcrumb -->
     <x-cards.input>
         @if(session()->get('success_users_status'))
-            <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                {{ session()->get('success_users_status') }}
-            </div>
+            <x-input-success :messages="session()->get('success_users_status')" class="mt-2"/>
+        @elseif(session()->get('error_users_status'))
+            <x-input-error :messages="session()->get('error_users_status')" class="mt-2"/>
         @endif
         <form method="POST" action="{{ route('users_status.save') }}">
             <x-cards.fieldset>
@@ -30,18 +30,13 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-    @foreach($usersStatus as $user_status)
-        <x-cards.input>
-            <div>
-                {{$user_status->type}}
-            </div>
-            <form method="POST" action="{{ route('users_status.destroy') }}">
-                @csrf
-                <input type="hidden" name="id" value="{{$user_status->id}}">
-                <x-buttons.delete-button type="submit">
-                    {{ __('Delete') }}
-                </x-buttons.delete-button>
-            </form>
-        </x-cards.input>
-    @endforeach
+
+    <x-cards.input>
+        <x-table.users_status>
+            @foreach($usersStatus as $user_status)
+                <x-items.users_status :userStatus="$user_status">
+                </x-items.users_status>
+            @endforeach
+        </x-table.users_status>
+    </x-cards.input>
 </div>
