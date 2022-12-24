@@ -28,29 +28,6 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-    @foreach($poles as $pole)
-    <x-cards.input>
-        <div>
-            {{$pole->id}}
-        </div>
-        <div>
-            {{$pole->name}}
-        </div>
-        <div>
-            {{$pole->created_at}}
-        </div>
-        <div>
-            {{$pole->updated_at}}
-        </div>
-        <form method="POST" action="{{ route('poles.destroy') }}">
-            @csrf
-            <input type="hidden" name="id" value="{{$pole->id}}">
-            <x-buttons.delete-button type="submit">
-                {{ __('Delete') }}
-            </x-buttons.delete-button>
-        </form>
-    </x-cards.input>
-    @endforeach
     <x-cards.input>
         <x-table.poles>
             @foreach($poles as $pole)

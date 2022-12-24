@@ -11,7 +11,7 @@
         </div>
     </td>
     <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
-        <div class="text-sm font-normal text-gray-500">{{$institution->adress}}</div>
+        <div class="text-sm font-normal text-gray-500">{{$institution->address}}</div>
     </td>
 
     <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
@@ -27,12 +27,18 @@
     <td class="p-2 whitespace-nowrap space-x-2">
         <button type="button" data-modal-toggle="user-modal-{{$institution->id}}" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
             <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
-            {{__('Edit Insitution')}}
+            {{__('Edit Institution')}}
         </button>
-        <button type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-            <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
-            {{__('Delete Institution')}}
-        </button>
+    </td>
+    <td class="p-2 whitespace-nowrap space-x-2">
+        <form method="POST" action="{{ route('institutions.destroy') }}">
+            @csrf
+            <input type="hidden" name="id" value="{{$institution->id}}">
+            <button type="submit" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
+                {{__('Delete institution')}}
+            </button>
+        </form>
     </td>
     <!-- Modal -->
     <div id="user-modal-{{$institution->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-2 md:inset-0 h-modal md:h-full">

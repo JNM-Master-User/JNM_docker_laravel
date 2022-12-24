@@ -45,7 +45,7 @@
     <x-cards.input>
         <x-table.institutions>
             @foreach($institutions as $institution)
-                <x-items.institution :tournament="$tournament">
+                <x-items.institution :institution="$institution">
                 </x-items.institution>
             @endforeach
         </x-table.institutions>

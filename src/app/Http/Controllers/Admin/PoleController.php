@@ -7,7 +7,7 @@ use App\Models\Pole;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
+
 
 class PoleController extends Controller
 {
@@ -24,7 +24,7 @@ class PoleController extends Controller
         try{
             session(['content'=>'content_poles']);
             $request->validate([
-                'name' => ['required','string', 'max:255', 'unique:poles'],
+                'name' => ['required','string', 'max:255'],
             ]);
             Pole::create([
                 'name' => $request->name,
@@ -46,7 +46,7 @@ class PoleController extends Controller
     {
         try {
             $request->validate([
-                'id' => ['string', 'max:255', 'unique:poles'],
+                'id' => ['string', 'max:255'],
             ]);
             Pole::where('id', $request->id)->delete();
 

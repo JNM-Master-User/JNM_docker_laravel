@@ -126,16 +126,20 @@ Route::middleware('auth')->group(function () {
             ->name('allotments.save');
         Route::post('allotments_destroy', [AllotmentController::class, 'destroyAllotments'])
             ->name('allotments.destroy');
+        Route::post('allotments_update', [AllotmentController::class, 'updateAllotments'])
+            ->name('allotments.update');
 
         Route::post('contacts_save',[ContactController::class, 'storeContacts'])
             ->name('contacts.save');
         Route::post('contacts_destroy',[ContactController::class, 'destroyContacts'])
             ->name('contacts.destroy');
 
-        Route::post('events_save',[ContactController::class, 'storeEvents'])
+        Route::post('events_save',[EventController::class, 'storeEvents'])
             ->name('events.save');
         Route::post('events_destroy',[EventController::class, 'destroyEvents'])
             ->name('events.destroy');
+
+
 
         Route::get('home',[DashboardController::class, 'renderHome'])
             ->name('home');

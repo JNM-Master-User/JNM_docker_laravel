@@ -37,12 +37,15 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-    <x-search.users>
-    </x-search.users>
-    <x-table.users>
-        @foreach($users as $user)
-            <x-items.user :user="$user">
-            </x-items.user>
-        @endforeach
-    </x-table.users>
+    <x-cards.input>
+        <x-search.users>
+        </x-search.users>
+
+        <x-table.users>
+            @foreach($users as $user)
+                <x-items.user :user="$user">
+                </x-items.user>
+            @endforeach
+        </x-table.users>
+    </x-cards.input>
 </div>
