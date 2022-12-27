@@ -33,7 +33,7 @@ class PartnerController extends Controller
             'path_picture' => $request->path_picture
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_partners', 'Partners saved successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_partners', 'Partners saved successfully');
     }
 }
 

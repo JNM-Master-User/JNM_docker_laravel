@@ -1,7 +1,7 @@
-<aside id="sidebar" class="animate__slideInLeft fixed hidden z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75" aria-label="Sidebar">
-  <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0 dark:text-white dark:bg-gray-700">
-    <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-      <div class="flex-1 px-3 bg-white divide-y space-y-1 dark:text-white dark:bg-gray-700">
+<aside id="sidebar" class="animate__slideInLeft fixed hidden z-20 h-full top-0 left-0 pt-14 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75 " aria-label="Sidebar">
+  <div class="relative flex-1 flex flex-col min-h-0 border-gray-200 bg-white pt-0 dark:text-white dark:bg-gray-700 shadow">
+    <div class="flex-1 flex flex-col pt-4 pb-4 overflow-y-auto shadow-lg">
+      <div class="flex-1 px-3 bg-white space-y-1 dark:text-white dark:bg-gray-700">
         <div class="pt-2">
           <ul class="pb-2">
             <li>
@@ -11,7 +11,7 @@
                   <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <i class="fa-fw fa-lg fa-solid fa-magnifying-glass text-gray-500 group-hover:text-gray-900 transition duration-75"></i>
                   </div>
-                  <input type="text" name="email" id="mobile-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-600 focus:ring-cyan-600 block w-full pl-10 p-2.5" placeholder="Search">
+                  <input type="text" name="email" id="mobile-search" class=" mb-6 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full pl-10 p-2" placeholder="Search">
                 </div>
               </form>
             </li>

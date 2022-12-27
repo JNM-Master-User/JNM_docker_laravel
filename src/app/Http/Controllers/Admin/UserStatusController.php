@@ -74,7 +74,7 @@ class UserStatusController extends Controller
 
 
             if(UserStatus::where('type', $request->type)->first()){
-                return redirect(RouteServiceProvider::HOME)->with('error_users_status', 'User status already exists');
+                return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_users_status', 'User status already exists');
             }
             else{
                 UserStatus::create([
@@ -82,11 +82,11 @@ class UserStatusController extends Controller
                 ]);
             }
 
-            return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'Users status saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_users_status', 'Users status saved successfully');
         }
 
         catch (QueryException $e){
-            return redirect(RouteServiceProvider::HOME)->with('error_users_status', $e->errorInfo);
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_users_status', $e->errorInfo);
         }
 
     }
@@ -107,9 +107,9 @@ class UserStatusController extends Controller
 
             UserStatus::where('id', $request->id)->delete();
 
-            return redirect(RouteServiceProvider::HOME)->with('success_users_status', 'User status removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_users_status', 'User status removed successfully');
         } catch (QueryException $e) {
-            return redirect(RouteServiceProvider::HOME)->with('error_users_status', 'User status not removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_users_status', 'User status not removed successfully');
         }
     }
 

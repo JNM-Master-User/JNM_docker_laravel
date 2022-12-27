@@ -15,13 +15,15 @@ return new class extends Migration
     {
         Schema::create('users_sensitive_data', function (Blueprint $table) {
             $table->uuid('id')->primaryKey();
-            $table->foreignUuid('id_user')->index();
-            $table->string('name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->date('date_of_birth')->nullable();
+            $table->foreignUuid('id_user')->unique()->references('id')->on('users');;
+            $table->string('name');
+            $table->string('last_name');
+            $table->date('date_of_birth');
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
-            $table->string('path_picture')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('path_picture');
+            $table->foreignUuid('id_institution_user')->references('id')->on('institutions');;
             $table->timestamps();
             $table->userstamps('uuid');
         });

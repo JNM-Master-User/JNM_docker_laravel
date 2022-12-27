@@ -22,14 +22,14 @@ class TournamentController extends Controller
             ]);
 
             if(Tournament::where('name', $request->name)->first()){
-                return redirect(RouteServiceProvider::HOME)->with('error_tournaments', 'Tournament already exists');
+                return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_tournaments', 'Tournament already exists');
             }
             else{
                 Tournament::create([
                     'name' => $request->name,
                 ]);
             }
-            return redirect(RouteServiceProvider::HOME)->with('success_tournaments', 'Tournament saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_tournaments', 'Tournament saved successfully');
         } catch (\Illuminate\Database\QueryException $e){
             $error = $e->errorInfo;
         }
@@ -43,7 +43,7 @@ class TournamentController extends Controller
             'desc'=> $request->desc
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_tournaments', 'Tournaments saved successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_tournaments', 'Tournaments saved successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -61,6 +61,6 @@ class TournamentController extends Controller
 
         Tournament::where('id' , $request->id)->delete();
 
-        return redirect(RouteServiceProvider::HOME)->with('success_tournaments', 'Tournament removed successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_tournaments', 'Tournament removed successfully');
     }
 }

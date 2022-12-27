@@ -1,13 +1,15 @@
 <?php
 
+namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class DefinitionUsersUsersStatus extends Controller{
 
-    public function storeDefinitionStatus(){
+    public function storeDefinitionUsersUsersStatus(Request $request){
 
-        if(definitions_users_users_status->$id_user_status == "etudiant"){
-
-        }
     }
+
+
 }

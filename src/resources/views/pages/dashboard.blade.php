@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-admin-layout>
     <x-content.home id="content_dashboard" class="{{session()->get('content')=='content_dashboard' ? 'shown' : 'hidden' }}">
     </x-content.home>
     <x-content.users :users="$data['users']" id="content_users" class="{{session()->get('content')=='content_user' ? 'shown' : 'hidden' }}">
@@ -233,4 +233,4 @@
             selected_icon(icon_menu_toggle_events);
         });
     </script>
-</x-app-layout>
+</x-app-admin-layout>

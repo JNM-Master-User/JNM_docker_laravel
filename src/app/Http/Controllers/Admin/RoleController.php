@@ -28,10 +28,10 @@ class RoleController extends Controller
             Role::create([
                 'name' => $request->name,
             ]);
-            return redirect(RouteServiceProvider::HOME)->with('success_roles', 'Role saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_roles', 'Role saved successfully');
         }
         catch (QueryException $e){
-            return redirect(RouteServiceProvider::HOME)->with('error_roles', $e->errorInfo);
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_roles', $e->errorInfo);
         }
     }
 

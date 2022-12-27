@@ -1,6 +1,6 @@
 <div {{$attributes->merge(['class'=>''])}}>
     <!-- breadcrumb -->
-    <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
+    <div class="p-4 bg-white dark:bg-gray-700 block sm:flex items-center justify-between lg:mt-1.5">
         <x-breadcrumb content="{{__('Transports')}}">
         </x-breadcrumb>
     </div>
@@ -24,9 +24,7 @@
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" autofocus/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                     <div class="flex items-center justify-end mt-4">
-                        <x-buttons.primary-button class="ml-4" type="submit">
-                            {{ __('Save') }}
-                        </x-buttons.primary-button>
+                        <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
                     </div>
                 </div>
             </x-cards.fieldset>

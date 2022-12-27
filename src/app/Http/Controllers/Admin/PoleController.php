@@ -29,10 +29,10 @@ class PoleController extends Controller
             Pole::create([
                 'name' => $request->name,
             ]);
-            return redirect(RouteServiceProvider::HOME)->with('success_poles', 'Pole saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_poles', 'Pole saved successfully');
         }
         catch (QueryException $e){
-            return redirect(RouteServiceProvider::HOME)->with('error_poles', $e->errorInfo);
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_poles', $e->errorInfo);
         }
     }
 
@@ -50,10 +50,10 @@ class PoleController extends Controller
             ]);
             Pole::where('id', $request->id)->delete();
 
-            return redirect(RouteServiceProvider::HOME)->with('success_poles', 'Pole removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_poles', 'Pole removed successfully');
 
         } catch (QueryException $e) {
-            return redirect(RouteServiceProvider::HOME)->with('error_poles', 'Pole not removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_poles', 'Pole not removed successfully');
         }
     }
 }

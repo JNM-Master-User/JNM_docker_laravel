@@ -30,7 +30,7 @@ class AllotmentController extends Controller
             ]);
 
             if(Allotment::where('name', $request->name)->first()){
-                return redirect(RouteServiceProvider::HOME)->with('error_allotments', 'Allotment already exists');
+                return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', 'Allotment already exists');
             }
             else{
                 Allotment::create([
@@ -39,10 +39,10 @@ class AllotmentController extends Controller
                     'zip_code' =>$request->zip_code
                 ]);
             }
-            return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_allotments', trans('admin.save-success',['attribute' => 'Allotment']));
         }
         catch (QueryException $e){
-            return redirect(RouteServiceProvider::HOME)->with('error_allotments', $e->errorInfo);
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', trans('admin.error-success',['attribute' => 'Allotment', 'error' => $e->errorInfo]));
         }
     }
 
@@ -61,11 +61,11 @@ class AllotmentController extends Controller
                 'id' => ['string', 'max:255'],
             ]);
             Allotment::where('id' , $request->id)->delete();
-            return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_allotments', 'Allotments removed successfully');
         }
 
         catch (QueryException $e) {
-            return redirect(RouteServiceProvider::HOME)->with('error_allotments', 'Allotments not removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', 'Allotments not removed successfully');
         }
     }
 }

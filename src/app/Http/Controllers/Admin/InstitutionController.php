@@ -28,6 +28,6 @@ class InstitutionController extends Controller
             'desc'=> $request->desc
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_institutions', 'Institutions saved successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_institutions', 'Institutions saved successfully');
     }
 }

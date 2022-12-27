@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Admin\DefinitionUsersUsersStatus;
+use App\Models\Traits\CreatedUpdatedBy;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Traits\Uuid;
 
@@ -49,6 +52,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $table = 'users';
 
+    public static function EnsureIsAdmin(): bool
+    {
+        $isAdmin = false;
+        foreach (Auth::user()->definitionsUsersUsersStatus->load('userStatus') as $definitionUserUsersStatus){
+            if ($definitionUserUsersStatus->userStatus->type == 'admin'){
+                $isAdmin = true;
+            }
+        }
+        return $isAdmin;
+    }
     // user has one
     public function userSensitiveData()
     {
@@ -60,7 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     //user has many
-    public function DefinitionsUsersUsersStatus()
+    public function definitionsUsersUsersStatus()
     {
         return $this->hasMany(DefinitionUserUserStatus::class,'id_user');
     }

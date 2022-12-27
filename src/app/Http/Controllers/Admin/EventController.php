@@ -45,7 +45,7 @@ class EventController extends Controller
             'id_event_belong' => Event::where('name', $request->name_event_belong)->value('id')
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_events', 'Events saved successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_events', 'Events saved successfully');
     }
 
 
@@ -63,11 +63,11 @@ class EventController extends Controller
                 'id' => ['string', 'max:255'],
             ]);
             Event::where('id' , $request->id)->delete();
-            return redirect(RouteServiceProvider::HOME)->with('success_events', 'Events removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_events', 'Events removed successfully');
         }
 
         catch (QueryException $e) {
-            return redirect(RouteServiceProvider::HOME)->with('error_events', 'Events not removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_events', 'Events not removed successfully');
         }
     }
 }

@@ -11,7 +11,7 @@
         </div>
     </td>
     <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
-        <div class="text-sm font-normal text-gray-500">{{$institution->adress}}</div>
+        <div class="text-sm font-normal text-gray-500">{{$institution->address}}</div>
     </td>
 
     <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">

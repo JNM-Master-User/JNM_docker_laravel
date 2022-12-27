@@ -57,7 +57,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function renderHome(){
+    public function renderAccueil(){
         $data= $this->getData();
 
         return view('pages.dashboard',[

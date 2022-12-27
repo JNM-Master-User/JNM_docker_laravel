@@ -30,7 +30,11 @@ class UserSensitiveData extends Model
         'date_of_birth',
         'phone_number',
         'address',
-        'path_picture'
+        'zip_code',
+        'path_picture',
+        'id_institution_user',
+        'created_by',
+        'updated_by'
     ];
     /**
      * The attributes that should be cast.
@@ -47,6 +51,10 @@ class UserSensitiveData extends Model
     public function user()
     {
         return $this->belongsTo(User::class,'id_user');
+    }
+    public function institution()
+    {
+        return $this->belongsTo(Institution::class,'id_institution_user');
     }
     public function creator()
     {

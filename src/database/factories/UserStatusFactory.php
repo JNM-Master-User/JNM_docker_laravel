@@ -21,7 +21,7 @@ class UserStatusFactory extends Factory
             //admin
             //etudiant, membre BDE
             //ancien etudiant, membre CA, directeur MIAGE,
-            'type' => $this->faker->unique()->randomElement(['étudiant','admin','membre CA','membre bde','directeur miage','ancien étudiant']),
+            'type' => $this->faker->unique()->randomElement(['étudiant','admin','membre ca','membre bde','directeur miage','ancien diplômé', 'enseignant']),
             'created_by' => User::where('email','root@example.com')->first()->id,
             'updated_by' => User::where('email','root@example.com')->first()->id
         ];
