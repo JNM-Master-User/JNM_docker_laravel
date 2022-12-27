@@ -1,3 +1,33 @@
+<!-- Script -->
+<script type="text/javascript">
+    function display_save_button (){
+        let element =  document.getElementById('buttonSaveAllotment');
+        if (element.style.visibility == 'hidden') {
+            element.style.visibility = 'visible';
+        }
+        else {
+            element.style.visibility = 'hidden';
+        }
+    }
+    function divSwitch(){
+        let element =  document.getElementById('buttonEditAllotment');
+        element.disabled = true;
+        document.getElementById('allotment-name').innerHTML = `<input id="name" name="name" value='${document.getElementById('allotment-name').innerText}'  />`;
+        document.getElementById('allotment-address').innerHTML = `<input id="address" name="address" value='${document.getElementById('allotment-address').innerText}'  />`;
+        document.getElementById('allotment-zipcode').innerHTML = `<input id="zip_code" name="zip_code" value='${document.getElementById('allotment-zipcode').innerText}'  />`;
+    }
+
+    /*
+    function divReset() {
+        let element =  document.getElementById('buttonEditAllotment');
+        element.disabled = false;
+        document.getElementById('allotment-name').innerHTML = `<div> ${document.getElementById('allotment-name').value} </div>`;
+        document.getElementById('allotment-address').innerHTML = `<div> ${document.getElementById('allotment-address').value} </div>`;
+        document.getElementById('allotment-zipcode').innerHTML = `<div> ${document.getElementById('allotment-zipcode').value} </div>`;
+    }
+     */
+</script>
+
 <tr class="hover:bg-gray-100">
     <td class="p-2 w-4">
         <div class="flex items-center">
@@ -16,50 +46,6 @@
     <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
         <div id="allotment-zipcode" class="text-sm font-normal text-gray-500">{{$allotment->zip_code}}</div>
     </td>
-
-    <!-- Script -->
-    <script type="text/javascript">
-        var boolean = 1;
-
-        function display_save_button (){
-            let element =  document.getElementById('buttonSaveAllotment');
-            if (element.style.visibility == 'hidden') {
-                element.style.visibility = 'visible';
-            }
-            else {
-                element.style.visibility = 'hidden';
-            }
-        }
-
-        /*
-        function divSwitchReset(){
-            if (boolean == 1){
-                divSwitch(this);
-            }
-            else {
-                divReset(this)
-            }
-        }
-         */
-
-        function divSwitch(){
-            let element =  document.getElementById('buttonEditAllotment');
-            element.disabled = true;
-            document.getElementById('allotment-name').innerHTML = `<input id="name" value='${document.getElementById('allotment-name').innerText}'  />`;
-            document.getElementById('allotment-address').innerHTML = `<input id="address" value='${document.getElementById('allotment-address').innerText}'  />`;
-            document.getElementById('allotment-zipcode').innerHTML = `<input id="zip_code" value='${document.getElementById('allotment-zipcode').innerText}'  />`;
-        }
-
-        function divReset() {
-            let element =  document.getElementById('buttonEditAllotment');
-            element.disabled = false;
-            document.getElementById('allotment-name').innerHTML = `<div> ${document.getElementById('allotment-name').value} </div>`;
-            document.getElementById('allotment-address').innerHTML = `<div> ${document.getElementById('allotment-address').value} </div>`;
-            document.getElementById('allotment-zipcode').innerHTML = `<div> ${document.getElementById('allotment-zipcode').value} </div>`;
-        }
-
-
-    </script>
 
     <td class="p-2 whitespace-nowrap space-x-2">
         <button id=buttonEditAllotment onclick="display_save_button();divSwitch();" type="button" data-modal-toggle="user-modal-{{$allotment->id}}" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
@@ -83,6 +69,7 @@
         <form method="POST" action="{{ route('allotments.update') }}">
             @csrf
             <input type="hidden" name="id" value="{{$allotment->id}}">
+            <input type="hidden" name="name" value="{{$allotment->name}}">
             <button id=buttonSaveAllotment type="submit" style ="visibility: hidden;" data-modal-toggle="user-modal-{{$allotment->id}}" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
                 <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
                 {{__('Save Allotment')}}
