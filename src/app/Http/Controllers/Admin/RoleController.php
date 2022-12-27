@@ -34,4 +34,20 @@ class RoleController extends Controller
             return redirect(RouteServiceProvider::HOME)->with('error_roles', $e->errorInfo);
         }
     }
+
+    public function destroyRoles(Request $request)
+    {
+
+        try{
+            $request->validate([
+                'id' => ['string', 'max:255'],
+            ]);
+            Role::where('id' , $request->id)->delete();
+            return redirect(RouteServiceProvider::HOME)->with('success_roles', 'Roles removed successfully');
+        }
+
+        catch (QueryException $e) {
+            return redirect(RouteServiceProvider::HOME)->with('error_roles', 'Roles not removed successfully');
+        }
+    }
 }
