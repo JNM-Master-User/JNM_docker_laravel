@@ -5,29 +5,30 @@
         </div>
     </td>
     <td class="p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
+        <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{$contact->name}}" alt="Michael Gough avatar">
         <div class="text-sm font-normal text-gray-500">
-            <div class="text-base font-semibold text-gray-900">{{$contact->name}}</div>
+            <div class="text-sm font-normal text-gray-500">{{$contact->name}}</div>
         </div>
     </td>
     <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
         <div class="text-sm font-normal text-gray-500">
-            <div class="text-base font-semibold text-gray-900">{{$contact->last_name}}</div>
+            <div class="text-sm font-normal text-gray-500">{{$contact->last_name}}</div>
         </div>
     </td>
     <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
         <div class="text-sm font-normal text-gray-500">
-            <div class="text-base font-semibold text-gray-900">{{$contact->pole->name}}</div>
+            <div class="text-sm font-normal text-gray-500">{{$contact->pole->name}}</div>
         </div>
     </td>
     <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
         <div class="text-sm font-normal text-gray-500">
-            <div class="text-base font-semibold text-gray-900">{{$contact->role->name}}</div>
+            <div class="text-sm font-normal text-gray-500">{{$contact->role->name}}</div>
         </div>
     </td>
     <td class="p-2 whitespace-nowrap space-x-2">
         <button type="button" data-modal-toggle="user-modal-" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
             <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
-            {{__('Edit User')}}
+            {{__('Edit contact')}}
         </button>
     </td>
     <td class="p-2 whitespace-nowrap space-x-2">
@@ -36,7 +37,7 @@
             <input type="hidden" name="id" value="{{$contact->id}}">
             <button type="submit" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
                 <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
-                {{__('Delete')}}
+                {{__('Delete contact')}}
             </button>
         </form>
     </td>

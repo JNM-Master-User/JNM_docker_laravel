@@ -68,4 +68,33 @@ class AllotmentController extends Controller
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', 'Allotments not removed successfully');
         }
     }
+
+    public function updateAllotments(Request $request)
+    {
+
+        try{
+            session(['content'=>'content_allotments']);
+
+            $request->validate([
+                'name' => [ 'string', 'max:255'],
+                'address' => [ 'string', 'max:255'],
+                'zip_code' => [ 'string', 'max:255']
+            ]);
+
+            if(Allotment::where('name', $request->name)->first()){
+                return redirect(RouteServiceProvider::HOME)->with('error_allotments', 'Allotment already exists');
+            }
+            else{
+                Allotment::where('id',$request->id) -> update([
+                    'name' => $request->name,
+                    'address' => $request->address,
+                    'zip_code' =>$request->zip_code
+                ]);
+            }
+            return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments saved successfully');
+        }
+        catch (QueryException $e){
+            return redirect(RouteServiceProvider::HOME)->with('error_allotments', $e->errorInfo);
+        }
+    }
 }

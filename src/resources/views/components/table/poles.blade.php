@@ -15,6 +15,8 @@
                             Name
                         <th scope="col" class="p-4">
                         </th>
+                        <th scope="col" class="p-4">
+                        </th>
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">

@@ -46,10 +46,12 @@
             </div>
         </form>
     </x-cards.input>
-    <x-table.contacts>
-        @foreach($contacts as $contact)
-            <x-items.contacts :contact="$contact">
-            </x-items.contacts>
-        @endforeach
-    </x-table.contacts>
+    <x-cards.input>
+        <x-table.contacts>
+            @foreach($contacts as $contact)
+                <x-items.contacts :contact="$contact">
+                </x-items.contacts>
+            @endforeach
+        </x-table.contacts>
+    </x-cards.input>
 </div>

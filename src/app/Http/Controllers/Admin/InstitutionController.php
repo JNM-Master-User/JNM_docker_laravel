@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Institution;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class InstitutionController extends Controller
@@ -29,5 +30,27 @@ class InstitutionController extends Controller
         ]);
 
         return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_institutions', 'Institutions saved successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroyInstitution(Request $request)
+    {
+
+        try{
+            $request->validate([
+                'id' => ['string', 'max:255'],
+            ]);
+            Institution::where('id' , $request->id)->delete();
+            return redirect(RouteServiceProvider::HOME)->with('success_institutions', 'Institutions removed successfully');
+        }
+
+        catch (QueryException $e) {
+            return redirect(RouteServiceProvider::HOME)->with('error_institutions', 'Institutions not removed successfully');
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Partner;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
@@ -34,6 +35,27 @@ class PartnerController extends Controller
         ]);
 
         return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_partners', 'Partners saved successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroyPartners(Request $request)
+    {
+        try {
+            $request->validate([
+                'id' => ['string', 'max:255'],
+            ]);
+            Partner::where('id', $request->id)->delete();
+
+            return redirect(RouteServiceProvider::HOME)->with('success_partners', 'Partner removed successfully');
+
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::HOME)->with('error_partners', 'Partner not removed successfully');
+        }
     }
 }
 

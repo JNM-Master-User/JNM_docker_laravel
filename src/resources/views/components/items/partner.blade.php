@@ -22,11 +22,18 @@
             <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
             {{__('Edit Partner')}}
         </button>
-        <button type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-            <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
-            {{__('Delete Partner')}}
-        </button>
     </td>
+    <td class="p-2 whitespace-nowrap space-x-2">
+        <form method="POST" action="{{ route('partners.destroy') }}">
+            @csrf
+            <input type="hidden" name="id" value="{{$partner->id}}">
+            <button type="submit" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
+                {{__('Delete Partner')}}
+            </button>
+        </form>
+    </td>
+
     <!-- Modal -->
     <div id="user-modal-{{$partner->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-2 md:inset-0 h-modal md:h-full">
         <div class="relative w-full max-w-md h-full md:h-auto">
