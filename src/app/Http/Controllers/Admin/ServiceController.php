@@ -20,14 +20,14 @@ class ServiceController extends Controller
             ]);
 
             if(Service::where('name', $request->name)->first()){
-                return redirect(RouteServiceProvider::HOME)->with('error_services', 'Service already exists');
+                return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_services', 'Service already exists');
             }
             else{
                 Service::create([
                     'name' => $request->id,
                 ]);
             }
-            return redirect(RouteServiceProvider::HOME)->with('success_services', 'Service saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_services', 'Service saved successfully');
         } catch (\Illuminate\Database\QueryException $e){
             $error = $e->errorInfo;
         }
@@ -39,7 +39,7 @@ class ServiceController extends Controller
             'desc'=> $request->desc
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success_services', 'Services saved successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_services', 'Services saved successfully');
     }
 
     /**
@@ -58,7 +58,7 @@ class ServiceController extends Controller
 
         Service::where('id' , $request->id)->delete();
 
-        return redirect(RouteServiceProvider::HOME)->with('success_services', 'Service removed successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_services', 'Service removed successfully');
     }
 
     public function editServices(Request $request)

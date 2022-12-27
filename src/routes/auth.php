@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\Admin\AllotmentController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -46,9 +47,14 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.update');
+
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('accueil', [AccueilController::class, 'create'])
+        ->name('accueil')->middleware('verified');
+
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
 
@@ -75,7 +81,7 @@ Route::middleware('auth')->group(function () {
         Route::get('user-sensitive-data', [SaveUserSensitiveDataController::class, 'destroy'])
             ->name('user-sensitive-data.destroy');
     });
-    Route::prefix('dashboard')->group(function () {
+    Route::middleware(['admin','verified'])->prefix('dashboard')->group(function () {
 
         Route::post('roles_save',[RoleController::class, 'storeRoles'])
             ->name('roles.save');
@@ -137,7 +143,7 @@ Route::middleware('auth')->group(function () {
         Route::post('events_destroy',[EventController::class, 'destroyEvents'])
             ->name('events.destroy');
 
-        Route::get('home',[DashboardController::class, 'renderHome'])
-            ->name('home');
+        Route::get('accueil',[DashboardController::class, 'renderAccueil'])
+            ->name('accueil');
     });
 });

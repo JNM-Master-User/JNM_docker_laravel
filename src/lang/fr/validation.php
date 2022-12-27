@@ -26,9 +26,9 @@ return [
     'before_or_equal'      => 'Le champ :attribute: doit être une date avant ou égale à :date.',
     'between'              => [
         'numeric' => 'La valeur de :attribute doit être comprise entre :min et :max.',
-        'file'    => 'Le fichier :attribute doit avoir une taille entre :min et :max kilo-octets.',
+        'file'    => 'Le fichier :attribute doit avoir une taille comprise entre :min et :max kilo-octets.',
         'string'  => 'Le texte :attribute doit avoir entre :min et :max caractères.',
-        'array'   => 'Le tableau :attribute doit avoir entre :min et :max éléments.',
+        'array'   => 'Le tableau :attribute doit contenir entre :min et :max éléments.',
     ],
     'boolean'              => 'Le champ :attribute doit être vrai ou faux.',
     'confirmed'            => 'Le champ de confirmation :attribute ne correspond pas.',
@@ -43,7 +43,7 @@ return [
     'digits_between'       => 'Le champ :attribute doit avoir entre :min and :max chiffres.',
     'dimensions'           => 'Le champ :attribute a des dimensions d\'image non valides.',
     'distinct'             => 'Le champ a une valeur en double.',
-    'email'                => "Le champ :attribute doit être une adresse email valide.",
+    'email'                => "Le champ :attribute doit être une adresse e-mail valide.",
     'ends_with'            => 'Le champ :attribute doit se terminer par l\'une des valeurs suivantes : :values.',
     'enum'                 => 'Le champ :attribute sélectionné est invalide.',
     'exists'               => 'Le champ :attribute sélectionné est invalide.',
@@ -53,7 +53,7 @@ return [
         'numeric' => 'Le champ :attribute doit être supérieur à :value.',
         'file'    => 'Le champ :attribute doit être supérieur à :value kilobytes.',
         'string'  => 'Le champ :attribute doit être supérieur à :value caractères.',
-        'array'   => 'Le champ :attribute doit avoir plus de :value éléments.',
+        'array'   => 'Le champ :attribute doit contenir plus de :value éléments.',
     ],
     'gte' => [
         'numeric' => 'Le champ :attribute doit être supérieur ou égal :value.',
@@ -73,20 +73,20 @@ return [
         'numeric' => 'Le champ :attribute doit être inférieur à :value.',
         'file'    => 'Le champ :attribute doit être inférieur à :value kilobytes.',
         'string'  => 'Le champ :attribute doit être inférieur à :value caractères.',
-        'array'   => 'Le champ :attribute doit avoir moins de :value éléments.',
+        'array'   => 'Le champ :attribute doit contenir moins de :value éléments.',
     ],
     'lte' => [
         'numeric' => 'Le champ :attribute doit être inférieur à or equal :value.',
         'file'    => 'Le champ :attribute doit être inférieur à or equal :value kilobytes.',
         'string'  => 'Le champ :attribute doit être inférieur à or equal :value caractères.',
-        'array'   => 'Le champ :attribute ne doit pas avoir plus de :value éléments.',
+        'array'   => 'Le champ :attribute ne doit pas contenir plus de :value éléments.',
     ],
     'mac_address' => 'Le champ :attribute doit être une adresse MAC valide.',
     "max"  => [
         'numeric' => 'La valeur de :attribute ne peut être supérieure à :max.',
         'file'    => 'Le fichier :attribute ne peut être plus gros que :max kilo-octets.',
         'string'  => 'Le texte de :attribute ne peut contenir plus de :max caractères.',
-        'array'   => 'Le tableau :attribute ne peut avoir plus de :max éléments.',
+        'array'   => 'Le tableau :attribute ne peut contenir plus de :max éléments.',
     ],
     'mimes'                => 'Le champ :attribute doit être un fichier de type : :values.',
     'mimetypes'            => 'Le champ :attribute doit être un fichier de type : :values.',
@@ -94,7 +94,7 @@ return [
         'numeric' => 'La valeur de :attribute doit être au moins de :min.',
         'file'    => 'Le fichier :attribute doit être au moins de :min kilo-octets.',
         'string'  => 'Le texte du champ :attribute doit contenir au moins :min caractères.',
-        'array'   => 'Le tableau :attribute doit avoir au moins :min éléments.',
+        'array'   => 'Le tableau :attribute doit contenir au moins :min éléments.',
     ],
     'multiple_of'          => 'Le champ :attribute doit être un multiple de :value.',
     'not_in'               => 'Le champ :attribute sélectionné n\'est pas valide.',
@@ -126,7 +126,7 @@ return [
     'string'               => 'Le champ :attribute doit être une chaîne de caractères.',
     'timezone'             => 'Le champ :attribute doit être un fuseau horaire valide.',
     'unique'               => 'La valeur du champ :attribute est déjà utilisée.',
-    'uploaded'             => 'Le champ :attribute a échoué à télécharger.',
+    'uploaded'             => 'Le télechargement due champ :attribute a échoué.',
     'url'                  => 'Le format de l\'URL de :attribute n\'est pas valide.',
     'uuid'                 => 'Le champ :attribute doit être un UUID valide.',
 
@@ -142,9 +142,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'user-status' => [
+            'banned-combination' => 'Vous ne pouvez pas avoir les status :attribute, :other en même temps.',
+            'required-combination' => 'Vous devez avoir le status :attribute si vous souhaitez avoir le status :other',
+            'not-admin' => 'Droits insuffisant, vous ne pouvez pas être administrateur'
+        ]
     ],
 
     /*
@@ -158,6 +160,7 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+    ],
 
 ];

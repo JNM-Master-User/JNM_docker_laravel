@@ -52,7 +52,7 @@ class SaveUserSensitiveDataController extends Controller
             'address' => Str::lower($request->address),
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success', 'Sensitive data saved successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success', 'Sensitive data saved successfully');
     }
 
 
@@ -66,6 +66,6 @@ class SaveUserSensitiveDataController extends Controller
     {
         UserSensitiveData::where(['id_user' => Auth::id()])->delete();
 
-        return redirect(RouteServiceProvider::HOME)->with('success', 'Sensitive data removed successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success', 'Sensitive data removed successfully');
     }
 }

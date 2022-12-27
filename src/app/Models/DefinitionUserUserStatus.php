@@ -21,6 +21,8 @@ class DefinitionUserUserStatus extends Model
     protected $fillable = [
         'id_user',
         'id_user_status',
+        'created_by',
+        'updated_by'
     ];
     /**
      * The attributes that should be cast.
@@ -34,11 +36,11 @@ class DefinitionUserUserStatus extends Model
 
     protected $table = 'definitions_users_users_status';
 
-    public function institution()
+    public function user()
     {
         return $this->belongsTo(User::class,'id_user');
     }
-    public function tournament()
+    public function userStatus()
     {
         return $this->belongsTo(UserStatus::class,'id_user_status');
     }

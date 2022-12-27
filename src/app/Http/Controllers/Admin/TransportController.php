@@ -28,7 +28,7 @@ class TransportController extends Controller
             ]);
 
             if(Transport::where('name', $request->name)->first()){
-                return redirect(RouteServiceProvider::HOME)->with('error_transports', 'Transport already exists');
+                return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_transports', 'Transport already exists');
             }
             else{
                 if($request->hasFile('picture')){
@@ -44,9 +44,9 @@ class TransportController extends Controller
                 }
             }
 
-            return redirect(RouteServiceProvider::HOME)->with('success_transports', 'Transport saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_transports', 'Transport saved successfully');
         } catch (\Illuminate\Database\QueryException $e){
-            return redirect(RouteServiceProvider::HOME)->with('error_transports',$e->errorInfo);
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_transports',$e->errorInfo);
         }
     }
 
@@ -66,7 +66,7 @@ class TransportController extends Controller
 
         Transport::where('id' , $request->id)->delete();
 
-        return redirect(RouteServiceProvider::HOME)->with('success_transports', 'Transport removed successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_transports', 'Transport removed successfully');
     }
 }
 

@@ -1,6 +1,6 @@
 <div {{$attributes->merge(['class'=>''])}}>
     <!-- breadcrumb -->
-    <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
+    <div class="p-4 bg-white dark:bg-gray-700 block sm:flex items-center justify-between lg:mt-1.5">
         <x-breadcrumb content="{{__('Contacts')}}">
         </x-breadcrumb>
     </div>
@@ -26,25 +26,23 @@
                 </div>
                 <div>
                     <x-input-label  :value="__('Poles')"/>
-                    <x-select name="name_pole" >
+                    <x-inputs.select name="name_pole" >
                         @foreach($poles as $pole)
                             <option value="{{ $pole->id }}"> {{ $pole->name }} </option>
                         @endforeach
-                    </x-select>
+                    </x-inputs.select>
                 </div>
                 <div>
                     <x-input-label :value="__('Roles')"/>
-                    <x-select name="name_role">
+                    <x-inputs.select name="name_role">
                         @foreach($roles as $role)
                             <option value="{{ $role->id }}"> {{ $role->name }} </option>
                         @endforeach
-                    </x-select>
+                    </x-inputs.select>
                 </div>
             </x-cards.fieldset>
             <div class="flex items-center justify-end mt-4">
-                <x-buttons.primary-button class="ml-4" type="submit">
-                    {{ __('Save') }}
-                </x-buttons.primary-button>
+                <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
             </div>
         </form>
     </x-cards.input>

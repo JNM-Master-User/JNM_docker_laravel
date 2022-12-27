@@ -23,17 +23,17 @@
         </script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-800">
             @include('layouts.navigation')
             <!-- main -->
             <main class="bg-gray-50">
-                <main class="flex overflow-hidden bg-white pt-16 dark:text-white dark:bg-gray-700">
+                <main class="flex overflow-hidden bg-white pt-14 dark:text-white dark:bg-gray-700">
                     <!-- sidebar -->
                     @include('layouts.sidebar')
                     <!-- end sidebar -->
 
                     <!-- body -->
-                    <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+                    <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64 dark:bg-gray-800">
                         <!-- content -->
                         {{ $slot }}
                         <!-- end content -->

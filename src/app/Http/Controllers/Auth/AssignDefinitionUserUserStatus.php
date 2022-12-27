@@ -51,7 +51,7 @@ class AssignDefinitionUserUserStatus extends Controller
             'id_user_status' => $request->id_user_status
         ]);
 
-        return redirect(RouteServiceProvider::HOME)->with('success', 'Sensitive data saved successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success', 'Sensitive data saved successfully');
     }
 
 
@@ -65,6 +65,6 @@ class AssignDefinitionUserUserStatus extends Controller
     {
         UserSensitiveData::where(['id_user' => Auth::id()])->delete();
 
-        return redirect(RouteServiceProvider::HOME)->with('success', 'Sensitive data removed successfully');
+        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success', 'Sensitive data removed successfully');
     }
 }

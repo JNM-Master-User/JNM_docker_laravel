@@ -35,7 +35,7 @@ class ContactController extends Controller
                 'id_role' => Role::where('id', $request->name_role)->value('id'),
                 'id_pole' => Pole::where('id', $request->name_pole)->value('id')
             ])){
-                return redirect(RouteServiceProvider::HOME)->with('error_contacts', 'Contact already exists');
+                return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_contacts', 'Contact already exists');
             }
 
             Contact::create([
@@ -46,9 +46,9 @@ class ContactController extends Controller
 
             ]);
 
-            return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contacts saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_contacts', 'Contacts saved successfully');
         } catch (QueryException $e) {
-            return redirect(RouteServiceProvider::HOME)->with('error_contacts', 'Contact could not be saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_contacts', 'Contact could not be saved successfully');
         }
     }
 
@@ -67,9 +67,9 @@ class ContactController extends Controller
                 'id' => ['string', 'max:255'],
             ]);
             Contact::where('id', $request->id)->delete();
-            return redirect(RouteServiceProvider::HOME)->with('success_contacts', 'Contact removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_contacts', 'Contact removed successfully');
         } catch (QueryException $e) {
-            return redirect(RouteServiceProvider::HOME)->with('error_contacts', 'Contact could not be removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_contacts', 'Contact could not be removed successfully');
         }
     }
 

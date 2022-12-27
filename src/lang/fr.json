@@ -26,7 +26,14 @@
 
     "Password": "Mot de passe",
     "Email": "Email",
-    "Name": "Nom",
+    "Name": "Prénom",
+    "Last Name": "Nom",
+    "Phone number": "Numéro de téléphone",
+    "Date of Birth": "Date de naissance",
+    "Address": "Adresse",
+    "Zip code": "Code postal",
+    "Institution": "Établissement",
+    "Select your status": "Sélectionnez vos status",
 
     "Log in": "Connexion",
     "Log Out": "Déconnexion",
@@ -41,6 +48,8 @@
     "Resend Verification Email": "Renvoyer",
     "Already registered?": "Déjà un compte?",
     "No account yet?": "Pas encore de compte?",
+    "Create Account": "Créer un compte",
+    "Login here": "Connexion",
 
 
     "Deletion impossible, :attribute is assigned.": "Suppression impossible, :attribute est assigné.",

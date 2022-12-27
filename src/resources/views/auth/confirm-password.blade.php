@@ -26,10 +26,7 @@
             </div>
 
             <div class="flex justify-end mt-4">
-                <x-buttons.primary-button id="button_w_toggling_spinner_confirm_password">
-                    <x-icons.spinner class="hidden"></x-icons.spinner>
-                    {{ __('Confirm') }}
-                </x-buttons.primary-button>
+                <x-buttons.form-button name="{{ __('Confirm') }}"></x-buttons.form-button>
             </div>
         </form>
     </x-auth-card>

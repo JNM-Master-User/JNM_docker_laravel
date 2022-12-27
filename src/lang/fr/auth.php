@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Ces informations d\'identification ne correspondent pas à nos enregistrements.',
-    'password' => 'Le mot de passe fourni est incorrect.',
-    'throttle' => 'Trop de tentatives de connexion. Veuillez essayer ultérieurement dans :seconds secondes.',
+    'failed' => 'identifiants incorrects, impossible de trouver un compte correspondant pas à cette adresse e-mail.',
+    'password' => 'Mot de passe ou Adresse e-mail incorrect.',
+    'throttle' => 'Trop de tentatives de connexion. Veuillez réessayer ultérieurement dans :seconds secondes.',
     
 ];

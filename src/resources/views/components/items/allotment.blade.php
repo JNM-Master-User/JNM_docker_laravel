@@ -5,7 +5,7 @@
         </div>
     </td>
     <td class="p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
-        <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{$allotment->name}}" alt="Michael Gough avatar">
+        <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{$allotment->name}}">
         <div class="text-sm font-normal text-gray-500">
             <div class="text-sm font-normal text-gray-500">{{$allotment->name}}</div>
         </div>

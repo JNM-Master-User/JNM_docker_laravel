@@ -19,8 +19,6 @@ class UserSensitiveDataFactory extends Factory
     {
         return [
             'id_user' => User::all()->random(1)->first(),
-            'created_by' => User::where('email','root@example.com')->first()->id,
-            'updated_by' => User::where('email','root@example.com')->first()->id
             //
         ];
     }
