@@ -13,36 +13,34 @@ class AllotmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function storeAllotments(Request $request)
     {
-        try{
-            session(['content'=>'content_allotments']);
+        try {
+            session(['content' => 'content_allotments']);
 
             $request->validate([
-                'name' => [ 'string', 'max:255'],
-                'address' => [ 'string', 'max:255'],
-                'zip_code' => [ 'string', 'max:255']
+                'name' => ['string', 'max:255'],
+                'address' => ['string', 'max:255'],
+                'zip_code' => ['string', 'max:255']
             ]);
 
-            if(Allotment::where('name', $request->name)->first()){
+            if (Allotment::where('name', $request->name)->first()) {
                 return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', 'Allotment already exists');
-            }
-            else{
+            } else {
                 Allotment::create([
                     'name' => $request->name,
                     'address' => $request->address,
-                    'zip_code' =>$request->zip_code
+                    'zip_code' => $request->zip_code
                 ]);
             }
-            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_allotments', trans('admin.save-success',['attribute' => 'Allotment']));
-        }
-        catch (QueryException $e){
-            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', trans('admin.error-success',['attribute' => 'Allotment', 'error' => $e->errorInfo]));
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_allotments', trans('admin.save-success', ['attribute' => 'Allotment']));
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', trans('admin.error-success', ['attribute' => 'Allotment', 'error' => $e->errorInfo]));
         }
     }
 
@@ -50,51 +48,45 @@ class AllotmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroyAllotments(Request $request)
     {
 
-        try{
+        try {
             $request->validate([
                 'id' => ['string', 'max:255'],
             ]);
-            Allotment::where('id' , $request->id)->delete();
+            Allotment::where('id', $request->id)->delete();
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_allotments', 'Allotments removed successfully');
-        }
-
-        catch (QueryException $e) {
-            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', 'Allotments not removed successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', $e->errorInfo);
         }
     }
 
     public function updateAllotments(Request $request)
     {
 
-        try{
-            session(['content'=>'content_allotments']);
+        try {
+            session(['content' => 'content_allotments']);
 
             $request->validate([
-                'name' => [ 'string', 'max:255'],
-                'address' => [ 'string', 'max:255'],
-                'zip_code' => [ 'string', 'max:255']
+                'id' => ['required', 'uuid', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
+                'address' => ['string', 'max:255'],
+                'zip_code' => ['numeric', 'digits:5', 'max:99999']
             ]);
 
-            if(Allotment::where('name', $request->name)->first()){
-                return redirect(RouteServiceProvider::HOME)->with('error_allotments', 'Allotment already exists');
-            }
-            else{
-                Allotment::where('id',$request->id) -> update([
-                    'name' => $request->name,
-                    'address' => $request->address,
-                    'zip_code' =>$request->zip_code
-                ]);
-            }
-            return redirect(RouteServiceProvider::HOME)->with('success_allotments', 'Allotments saved successfully');
-        }
-        catch (QueryException $e){
-            return redirect(RouteServiceProvider::HOME)->with('error_allotments', $e->errorInfo);
+            Allotment::where('id', $request->id)->update([
+                'name' => $request->name,
+                'address' => $request->address,
+                'zip_code' => $request->zip_code
+            ]);
+
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_allotments', 'Allotments saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_allotments', $e->errorInfo);
         }
     }
 }

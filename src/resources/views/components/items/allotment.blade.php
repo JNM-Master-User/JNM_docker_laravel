@@ -1,100 +1,73 @@
-<!-- Script -->
-<script type="text/javascript">
-    function display_save_button (){
-        let element =  document.getElementById('buttonSaveAllotment');
-        if (element.style.visibility == 'hidden') {
-            element.style.visibility = 'visible';
-        }
-        else {
-            element.style.visibility = 'hidden';
-        }
-    }
-    function divSwitch(){
-        let element =  document.getElementById('buttonEditAllotment');
-        element.disabled = true;
-        document.getElementById('allotment-name').innerHTML = `<input id="name" name="name" value='${document.getElementById('allotment-name').innerText}'  />`;
-        document.getElementById('allotment-address').innerHTML = `<input id="address" name="address" value='${document.getElementById('allotment-address').innerText}'  />`;
-        document.getElementById('allotment-zipcode').innerHTML = `<input id="zip_code" name="zip_code" value='${document.getElementById('allotment-zipcode').innerText}'  />`;
-    }
+<div>
+    <form method="POST" action="{{ route('allotments.update') }}">
+        <table class="table-fixed min-w-full divide-y divide-gray-200">
+            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-500">
+            <tr class="hover:bg-gray-100">
+                @csrf
+                <input class="hidden" name="id" value='{{$allotment->id}}'>
+                <td class="p-2 w-4">
+                    <div class="flex items-center">
+                        <input id="checkbox-3" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
+                    </div>
+                </td>
+                <td class="p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
+                    <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{$allotment->name}}"
+                         alt="">
+                    <div class="text-sm font-normal text-gray-500">
+                        <div id="allotment-name-{{$allotment->id}}"
+                             class="text-sm font-normal text-gray-500">{{$allotment->name}}</div>
+                    </div>
+                </td>
+                <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
+                    <div id="allotment-address-{{$allotment->id}}"
+                         class="text-sm font-normal text-gray-500">{{$allotment->address}}</div>
+                </td>
+                <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
+                    <div id="allotment-zipcode-{{$allotment->id}}"
+                         class="text-sm font-normal text-gray-500">{{$allotment->zip_code}}</div>
+                </td>
 
-    /*
-    function divReset() {
-        let element =  document.getElementById('buttonEditAllotment');
-        element.disabled = false;
-        document.getElementById('allotment-name').innerHTML = `<div> ${document.getElementById('allotment-name').value} </div>`;
-        document.getElementById('allotment-address').innerHTML = `<div> ${document.getElementById('allotment-address').value} </div>`;
-        document.getElementById('allotment-zipcode').innerHTML = `<div> ${document.getElementById('allotment-zipcode').value} </div>`;
-    }
-     */
-</script>
-
-<tr class="hover:bg-gray-100">
-    <td class="p-2 w-4">
-        <div class="flex items-center">
-            <input id="checkbox-3" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
-        </div>
-    </td>
-    <td class="p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
-        <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{$allotment->name}}">
-        <div class="text-sm font-normal text-gray-500">
-            <div id="allotment-name" class="text-sm font-normal text-gray-500">{{$allotment->name}}</div>
-        </div>
-    </td>
-    <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
-        <div id="allotment-address" class="text-sm font-normal text-gray-500">{{$allotment->address}}</div>
-    </td>
-    <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
-        <div id="allotment-zipcode" class="text-sm font-normal text-gray-500">{{$allotment->zip_code}}</div>
-    </td>
-
-    <td class="p-2 whitespace-nowrap space-x-2">
-        <button id=buttonEditAllotment onclick="display_save_button();divSwitch();" type="button" data-modal-toggle="user-modal-{{$allotment->id}}" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-            <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
-            {{__('Edit Allotment')}}
-        </button>
-    </td>
-
-    <td class="p-2 whitespace-nowrap space-x-2">
-        <form method="POST" action="{{ route('allotments.destroy') }}">
-            @csrf
-            <input type="hidden" name="id" value="{{$allotment->id}}">
-            <button id=buttonDeleteAllotment type="submit" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-                <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
-                {{__('Delete Allotment')}}
-            </button>
-        </form>
-    </td>
-
-    <td class="p-2 whitespace-nowrap space-x-2">
-        <form method="POST" action="{{ route('allotments.update') }}">
-            @csrf
-            <input type="hidden" name="id" value="{{$allotment->id}}">
-            <input type="hidden" name="name" value="{{$allotment->name}}">
-            <button id=buttonSaveAllotment type="submit" style ="visibility: hidden;" data-modal-toggle="user-modal-{{$allotment->id}}" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-                <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
-                {{__('Save Allotment')}}
-            </button>
-        </form>
-    </td>
-
-
-    <!-- Modal -->
-    <div id="user-modal-{{$allotment->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-2 md:inset-0 h-modal md:h-full">
-        <div class="relative w-full max-w-md h-full md:h-auto">
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    <span class="sr-only">{{__("Close modal")}}</span>
-                </button>
-                <div class="p-6 text-center">
-                    <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">{{__("Are you sure you want to delete this product?")}}</h3>
-                    <button data-modal-toggle="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                        {{__("Yes, I'm sure")}}
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <input type="hidden" name="id" value="{{$allotment->id}}">
+                    <button id="buttonSaveAllotment-{{$allotment->id}}" type="submit" class="hidden text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                        <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
+                        {{__('Save Allotment')}}
                     </button>
-                    <button data-modal-toggle="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</tr>
+                </td>
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <button id="buttonEditAllotment-{{$allotment->id}}" type="button"
+                            class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                        <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
+                        {{__('Edit Allotment')}}
+                    </button>
+                    <!-- Script -->
+                    <script type="text/javascript">
+                        document.getElementById('buttonEditAllotment-{{$allotment->id}}').addEventListener('click', () => {
+                            let element1 = document.getElementById('buttonSaveAllotment-{{$allotment->id}}');
+                            element1.classList.toggle('hidden');
+
+                            let element2 = document.getElementById('buttonEditAllotment-{{$allotment->id}}');
+                            element2.disabled = true;
+                            document.getElementById('allotment-name-{{$allotment->id}}').innerHTML = `<input name="name" value='{{$allotment->name}}' />`;
+                            document.getElementById('allotment-address-{{$allotment->id}}').innerHTML = `<input name="address" value='{{$allotment->address}}'  />`;
+                            document.getElementById('allotment-zipcode-{{$allotment->id}}').innerHTML = `<input name="zip_code" value='{{$allotment->zip_code}}'  />`;
+                        });
+                    </script>
+                </td>
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <form method="POST" action="{{ route('allotments.destroy') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$allotment->id}}">
+                        <button id="buttonDeleteAllotment" type="submit"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                            <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
+                            {{__('Delete Allotment')}}
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
