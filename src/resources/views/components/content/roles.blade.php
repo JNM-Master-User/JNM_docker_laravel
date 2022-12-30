@@ -25,9 +25,6 @@
                         <div class="flex items-center justify-end mt-4">
                             <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
                         </div>
-                        @foreach($roles as $role)
-                            {{$role->name}}
-                        @endforeach
                     </fieldset>
                 </form>
             </div>

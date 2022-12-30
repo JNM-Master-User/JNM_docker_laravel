@@ -86,26 +86,36 @@ Route::middleware(['auth'])->group(function () {
             ->name('roles.save');
         Route::post('roles_destroy',[RoleController::class, 'destroyRoles'])
             ->name('roles.destroy');
+        Route::post('roles_update',[RoleController::class, 'updateRoles'])
+            ->name('roles.update');
 
         Route::post('partners_save',[PartnerController::class, 'storePartners'])
             ->name('partners.save');
         Route::post('partners_destroy',[PartnerController::class, 'destroyPartners'])
             ->name('partners.destroy');
+        Route::post('partners_update',[PartnerController::class, 'updatePartners'])
+            ->name('partners.update');
 
         Route::post('poles_save',[PoleController::class, 'storePoles'])
             ->name('poles.save');
         Route::post('poles_destroy', [PoleController::class, 'destroyPoles'])
             ->name('poles.destroy');
+        Route::post('poles_update',[PoleController::class, 'updatePoles'])
+            ->name('poles.update');
 
         Route::post('institutions_save',[InstitutionController::class, 'storeInstitutions'])
             ->name('institutions.save');
         Route::post('institutions_destroy',[InstitutionController::class, 'destroyInstitutions'])
             ->name('institutions.destroy');
+        Route::post('institutions_update',[InstitutionController::class, 'updateInstitutions'])
+            ->name('institutions.update');
 
         Route::post('services_save',[ServiceController::class, 'storeServices'])
             ->name('services.save');
         Route::post('services_destroy',[ServiceController::class, 'destroyServices'])
             ->name('services.destroy');
+        Route::post('services_update',[ServiceController::class, 'updateServices'])
+            ->name('services.update');
 
         Route::post('tournaments_save',[TournamentController::class, 'storeTournaments'])
             ->name('tournaments.save');
@@ -138,11 +148,15 @@ Route::middleware(['auth'])->group(function () {
             ->name('contacts.save');
         Route::post('contacts_destroy',[ContactController::class, 'destroyContacts'])
             ->name('contacts.destroy');
+        Route::post('contacts_update',[ContactController::class, 'updateContacts'])
+            ->name('contacts.update');
 
         Route::post('events_save',[EventController::class, 'storeEvents'])
             ->name('events.save');
         Route::post('events_destroy',[EventController::class, 'destroyEvents'])
             ->name('events.destroy');
+        Route::post('events_update',[EventController::class, 'updateEvents'])
+            ->name('events.update');
 
         Route::get('accueil',[DashboardController::class, 'renderAccueil'])
             ->name('accueil');

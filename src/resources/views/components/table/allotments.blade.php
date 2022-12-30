@@ -24,9 +24,7 @@
                         </th>
                         <th scope="col" class="p-4">
                         </th>
-                        <th scope="col" class="p-4">
-                        </th>
-                    </tr>
+                     </tr>
                     </thead>
                 </table>
                 {{$slot}}
