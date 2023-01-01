@@ -25,6 +25,7 @@
                     <x-input-error :messages="$errors->get('last_name')" class="mt-2"/>
                 </div>
                 <div>
+
                     <x-input-label  :value="__('Poles')"/>
                     <x-inputs.select name="name_pole" >
                         @foreach($poles as $pole)
@@ -40,10 +41,10 @@
                         @endforeach
                     </x-inputs.select>
                 </div>
+                <div class="flex items-center justify-end mt-4">
+                    <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
+                </div>
             </x-cards.fieldset>
-            <div class="flex items-center justify-end mt-4">
-                <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
-            </div>
         </form>
     </x-cards.input>
     <x-cards.table>

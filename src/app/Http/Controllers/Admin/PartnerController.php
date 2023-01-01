@@ -51,10 +51,35 @@ class PartnerController extends Controller
             ]);
             Partner::where('id', $request->id)->delete();
 
-            return redirect(RouteServiceProvider::HOME)->with('success_partners', 'Partner removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_partners', 'Partner removed successfully');
 
         } catch (QueryException $e) {
-            return redirect(RouteServiceProvider::HOME)->with('error_partners', 'Partner not removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_partners', 'Partner not removed successfully');
+        }
+    }
+
+    public function updatePartners(Request $request)
+    {
+
+        try {
+            session(['content' => 'content_partners']);
+
+            $request->validate([
+                'id' => ['required', 'uuid', 'max:255'],
+                'name' => [ 'required', 'string', 'max:255'],
+                'company' => [ 'required', 'string', 'max:255'],
+                'path_picture' => [ 'required', 'string', 'max:255']
+            ]);
+
+            Partner::where('id', $request->id)->update([
+                'name' => $request->name,
+                'company' => $request->company,
+                'path_picture' => $request->path_picture
+            ]);
+
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_partners', 'Partners saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_partners', $e->errorInfo);
         }
     }
 }
