@@ -24,12 +24,12 @@ class TransportController extends Controller
             session(['content'=>'content_transports']);
 
             $request->validate([
-                'name' => [ 'string', 'max:255','unique'],
+                'name' => [ 'string', 'max:255','unique:transports,name'],
                 'picture' => [ 'required','image','mimes:jpeg,png,jpg,gif,svg', 'max:2048']
             ]);
 
             if($request->hasFile('picture')){
-                Picture::upload($request,Picture::TRANSPORTS_STORAGE);
+                $image_name = Picture::upload($request,Picture::TRANSPORTS_STORAGE);
 
                 Transport::create([
                     'name' => strtolower(preg_replace("([^A-Za-z0-9])", "", $request->name)),

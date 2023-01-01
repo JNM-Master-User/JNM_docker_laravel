@@ -26,7 +26,7 @@ return new class extends Migration
         });
 
         Schema::table('events', function (Blueprint $table) {
-            $table->foreignUuid('id_event_belong')->nullable()->references('id')->on('events');
+            $table->foreignUuid('id_event_belong')->nullable()->references('id')->on('events')->onDelete('cascade');
         });
     }
 

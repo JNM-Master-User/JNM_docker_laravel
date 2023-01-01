@@ -5,11 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Allotment;
 use App\Providers\RouteServiceProvider;
-use App\Rules\UniqueCompositeValidation;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Unique;
 
 class AllotmentController extends Controller
 {

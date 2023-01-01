@@ -6,10 +6,10 @@
     </div>
     <!-- end breadcrumb -->
     <x-cards.input>
-        @if(session()->get('success_users'))
-            <x-input-success :messages="session()->get('success_users')" class="mt-2"/>
-        @elseif(session()->get('error_users'))
-            <x-input-error :messages="session()->get('error_users')" class="mt-2"/>
+        @if(session()->get('success_user'))
+            <x-input-success :messages="session()->get('success_user')" class="mt-2"/>
+        @elseif(session()->get('error_user'))
+            <x-input-error :messages="session()->get('error_user')" class="mt-2"/>
         @endif
         <form method="POST" action="{{ route('users.save') }}">
             <x-cards.fieldset>

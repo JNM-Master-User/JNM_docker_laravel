@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('benefits_partners_services', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->foreignUuid('id_partners')->references('id')->on('partners');
-            $table->foreignUuid('id_services')->references('id')->on('services');
+            $table->foreignUuid('id_partners')->references('id')->on('partners')->onDelete('cascade');
+            $table->foreignUuid('id_services')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();
             $table->userstamps('uuid');
         });

@@ -65,20 +65,20 @@ class UserController extends Controller
             session(['content' => 'content_users']);
 
             $request->validate([
-                'user_id' => ['uuid', 'max:255'],
+                'user_id' => ['required','uuid', 'max:255'],
             ]);
 
-            Allotment::where('id', $request->allotment_id)->delete();
+            User::where('id', $request->user_id)->delete();
 
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)
-                ->with('success_allotment',
+                ->with('success_user',
                     trans('admin.destroy-success',
                         ['attribute' => trans('User')]
                     ));
         }
         catch (QueryException $e) {
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)
-                ->with('error_allotment',
+                ->with('error_user',
                     trans('admin.destroy-error',
                         ['attribute' => trans('User'), 'error' => $e]
                     ));
