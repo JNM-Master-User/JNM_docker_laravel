@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function storeServices(Request $request)
+    public function storeService(Request $request)
     {
         try{
             session(['content'=>'content_services']);
@@ -49,7 +49,7 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroyServices(Request $request)
+    public function destroyService(Request $request)
     {
         $request->validate([
             'id' => ['string', 'max:255'],

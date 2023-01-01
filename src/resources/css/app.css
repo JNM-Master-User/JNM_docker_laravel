@@ -6,6 +6,16 @@
     filter: brightness(600%);
 }
 
+.required:after{
+    content:'*';
+    color: #bb0000;
+    padding-left:2px;
+}
+
+.required:hover{
+
+}
+
 .toggle-bg:after {
     content: '';
     @apply absolute left-0.5 top-0.5 bg-white border border-gray-300 h-5 w-5 rounded-full ring-0 transition;

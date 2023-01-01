@@ -19,7 +19,7 @@ class EventController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function storeEvents(Request $request)
+    public function storeEvent(Request $request)
     {
         $request->validate([
             'name' => [ 'required','string', 'max:255'],
@@ -55,7 +55,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroyEvents(Request $request)
+    public function destroyEvent(Request $request)
     {
 
         try{

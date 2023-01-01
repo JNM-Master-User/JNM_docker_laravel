@@ -20,8 +20,8 @@ class AuthenticateAdmin
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check() || !User::EnsureIsAdmin()){
-        return redirect(RouteServiceProvider::LOGIN)->with('user_status','Access Denied, Insufficient privileges');
-    }
+            return redirect(RouteServiceProvider::LOGIN)->with('user_status','Access Denied, Insufficient privileges');
+        }
         return $next($request);
     }
 }

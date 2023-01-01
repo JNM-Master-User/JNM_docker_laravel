@@ -1,7 +1,7 @@
 <x-app-admin-layout>
     <x-content.home id="content_dashboard" class="{{session()->get('content')=='content_dashboard' ? 'shown' : 'hidden' }}">
     </x-content.home>
-    <x-content.users :users="$data['users']" id="content_users" class="{{session()->get('content')=='content_user' ? 'shown' : 'hidden' }}">
+    <x-content.users :users="$data['users']" id="content_users" class="{{session()->get('content')=='content_users' ? 'shown' : 'hidden' }}">
     </x-content.users>
     <x-content.roles :roles="$data['roles']" id="content_roles" class="{{session()->get('content')=='content_roles' ? 'shown' : 'hidden' }}">
     </x-content.roles>

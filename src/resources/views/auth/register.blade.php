@@ -9,21 +9,21 @@
             @csrf
             <!-- Email Address -->
             <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')"/>
+                <x-input-label for="email" :value="__('Email')" class="required"/>
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                               placeholder="name@gmail.com" required/>
                 <x-input-error :messages="$errors->get('email')" class="mt-2"/>
             </div>
             <!-- Password -->
             <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')"/>
+                <x-input-label for="password" :value="__('Password')" class="required"/>
                 <x-text-input id="password" class="block mt-1 w-full" type="password" name="password"
                               placeholder="••••••••" required autocomplete="new-password"/>
                 <x-input-error :messages="$errors->get('password')" class="mt-2"/>
             </div>
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')"/>
+                <x-input-label for="password_confirmation" :value="__('Confirm Password')" class="required"/>
                 <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
                               name="password_confirmation" placeholder="••••••••" required/>
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
@@ -31,21 +31,21 @@
             <div class="grid gap-4 mt-4 md:grid-cols-2">
                 <div>
                     <!-- nom -->
-                    <x-input-label for="name" :value="__('Name')"/>
+                    <x-input-label for="name" :value="__('Name')" class="required"/>
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                                   placeholder="{{__('John')}}" required/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                 </div>
                 <div>
                     <!-- prenom -->
-                    <x-input-label for="last_name" :value="__('Last Name')"/>
+                    <x-input-label for="last_name" :value="__('Last Name')" class="required"/>
                     <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name"
                                   :value="old('last_name')" placeholder="{{__('Doe')}}" required/>
                     <x-input-error :messages="$errors->get('last_name')" class="mt-2"/>
                 </div>
                 <div>
                     <!-- date naissance -->
-                    <x-input-label for="date_of_birth" :value="__('Date of Birth')"/>
+                    <x-input-label for="date_of_birth" :value="__('Date of Birth')" class="required"/>
                     <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth"
                                   :value="old('date_of_birth')" placeholder="" required/>
                     <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2"/>
@@ -54,24 +54,24 @@
                     <!-- num tel -->
                     <x-input-label for="phone_number" :value="__('Phone number')"/>
                     <x-text-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number"
-                                  :value="old('phone_number')" placeholder="{{__('+33612345678')}}" required/>
+                                  :value="old('phone_number')" placeholder="{{__('+33612345678')}}"/>
                     <x-input-error :messages="$errors->get('phone_number')" class="mt-2"/>
                 </div>
                 <div>
                     <x-input-label for="address" :value="__('Address')"/>
                     <x-text-input id="address" class="block mt-1 w-full" type="text" name="address"
-                                  :value="old('address')" placeholder="{{__('ex: 3 Rue Charles de Gaulle')}}" required/>
+                                  :value="old('address')" placeholder="{{__('ex: 3 Rue Charles de Gaulle')}}"/>
                     <x-input-error :messages="$errors->get('address')" class="mt-2"/>
                 </div>
                 <div>
                     <x-input-label for="zip_code" :value="__('Zip code')"/>
                     <x-text-input id="zip_code" class="block mt-1 w-full" type="text" name="zip_code"
-                                  :value="old('zip_code')" placeholder="{{__('75000')}}" required/>
+                                  :value="old('zip_code')" placeholder="{{__('75000')}}"/>
                     <x-input-error :messages="$errors->get('zip_code')" class="mt-2"/>
                 </div>
                 <!-- statut -->
                 <div>
-                    <x-input-label :value="__('Select your status')"/>
+                    <x-input-label :value="__('Select your status')" class="required"/>
                     @foreach($users_status as $user_status)
                         <div>
                             <label for="register_status" class="inline-flex items-center">
@@ -86,8 +86,8 @@
                 </div>
                 <!-- miage  prov -->
                 <div>
-                    <x-input-label :value="__('Institution')"/>
-                    <x-inputs.select name="name_institution">
+                    <x-input-label :value="__('Institution')" class="required"/>
+                    <x-inputs.select name="name_institution" required>
                         @foreach($institutions as $institution)
                             <option value="{{ $institution->id }}"> {{ $institution->name }} </option>
                         @endforeach

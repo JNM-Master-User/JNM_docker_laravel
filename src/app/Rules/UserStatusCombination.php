@@ -42,9 +42,9 @@ class UserStatusCombination implements InvokableRule
             else if (in_array('membre bde',$userStatus)) {
                 if ($other = Helpers::in_array_any_return_array(['membre ca', 'directeur miage','directeur miage'], $userStatus)
                     || ( empty(Helpers::in_array_any_return_array(['étudiant'], $userStatus))
-                        || empty(Helpers::in_array_any_return_array(['enseignant'], $userStatus)) ) ) {
+                        && empty(Helpers::in_array_any_return_array(['enseignant'], $userStatus)) ) ) {
                     if(empty(Helpers::in_array_any_return_array(['étudiant'], $userStatus))
-                        || empty(Helpers::in_array_any_return_array(['enseignant'], $userStatus))){
+                        && empty(Helpers::in_array_any_return_array(['enseignant'], $userStatus))){
                         $fail('validation.custom.user-status.required-combination')->translate([
                             'attribute' => 'étudiant ou enseignant',
                             'other' => 'membre bde'

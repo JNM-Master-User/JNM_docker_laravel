@@ -1,6 +1,6 @@
 <div {{$attributes->merge(['class'=>''])}}>
 <!-- breadcrumb -->
-    <div class="p-4 bg-white dark:bg-gray-700 block sm:flex items-center justify-between lg:mt-1.5">
+    <div class="p-4 bg-white dark:bg-gray-700 block sm:flex items-center justify-between">
         <x-breadcrumb content="{{__('Users status')}}">
         </x-breadcrumb>
     </div>
@@ -27,12 +27,16 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-    <x-cards.input>
+    <x-cards.table>
         <x-table.users_status>
-            @foreach($usersStatus as $user_status)
+            @forelse($usersStatus as $user_status)
                 <x-items.user_status :userStatus="$user_status">
                 </x-items.user_status>
-            @endforeach
+            @empty
+                <div class="mx-4 my-1 text-gray-900 dark:text-white">
+                    {{__('No')}} {{__('User Status')}}...
+                </div>
+            @endforelse
         </x-table.users_status>
-    </x-cards.input>
+    </x-cards.table>
 </div>

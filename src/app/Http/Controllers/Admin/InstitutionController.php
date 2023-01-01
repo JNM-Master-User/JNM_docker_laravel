@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class InstitutionController extends Controller
 {
-    public function storeInstitutions(Request $request)
+    public function storeInstitution(Request $request)
     {
         session(['content'=>'content_institutions']);
         $request->validate([

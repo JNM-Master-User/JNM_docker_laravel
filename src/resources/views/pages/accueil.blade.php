@@ -17,4 +17,7 @@ hello
             });
         </script>
     </form>
+    @foreach(Auth::user()->definitionsUsersUsersStatus->load('userStatus') as $definitionUserUsersStatus)
+        {{$definitionUserUsersStatus->userStatus->type}}
+    @endforeach
 </x-app-public-layout>

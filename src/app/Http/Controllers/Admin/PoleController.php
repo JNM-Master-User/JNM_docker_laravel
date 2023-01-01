@@ -19,7 +19,7 @@ class PoleController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function storePoles(Request $request)
+    public function storePole(Request $request)
     {
         try{
             session(['content'=>'content_poles']);
@@ -42,7 +42,7 @@ class PoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroyPoles(Request $request)
+    public function destroyPole(Request $request)
     {
         try {
             $request->validate([

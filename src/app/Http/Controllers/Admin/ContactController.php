@@ -20,7 +20,7 @@ class ContactController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function storeContacts(Request $request)
+    public function storeContact(Request $request)
     {
         try {
             session(['content'=>'content_contacts']);
@@ -59,7 +59,7 @@ class ContactController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroyContacts(Request $request)
+    public function destroyContact(Request $request)
     {
 
         try {

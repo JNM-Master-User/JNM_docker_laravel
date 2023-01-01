@@ -18,7 +18,7 @@ class PartnerController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function storePartners(Request $request)
+    public function storePartner(Request $request)
     {
         $request->validate([
             'name' => [ 'string', 'max:255'],
@@ -43,7 +43,7 @@ class PartnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroyPartners(Request $request)
+    public function destroyPartner(Request $request)
     {
         try {
             $request->validate([

@@ -1,6 +1,6 @@
 <div {{$attributes->merge(['class'=>''])}}>
     <!-- breadcrumb -->
-    <div class="p-4 bg-white text-gray-900 dark:bg-gray-700 block sm:flex items-center justify-between lg:mt-1.5">
+    <div class="p-4 bg-white text-gray-900 dark:bg-gray-700 block sm:flex items-center justify-between">
         <x-breadcrumb content="{{__('Videos')}}">
         </x-breadcrumb>
     </div>
@@ -36,7 +36,7 @@
                         </div>
                     </fieldset>
                 </form>
-                @foreach($videos as $videos)
+                @forelse($videos as $videos)
                     <x-cards.input>
                         {{$videos->title}}
                         {{$videos->path_youtube}}
@@ -48,7 +48,11 @@
                             </x-buttons.delete-button>
                         </form>
                     </x-cards.input>
-                @endforeach
+                @empty
+                    <div class="mx-4 my-1 text-gray-900 dark:text-white">
+                        {{__('No')}} {{__('Videos')}}...
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

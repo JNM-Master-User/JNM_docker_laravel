@@ -54,13 +54,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function EnsureIsAdmin(): bool
     {
-        $isAdmin = false;
         foreach (Auth::user()->definitionsUsersUsersStatus->load('userStatus') as $definitionUserUsersStatus){
-            if ($definitionUserUsersStatus->userStatus->type == 'admin'){
-                $isAdmin = true;
-            }
+            if ($definitionUserUsersStatus->userStatus->type == 'admin') return true;
         }
-        return $isAdmin;
+        return false;
     }
     // user has one
     public function userSensitiveData()

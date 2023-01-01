@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
-    public function storeVideos(Request $request)
+    public function storeVideo(Request $request)
     {
         $request->validate([
             'title' => [ 'string', 'max:255'],

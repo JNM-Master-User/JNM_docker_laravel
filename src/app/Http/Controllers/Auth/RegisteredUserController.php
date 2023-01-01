@@ -9,7 +9,6 @@ use App\Models\User;
 use App\Models\UserSensitiveData;
 use App\Models\UserStatus;
 use App\Providers\RouteServiceProvider;
-use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,9 +52,9 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'date_of_birth' => ['required', 'date'],
-            'phone_number' => ['string', 'numeric', 'digits:10'],
-            'address' => ['string', 'max:255'],
-            'zip_code' => ['required', 'numeric', 'digits:5'],
+            'phone_number' => ['nullable','string', 'numeric', 'digits:10'],
+            'address' => ['nullable','string', 'max:255'],
+            'zip_code' => ['nullable','numeric', 'digits:5'],
             'type_status' => ['required', 'array', 'min:1', new UserStatusCombination],
             'type_status.*' => ['required', 'string', 'max:36'],
             'name_institution' => ['required', 'string', 'max:36']
