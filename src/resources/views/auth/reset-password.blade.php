@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @include('layouts.navigation_public')
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">

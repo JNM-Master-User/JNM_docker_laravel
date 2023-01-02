@@ -2,8 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.dark .dark\:logo-white{
-    filter: brightness(600%);
+.logo {
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(../public/logo.svg);
+    background-size: 60px;
+    height: 80px;
+    padding-left: 100px;
+}
+
+.dark .dark\:logo{
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(../public/logo-dark.svg);
+    background-size: 60px;
+    height: 80px;
+    padding-left: 100px;
 }
 
 .required:after{

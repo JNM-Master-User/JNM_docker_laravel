@@ -24,6 +24,7 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100 dark:bg-gray-800">
+    @include('layouts.navigation_public')
     <!-- main -->
     <main class="bg-gray-50">
         <main class="flex overflow-hidden bg-white dark:text-white dark:bg-gray-700">

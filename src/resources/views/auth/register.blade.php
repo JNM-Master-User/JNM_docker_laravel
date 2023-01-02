@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @include('layouts.navigation_public')
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -78,7 +79,7 @@
                                 <input id="register_status" value="{{ $user_status->id}}" type="checkbox"
                                        name="type_status[]"
                                        class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <span class="ml-2 sm:text-xs text-gray-600">{{ $user_status->type }}</span>
+                                <span class="ml-2 sm:text-xs text-gray-600 dark:text-white">{{ $user_status->type }}</span>
                             </label>
                         </div>
                     @endforeach
@@ -100,7 +101,7 @@
                     <input checked id="red-checkbox" type="checkbox" value=""
                            class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="red-checkbox"
-                           class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{__('I accept the ')}}</label>
+                           class="ml-2 text-sm font-medium text-gray-900 dark:text-white">{{__('I accept the ')}}</label>
                     <a class=" ml-1 underline hover:underline no-underline text-red-700 font-bold"
                        href="{{ route('login') }}">
                         {{ __('Terms and Conditions') }}
@@ -109,7 +110,7 @@
                 <div class="mt-4 text-sm relative">
                     <x-buttons.form-button name="{{ __('Register') }}"></x-buttons.form-button>
                 </div>
-                <div class="my-4 text-sm">
+                <div class="my-4 text-sm dark:text-white">
                     {{ __('Already registered?') }}
                     <a class=" ml-1 underline hover:underline no-underline text-red-700 font-bold"
                        href="{{ route('login') }}">

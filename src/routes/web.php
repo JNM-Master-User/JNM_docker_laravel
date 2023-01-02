@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccueilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.welcome');
 });
+
+Route::get('bookings', [AccueilController::class, 'create'])
+    ->name('accueil');
+
+Route::get('partners', [AccueilController::class, 'create'])
+    ->name('accueil');
+
+Route::get('tournaments', [AccueilController::class, 'create'])
+    ->name('accueil');
+
+Route::get('accueil', [AccueilController::class, 'create'])
+    ->name('accueil');
+
 
 /*Route::get('/dashboard/home', function () {
     return view('pages.dashboard')->with(array('content_dashboard'=>true));

@@ -28,6 +28,14 @@ class Event extends Model
         'desc'
     ];
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'date'
+    ];
+    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
