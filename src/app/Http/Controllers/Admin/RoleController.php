@@ -8,6 +8,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
+
+
 class RoleController extends Controller
 {
     /**
@@ -28,7 +30,7 @@ class RoleController extends Controller
             Role::create([
                 'name' => $request->name,
             ]);
-            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_roles', 'Role saved successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_roles', 'Roles saved successfully');
         }
         catch (QueryException $e){
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_roles', $e->errorInfo);
@@ -50,4 +52,27 @@ class RoleController extends Controller
             return redirect(RouteServiceProvider::HOME)->with('error_roles', 'Roles not removed successfully');
         }
     }
+
+    public function updateRoles(Request $request)
+    {
+
+        try {
+            session(['content' => 'content_roles']);
+
+            $request->validate([
+                'id' => ['required', 'uuid', 'max:255'],
+                'name' => ['required', 'string', 'max:255']
+            ]);
+
+            Role::where('id', $request->id)->update([
+                'name' => $request->name
+            ]);
+
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_roles', 'Roles saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_roles', $e->errorInfo);
+        }
+    }
+
 }
+

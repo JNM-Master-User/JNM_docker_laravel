@@ -86,6 +86,8 @@ Route::middleware(['auth'])->group(function () {
             ->name('roles.save');
         Route::post('roles_destroy',[RoleController::class, 'destroyRoles'])
             ->name('roles.destroy');
+        Route::post('roles_update',[RoleController::class, 'updateRoles'])
+            ->name('roles.update');
 
         Route::post('partners_save',[PartnerController::class, 'storePartners'])
             ->name('partners.save');
@@ -106,26 +108,36 @@ Route::middleware(['auth'])->group(function () {
             ->name('services.save');
         Route::post('services_destroy',[ServiceController::class, 'destroyServices'])
             ->name('services.destroy');
+        Route::post('services_update',[ServiceController::class, 'updateServices'])
+            ->name('services.update');
 
         Route::post('tournaments_save',[TournamentController::class, 'storeTournaments'])
             ->name('tournaments.save');
         Route::post('tournaments_destroy',[TournamentController::class, 'destroyTournaments'])
             ->name('tournaments.destroy');
+        Route::post('tournaments_update',[TournamentController::class, 'updateTournaments'])
+            ->name('tournaments.update');
 
         Route::post('videos_save',[VideoController::class, 'storeVideos'])
             ->name('videos.save');
         Route::post('videos_destroy',[VideoController::class, 'destroyVideos'])
             ->name('videos.destroy');
+        Route::post('videos_update',[VideoController::class, 'updateVideos'])
+            ->name('videos.update');
 
         Route::post('transports_save',[TransportController::class, 'storeTransports'])
             ->name('transports.save');
         Route::post('transports_destroy',[TransportController::class, 'destroyTransports'])
             ->name('transports.destroy');
+        Route::post('transports_update',[TransportController::class, 'updateTransports'])
+            ->name('transports.update');
 
         Route::post('users_status_save',[UserStatusController::class, 'storeUsersStatus'])
             ->name('users_status.save');
         Route::post('users_status_destroy', [UserStatusController::class, 'destroyUsersStatus'])
             ->name('users_status.destroy');
+        Route::post('users_status_update',[UserStatusController::class, 'updateUserStatus'])
+            ->name('users_status.update');
 
         Route::post('allotments_save',[AllotmentController::class, 'storeAllotments'])
             ->name('allotments.save');

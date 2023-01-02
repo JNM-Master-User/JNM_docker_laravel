@@ -1,48 +1,82 @@
-<tr class="hover:bg-gray-100">
-    <td class="p-2 w-4">
-        <div class="flex items-center">
-            <input id="checkbox-3" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
-        </div>
-    </td>
-    <td class="p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
-        <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{$tournament->name}}" alt="Michael Gough avatar">
-        <div class="text-sm font-normal text-gray-500">
-            <div class="text-sm font-normal text-gray-500">{{$tournament->name}}</div>
-        </div>
-    </td>
-    <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
-        <div class="text-sm font-normal text-gray-500">{{$tournament->date}}</div>
-    </td>
+<div>
+    <form method="POST" action="{{ route('tournaments.update') }}">
+        <table class="table-fixed min-w-full divide-y divide-gray-200">
+            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-500">
+            <tr class="hover:bg-gray-100">
+                @csrf
+                <input class="hidden" name="id" value='{{$tournament->id}}'>
+                <td class="p-2 w-4">
+                    <div class="flex items-center">
+                        <input id="checkbox-3" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
+                    </div>
+                </td>
+                <td class="p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
+                    <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{$tournament->name}}"
+                         alt="">
+                    <div class="text-sm font-normal text-gray-500">
+                        <div id="tournament-name-{{$tournament->id}}"
+                             class="text-sm font-normal text-gray-500">{{$tournament->name}}</div>
+                    </div>
+                </td>
+                <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
+                    <div id="tournament-date-{{$tournament->id}}"
+                         class="text-sm font-normal text-gray-500">{{$tournament->date}}</div>
+                </td>
+                <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
+                    <div id="tournament-date_end_upload-{{$tournament->id}}"
+                         class="text-sm font-normal text-gray-500">{{$tournament->date_end_upload}}</div>
+                </td>
+                <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
+                    <div id="tournament-desc-{{$tournament->id}}"
+                         class="text-sm font-normal text-gray-500">{{$tournament->desc}}</div>
+                </td>
 
-    <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
-        <div class="text-sm font-normal text-gray-500">{{$tournament->date_end_upload}}</div>
-    </td>
-    <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">
-        @if($tournament->desc != null)
-            <div class="text-sm font-normal text-gray-500">{{$tournament->desc}}</div>
-        @else
-            <div class="text-sm font-normal text-gray-500">??</div>
-        @endif
-    </td>
-    <td class="p-2 whitespace-nowrap space-x-2">
-        <form method="POST" action="{{ route('tournaments.save') }}">
-            <button type="button" data-modal-toggle="user-modal-{{$tournament->id}}" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-                <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
-                {{__('Edit Tournament')}}
-            </button>
-        </form>
-    </td>
-    <td class="p-2 whitespace-nowrap space-x-2">
-        <form method="POST" action="{{ route('tournaments.destroy') }}">
-            @csrf
-            <input type="hidden" name="id" value="{{$tournament->id}}">
-            <button type="submit" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-                <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
-                {{__('Delete Tournament')}}
-            </button>
-        </form>
-    </td>
-    <!-- Modal -->
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <input type="hidden" name="id" value="{{$tournament->id}}">
+                    <button id="buttonSaveTournament-{{$tournament->id}}" type="submit" class="hidden text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                        <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
+                        {{__('Save Tournament')}}
+                    </button>
+                </td>
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <button id="buttonEditTournament-{{$tournament->id}}" type="button"
+                            class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                        <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
+                        {{__('Edit Tournament')}}
+                    </button>
+                    <!-- Script -->
+                    <script type="text/javascript">
+                        document.getElementById('buttonEditTournament-{{$tournament->id}}').addEventListener('click', () => {
+                            let element1 = document.getElementById('buttonSaveTournament-{{$tournament->id}}');
+                            element1.classList.toggle('hidden');
+
+                            let element2 = document.getElementById('buttonEditTournament-{{$tournament->id}}');
+                            element2.disabled = true;
+                            document.getElementById('tournament-name-{{$tournament->id}}').innerHTML = `<input name="name" value='{{$tournament->name}}' />`;
+                            document.getElementById('tournament-date-{{$tournament->id}}').innerHTML = `<input name="date" value='{{$tournament->date}}'  />`;
+                            document.getElementById('tournament-date_end_upload-{{$tournament->id}}').innerHTML = `<input name="date_end_upload" value='{{$tournament->date_end_upload}}'  />`;
+                            document.getElementById('tournament-desc-{{$tournament->id}}').innerHTML = `<input name="desc" value='{{$tournament->desc}}'  />`;
+                        });
+                    </script>
+                </td>
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <form method="POST" action="{{ route('tournaments.destroy') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$tournament->id}}">
+                        <button id="buttonDeleteTournament" type="submit"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                            <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
+                            {{__('Delete Tournament')}}
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<!-- Modal -->
     <div id="user-modal-{{$tournament->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-2 md:inset-0 h-modal md:h-full">
         <div class="relative w-full max-w-md h-full md:h-auto">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">

@@ -49,3 +49,6 @@
         </x-table.tournaments>
     </x-cards.input>
 </div>
+
+
+

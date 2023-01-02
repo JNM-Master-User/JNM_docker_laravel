@@ -1,21 +1,67 @@
-<tr class="hover:bg-gray-100">
-    <td class="p-2 w-4">
-        <div class="flex items-center">
-            <input id="checkbox-3" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
-        </div>
-    </td>
-    <td class="p-2 whitespace-nowrap text-base font-medium text-gray-900">{{$userStatus->type}}</td>
-    <td class="p-2 whitespace-nowrap space-x-2">
-        <button type="button" data-modal-toggle="user-modal-{{$userStatus->id}}" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-            <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
-            {{__('Edit User status')}}
-        </button>
-        <button type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-            <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
-            {{__('Delete User status')}}
-        </button>
-    </td>
-    <!-- Modal -->
+<div>
+    <form method="POST" action="{{ route('users_status.update') }}">
+        <table class="table-fixed min-w-full divide-y divide-gray-200">
+            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-500">
+            <tr class="hover:bg-gray-100">
+                @csrf
+                <input class="hidden" name="id" value='{{$userStatus->id}}'>
+                <td class="p-2 w-4">
+                    <div class="flex items-center">
+                        <input id="checkbox-3" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
+                    </div>
+                </td>
+                <td class="p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
+                    <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{$userStatus->type}}"
+                         alt="">
+                    <div class="text-sm font-normal text-gray-500">
+                        <div id="user_status-type-{{$userStatus->id}}"
+                             class="text-sm font-normal text-gray-500">{{$userStatus->type}}</div>
+                    </div>
+                </td>
+
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <input type="hidden" name="id" value="{{$userStatus->id}}">
+                    <button id="buttonSaveUserStatus-{{$userStatus->id}}" type="submit" class="hidden text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                        <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
+                        {{__('Save User Status')}}
+                    </button>
+                </td>
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <button id="buttonEditUserStatus-{{$userStatus->id}}" type="button"
+                            class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                        <i class="mr-2 fa-lg fa-fw fa-solid fa-user-pen"></i>
+                        {{__('Edit User Status')}}
+                    </button>
+                    <!-- Script -->
+                    <script type="text/javascript">
+                        document.getElementById('buttonEditUserStatus-{{$userStatus->id}}').addEventListener('click', () => {
+                            let element1 = document.getElementById('buttonSaveUserStatus-{{$userStatus->id}}');
+                            element1.classList.toggle('hidden');
+
+                            let element2 = document.getElementById('buttonEditUserStatus-{{$userStatus->id}}');
+                            element2.disabled = true;
+                            document.getElementById('user_status-type-{{$userStatus->id}}').innerHTML = `<input name="type" value='{{$userStatus->type}}' />`;
+                        });
+                    </script>
+                </td>
+                <td class="p-2 whitespace-nowrap space-x-2">
+                    <form method="POST" action="{{ route('users_status.destroy') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$userStatus->id}}">
+                        <button id="buttonDeleteUserStatus" type="submit"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+                            <i class="mr-2 fa-lg fa-fw fa-solid fa-trash-can"></i>
+                            {{__('Delete User Status')}}
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<!-- Modal -->
     <div id="user-modal-{{$userStatus->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-2 md:inset-0 h-modal md:h-full">
         <div class="relative w-full max-w-md h-full md:h-auto">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">

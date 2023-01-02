@@ -3,11 +3,11 @@
         <div class="align-middle inline-block min-w-full">
             <div class="shadow overflow-hidden">
                 <table class="table-fixed min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-100">
+                    <thead class="bg-gray-100 dark:bg-gray-700">
                     <tr>
                         <th scope="col" class="p-4">
                             <div class="flex items-center">
-                                <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
+                                <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-500 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
                                 <label for="checkbox-all" class="sr-only">checkbox</label>
                             </div>
                         </th>
@@ -20,10 +20,8 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                    {{$slot}}
-                    </tbody>
                 </table>
+                {{$slot}}
             </div>
         </div>
     </div>

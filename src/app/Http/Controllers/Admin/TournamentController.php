@@ -63,4 +63,33 @@ class TournamentController extends Controller
 
         return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_tournaments', 'Tournament removed successfully');
     }
+
+    public function updateTournaments(Request $request)
+    {
+
+        try {
+            session(['content' => 'content_allotments']);
+
+            $request->validate([
+                'id' => ['required', 'uuid', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
+                'date' => ['required','date', 'max:255'],
+                'date_end_upload' => ['required','date', 'max:255'],
+                'desc' => ['string', 'max:255']
+            ]);
+
+            Tournament::where('id', $request->id)->update([
+                'name' => $request->name,
+                'date' => $request->date,
+                'date_end_upload' => $request->date_end_upload,
+                'desc' => $request->desc,
+            ]);
+
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_tournaments', 'Tournaments saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_tournaments', $e->errorInfo);
+        }
+    }
+
+
 }

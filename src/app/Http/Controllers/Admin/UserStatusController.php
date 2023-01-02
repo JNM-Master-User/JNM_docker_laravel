@@ -113,6 +113,28 @@ class UserStatusController extends Controller
         }
     }
 
+    public function updateUserStatus(Request $request)
+    {
+
+        try {
+            session(['content' => 'content_users_status']);
+
+            $request->validate([
+                'id' => ['required', 'uuid', 'max:255'],
+                'type' => ['required', 'string', 'max:255']
+            ]);
+
+            UserStatus::where('id', $request->id)->update([
+                'name' => $request->name,
+                'type' => $request->type
+            ]);
+
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_users_status', 'Users_status saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_users_status', $e->errorInfo);
+        }
+    }
+
 }
 $str = $request->type;
 @if(preg_match($str,(\b(?:teacher|rocket)\b|\*)))

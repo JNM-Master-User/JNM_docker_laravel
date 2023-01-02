@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tournament;
 use App\Models\Transport;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class TransportController extends Controller
+class  TransportController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -67,6 +68,29 @@ class TransportController extends Controller
         Transport::where('id' , $request->id)->delete();
 
         return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_transports', 'Transport removed successfully');
+    }
+
+    public function updateTransports(Request $request)
+    {
+
+        try {
+            session(['content' => 'content_services']);
+
+            $request->validate([
+                'id' => ['required', 'uuid', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
+                'path_picture' => ['required', 'string', 'max:255']
+            ]);
+
+            Tournament::where('id', $request->id)->update([
+                'name' => $request->name,
+                'path_picture' => $request->path_picture
+            ]);
+
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_tournaments', 'Tournaments saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_tournaments', $e->errorInfo);
+        }
     }
 }
 

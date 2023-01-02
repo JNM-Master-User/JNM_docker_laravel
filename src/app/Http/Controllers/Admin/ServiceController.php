@@ -61,8 +61,26 @@ class ServiceController extends Controller
         return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_services', 'Service removed successfully');
     }
 
-    public function editServices(Request $request)
+    public function updateServices(Request $request)
     {
 
+        try {
+            session(['content' => 'content_services']);
+
+            $request->validate([
+                'id' => ['required', 'uuid', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
+                'desc' => ['string', 'max:255']
+            ]);
+
+            Service::where('id', $request->id)->update([
+                'name' => $request->name,
+                'desc' => $request->desc
+            ]);
+
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_services', 'Services saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_services', $e->errorInfo);
+        }
     }
 }
