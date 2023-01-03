@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'save-success' => ':attribute saved with success.',
-    'save-error' => 'Error, :attribute could not be saved. :error',
+    'save-success' => ':attribute enregistré avec succès.',
+    'save-error' => "Erreur : :attribute, enregistrement impossible.",
 
-    'destroy-success' => ':attribute destroyed with success.',
-    'destroy-error' => 'Error, :attribute could not be destroyed. :error',
+    'destroy-success' => ':attribute supprimé avec succès.',
+    'destroy-error' => 'Erreur : :attribute, suppression impossible. :error',
 
-    'update-success' => ':attribute updated with success.',
-    'update-error' => 'Error, :attribute could not be updated. :error'
+    'update-success' => ':attribute modifié avec succès.',
+    'update-error' => 'Erreur : :attribute, modifications impossible. :error'
     ];

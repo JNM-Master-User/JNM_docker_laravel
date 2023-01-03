@@ -1,6 +1,6 @@
 <div {{$attributes->merge(['class'=>''])}}>
     <!-- breadcrumb -->
-    <div class="p-4 bg-white dark:bg-gray-700 block sm:flex items-center justify-between lg:mt-1.5">
+    <div class="p-4 bg-white dark:bg-gray-700 block sm:flex items-center justify-between">
         <x-breadcrumb content="{{__('Poles')}}">
         </x-breadcrumb>
     </div>
@@ -15,10 +15,10 @@
             <x-cards.fieldset>
                 @csrf
                 <!-- Name -->
-                <div class="mt-4">
+                <div>
                     <x-input-label for="name" :value="__('Name')"/>
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" autofocus/>
-                    <x-input-error objectName="pole" :messages="$errors->get('name')" class="mt-2"/>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                 </div>
                 <div class="flex items-center justify-end mt-4">
                     <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
@@ -26,12 +26,16 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-    <x-cards.input>
+    <x-cards.table>
         <x-table.poles>
-            @foreach($poles as $pole)
+            @forelse($poles as $pole)
                 <x-items.pole :pole="$pole">
                 </x-items.pole>
-            @endforeach
+            @empty
+                <div class="mx-4 my-1 text-gray-900 dark:text-white">
+                    {{__('No')}} {{__('Poles')}}...
+                </div>
+            @endforelse
         </x-table.poles>
-    </x-cards.input>
+    </x-cards.table>
 </div>

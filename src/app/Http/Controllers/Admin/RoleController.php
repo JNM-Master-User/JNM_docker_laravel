@@ -20,7 +20,7 @@ class RoleController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function storeRoles(Request $request)
+    public function storeRole(Request $request)
     {
         try{
             session(['content'=>'content_roles']);
@@ -37,7 +37,7 @@ class RoleController extends Controller
         }
     }
 
-    public function destroyRoles(Request $request)
+    public function destroyRole(Request $request)
     {
 
         try{
@@ -45,11 +45,11 @@ class RoleController extends Controller
                 'id' => ['string', 'max:255'],
             ]);
             Role::where('id' , $request->id)->delete();
-            return redirect(RouteServiceProvider::HOME)->with('success_roles', 'Roles removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_roles', 'Roles removed successfully');
         }
 
         catch (QueryException $e) {
-            return redirect(RouteServiceProvider::HOME)->with('error_roles', 'Roles not removed successfully');
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_roles', 'Roles not removed successfully');
         }
     }
 

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('users_sensitive_data', function (Blueprint $table) {
             $table->uuid('id')->primaryKey();
-            $table->foreignUuid('id_user')->unique()->references('id')->on('users');;
+            $table->foreignUuid('id_user')->unique()->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->string('last_name');
             $table->date('date_of_birth');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('zip_code')->nullable();
             $table->string('path_picture');
-            $table->foreignUuid('id_institution_user')->references('id')->on('institutions');;
+            $table->foreignUuid('id_institution_user')->nullable()->references('id')->on('institutions')->onDelete('set null');
             $table->timestamps();
             $table->userstamps('uuid');
         });

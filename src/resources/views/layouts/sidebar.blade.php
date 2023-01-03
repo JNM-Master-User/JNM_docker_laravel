@@ -4,20 +4,9 @@
       <div class="flex-1 px-3 bg-white space-y-1 dark:text-white dark:bg-gray-700">
         <div class="pt-2">
           <ul class="pb-2">
-            <li>
-              <form action="#" method="GET" class="lg:hidden">
-                <label for="mobile-search" class="sr-only">Search</label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <i class="fa-fw fa-lg fa-solid fa-magnifying-glass text-gray-500 group-hover:text-gray-900 transition duration-75"></i>
-                  </div>
-                  <input type="text" name="email" id="mobile-search" class=" mb-6 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full pl-10 p-2" placeholder="Search">
-                </div>
-              </form>
-            </li>
             <x-sidebar.menu>
               <x-icons.acount></x-icons.acount>
-              <span class=" flex-1 whitespace-nowrap">{{ __(("Account"))}}</span>
+              <span class=" flex-1 whitespace-nowrap">{{$user->email}}</span>
             </x-sidebar.menu>
           </ul>
         </div>
@@ -27,7 +16,7 @@
               <x-icons.dashboard id="icon_menu_toggle_dashboard" class="{{session()->get('content')=='content_dashboard' ? 'text-gray-900 dark:text-gray-200' : '' }}"></x-icons.dashboard>
               <span class=" flex-1 whitespace-nowrap">{{ __("Dashboard") }}</span>
             </x-sidebar.menu>
-            <x-sidebar.menu id="button_menu_toggle_users" class="{{session()->get('content')=='content_user' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
+            <x-sidebar.menu id="button_menu_toggle_users" class="{{session()->get('content')=='content_users' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
               <x-icons.users id="icon_menu_toggle_users" class="{{session()->get('content')=='content_users' ? 'text-gray-900 dark:text-gray-200' : '' }}"></x-icons.users>
               <span class=" flex-1 whitespace-nowrap">{{ __("Users") }}</span>
             </x-sidebar.menu>
@@ -74,40 +63,6 @@
             <x-sidebar.menu id="button_menu_toggle_institutions" class="{{session()->get('content')=='content_institutions' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
               <x-icons.institutions id="icon_menu_toggle_institutions" class="{{session()->get('content')=='content_institutions' ? 'text-gray-900 dark:text-gray-200' : '' }}"></x-icons.institutions>
               <span class=" flex-1 whitespace-nowrap">{{__("Institutions")}}</span>
-            </x-sidebar.menu>
-          </ul>
-        </div>
-        <div class="pt-4">
-          <ul class="pb-2">
-          </ul>
-          <x-sidebar.menu id="button_menu_toggle_test" class="{{session()->get('content')=='content_test' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
-            <span class=" flex-1 whitespace-nowrap">{{__("test")}}</span>
-          </x-sidebar.menu>
-          <x-sidebar.menu id="button_menu_toggle_test" class="{{session()->get('content')=='content_test' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
-            <span class=" flex-1 whitespace-nowrap">{{__("test")}}</span>
-          </x-sidebar.menu>
-          <x-sidebar.menu id="button_menu_toggle_test" class="{{session()->get('content')=='content_test' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
-            <span class=" flex-1 whitespace-nowrap">{{__("test")}}</span>
-          </x-sidebar.menu>
-          <x-sidebar.menu id="button_menu_toggle_test" class="{{session()->get('content')=='content_test' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
-            <span class=" flex-1 whitespace-nowrap">{{__("test")}}</span>
-          </x-sidebar.menu>
-          <x-sidebar.menu id="button_menu_toggle_test" class="{{session()->get('content')=='content_test' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
-            <span class=" flex-1 whitespace-nowrap">{{__("test")}}</span>
-          </x-sidebar.menu>
-          <x-sidebar.menu id="button_menu_toggle_test" class="{{session()->get('content')=='content_test' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
-            <span class=" flex-1 whitespace-nowrap">{{__("test")}}</span>
-          </x-sidebar.menu>
-        </div>
-        <div class="pt-4">
-          <ul class="pb-2">
-            <x-sidebar.menu id="button_menu_toggle_pictures" class="{{session()->get('content')=='content_pictures' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
-              <x-icons.pictures id="icon_menu_toggle_pictures" class="{{session()->get('content')=='content_pictures' ? 'text-gray-900 dark:text-gray-200' : '' }}"></x-icons.pictures>
-              <span class=" flex-1 whitespace-nowrap">{{__("Pictures")}}</span>
-            </x-sidebar.menu>
-            <x-sidebar.menu id="button_menu_toggle_videos" class="{{session()->get('content')=='content_videos' ? 'bg-gray-100 dark:bg-gray-600' : '' }}">
-              <x-icons.videos id="icon_menu_toggle_videos" class="{{session()->get('content')=='content_videos' ? 'text-gray-900 dark:text-gray-200' : '' }}"></x-icons.videos>
-              <span class=" flex-1 whitespace-nowrap">{{ __("Videos") }}</span>
             </x-sidebar.menu>
           </ul>
         </div>

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class TournamentController extends Controller
 {
-    public function storeTournaments(Request $request)
+    public function storeTournament(Request $request)
     {
         try{
             session(['content'=>'content_tournaments']);
@@ -52,7 +52,7 @@ class TournamentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroyTournaments(Request $request)
+    public function destroyTournament(Request $request)
     {
         $request->validate([
             'id' => ['string', 'max:255'],

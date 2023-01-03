@@ -1,27 +1,21 @@
 <div class="flex flex-col">
     <div class="overflow-x-auto">
         <div class="align-middle inline-block min-w-full">
-            <div class="shadow overflow-hidden">
+            <div class="shadow overflow-hidden md:rounded-2xl">
                 <table class="table-fixed min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-100">
                     <tr>
-                        <th scope="col" class="p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
-                                <label for="checkbox-all" class="sr-only">checkbox</label>
-                            </div>
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
+                            {{__('email')}} - {{__('Name')}} - {{__('Last Name')}}
                         </th>
                         <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Email
+                            {{__('Creation Date')}}
                         </th>
                         <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Position
+                            {{__('Update Date')}}
                         </th>
                         <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Country
-                        </th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Status
+                            {{__('Mail Status Verification')}}
                         </th>
                         <th scope="col" class="p-4">
                         </th>

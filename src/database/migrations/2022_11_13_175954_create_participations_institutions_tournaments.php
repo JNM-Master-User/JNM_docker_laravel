@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('participations_institutions_tournaments', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->foreignUuid('id_institution')->references('id')->on('institutions');
-            $table->foreignUuid('id_tournament')->references('id')->on('tournaments');
+            $table->foreignUuid('id_institution')->references('id')->on('institutions')->onDelete('cascade');
+            $table->foreignUuid('id_tournament')->references('id')->on('tournaments')->onDelete('cascade');
             $table->timestamps();
             $table->userstamps('uuid');
         });

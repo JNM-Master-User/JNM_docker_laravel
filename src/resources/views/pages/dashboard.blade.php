@@ -1,7 +1,7 @@
 <x-app-admin-layout>
     <x-content.home id="content_dashboard" class="{{session()->get('content')=='content_dashboard' ? 'shown' : 'hidden' }}">
     </x-content.home>
-    <x-content.users :users="$data['users']" id="content_users" class="{{session()->get('content')=='content_user' ? 'shown' : 'hidden' }}">
+    <x-content.users :users="$data['users']" id="content_users" class="{{session()->get('content')=='content_users' ? 'shown' : 'hidden' }}">
     </x-content.users>
     <x-content.roles :roles="$data['roles']" id="content_roles" class="{{session()->get('content')=='content_roles' ? 'shown' : 'hidden' }}">
     </x-content.roles>
@@ -17,8 +17,6 @@
     </x-content.services>
     <x-content.tournaments :tournaments="$data['tournaments']" id="content_tournaments" class="{{session()->get('content')=='content_tournaments' ? 'shown' : 'hidden'  }}">
     </x-content.tournaments>
-    <x-content.videos :videos="$data['videos']" id="content_videos" class="{{session()->get('content')=='content_videos' ? 'shown' : 'hidden'  }}">
-    </x-content.videos>
     <x-content.users_status :usersStatus="$data['users_status']" id="content_users_status" class="{{session()->get('content')=='content_users_status' ? 'shown' : 'hidden'  }}">
     </x-content.users_status>
     <x-content.allotments :allotments="$data['allotments']" id="content_allotments" class="{{session()->get('content')=='content_allotments' ? 'shown' : 'hidden'  }}">
@@ -38,7 +36,6 @@
         const button_menu_toggle_institutions = document.getElementById('button_menu_toggle_institutions');
         const button_menu_toggle_services = document.getElementById('button_menu_toggle_services');
         const button_menu_toggle_tournaments = document.getElementById('button_menu_toggle_tournaments');
-        const button_menu_toggle_videos = document.getElementById('button_menu_toggle_videos');
         const button_menu_toggle_users_status = document.getElementById('button_menu_toggle_users_status');
         const button_menu_toggle_allotments = document.getElementById('button_menu_toggle_allotments');
         const button_menu_toggle_contacts = document.getElementById('button_menu_toggle_contacts');
@@ -53,7 +50,6 @@
         const icon_menu_toggle_institutions = document.getElementById('icon_menu_toggle_institutions');
         const icon_menu_toggle_services = document.getElementById('icon_menu_toggle_services');
         const icon_menu_toggle_tournaments = document.getElementById('icon_menu_toggle_tournaments');
-        const icon_menu_toggle_videos = document.getElementById('icon_menu_toggle_videos');
         const icon_menu_toggle_users_status = document.getElementById('icon_menu_toggle_users_status');
         const icon_menu_toggle_allotments = document.getElementById('icon_menu_toggle_allotments');
         const icon_menu_toggle_contacts = document.getElementById('icon_menu_toggle_contacts');
@@ -68,7 +64,6 @@
         const content_institutions = document.getElementById('content_institutions');
         const content_services = document.getElementById('content_services');
         const content_tournaments = document.getElementById('content_tournaments');
-        const content_videos = document.getElementById('content_videos');
         const content_users_status = document.getElementById('content_users_status');
         const content_allotments = document.getElementById('content_allotments');
         const content_contacts = document.getElementById('content_contacts');
@@ -96,7 +91,6 @@
             content_institutions.classList.remove('shown','hidden');
             content_services.classList.remove('shown','hidden');
             content_tournaments.classList.remove('shown','hidden');
-            content_videos.classList.remove('shown','hidden');
             content_users_status.classList.remove('shown','hidden');
             content_allotments.classList.remove('shown','hidden');
             content_contacts.classList.remove('shown','hidden');
@@ -111,7 +105,6 @@
             content_institutions.classList.add('hidden');
             content_services.classList.add('hidden');
             content_tournaments.classList.add('hidden');
-            content_videos.classList.add('hidden');
             content_users_status.classList.add('hidden');
             content_allotments.classList.add('hidden');
             content_contacts.classList.add('hidden');
@@ -126,7 +119,6 @@
             button_menu_toggle_institutions.classList.remove('bg-gray-100','dark:bg-gray-600');
             button_menu_toggle_services.classList.remove('bg-gray-100','dark:bg-gray-600');
             button_menu_toggle_tournaments.classList.remove('bg-gray-100','dark:bg-gray-600');
-            button_menu_toggle_videos.classList.remove('bg-gray-100','dark:bg-gray-600');
             button_menu_toggle_users_status.classList.remove('bg-gray-100','dark:bg-gray-600');
             button_menu_toggle_allotments.classList.remove('bg-gray-100','dark:bg-gray-600');
             button_menu_toggle_contacts.classList.remove('bg-gray-100','dark:bg-gray-600');
@@ -141,7 +133,6 @@
             icon_menu_toggle_institutions.classList.remove('text-gray-900','dark:text-gray-200');
             icon_menu_toggle_services.classList.remove('text-gray-900','dark:text-gray-200');
             icon_menu_toggle_tournaments.classList.remove('text-gray-900','dark:text-gray-200');
-            icon_menu_toggle_videos.classList.remove('text-gray-900','dark:text-gray-200');
             icon_menu_toggle_users_status.classList.remove('text-gray-900','dark:text-gray-200');
             icon_menu_toggle_allotments.classList.remove('text-gray-900','dark:text-gray-200');
             icon_menu_toggle_contacts.classList.remove('text-gray-900','dark:text-gray-200');
@@ -201,12 +192,6 @@
             show(content_tournaments);
             selected_menu(button_menu_toggle_tournaments);
             selected_icon(icon_menu_toggle_tournaments);
-        })
-        button_menu_toggle_videos.addEventListener('click', () => {
-            reset();
-            show(content_videos);
-            selected_menu(button_menu_toggle_videos);
-            selected_icon(icon_menu_toggle_videos);
         })
         button_menu_toggle_users_status.addEventListener('click', () => {
             reset();

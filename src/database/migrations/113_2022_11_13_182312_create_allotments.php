@@ -17,7 +17,8 @@ return new class extends Migration
             $table->uuid('id')->unique()->primaryKey();
             $table->string('name');
             $table->string('address');
-            $table->string('zip_code');
+            $table->string('path_picture');
+            $table->text('desc')->nullable();
             $table->timestamps();
             $table->userstamps('uuid');
         });

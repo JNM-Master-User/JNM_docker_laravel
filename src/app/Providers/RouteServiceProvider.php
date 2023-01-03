@@ -20,6 +20,9 @@ class RouteServiceProvider extends ServiceProvider
     public const DASHBOARD_ACCUEIL = '/dashboard/accueil';
     public const LOGIN = '/login';
     PUBLIC CONST ACCUEIL ='/accueil';
+    PUBLIC CONST PROFIL = '/profil';
+    PUBLIC CONST EVENTS = '/events';
+    PUBLIC CONST ALLOTMENTS = '/allotments';
     PUBLIC CONST REGISTER = '/register';
 
 

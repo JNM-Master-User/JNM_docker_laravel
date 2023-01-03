@@ -25,6 +25,15 @@ class Tournament extends Model
         'desc'
     ];
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'date',
+        'date_end_upload'
+    ];
+    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>

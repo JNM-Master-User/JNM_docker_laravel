@@ -1,6 +1,6 @@
 <div {{$attributes->merge(['class'=>''])}}>
     <!-- breadcrumb -->
-    <div class="p-4 bg-white dark:bg-gray-700 block sm:flex items-center justify-between lg:mt-1.5">
+    <div class="p-4 bg-white dark:bg-gray-700 block sm:flex items-center justify-between">
         <x-breadcrumb content="{{__('Events')}}">
         </x-breadcrumb>
     </div>
@@ -15,7 +15,7 @@
             <x-cards.fieldset>
             @csrf
                 <div>
-                    <x-input-label for="name" :value="__('Name')"/>
+                    <x-input-label for="name" :value="__('Name Event')"/>
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" autofocus/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                 </div>
@@ -61,13 +61,17 @@
             </x-cards.fieldset>
         </form>
     </x-cards.input>
-    <x-cards.input>
+    <x-cards.table>
         <x-table.events>
-            @foreach($events as $event)
+            @forelse($events as $event)
                 <x-items.event :event="$event">
                 </x-items.event>
-            @endforeach
+            @empty
+                <div class="mx-4 my-1 text-gray-900 dark:text-white">
+                    {{__('No')}} {{__('Events')}}...
+                </div>
+            @endforelse
         </x-table.events>
-    </x-cards.input>
+    </x-cards.table>
 </div>
 

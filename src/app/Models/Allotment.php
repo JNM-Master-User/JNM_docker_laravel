@@ -20,8 +20,7 @@ class Allotment extends Model
      */
     protected $fillable = [
         'name',
-        'address',
-        'zip_code'
+        'address'
     ];
     /**
      * The attributes that should be cast.

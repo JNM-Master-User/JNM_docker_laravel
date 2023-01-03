@@ -9,20 +9,54 @@
     "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\\'t receive the email, we will gladly send you another.": "Merci pour votre inscription! Avant de commencer, vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer. Si vous n'avez pas reçu de mail, nous vous en enverrons un autre.",
     "A new verification link has been sent to the email address you provided during registration.": "Un nouveau lien de vérification a été envoyé à l'adresse e-mail que vous avez fournie lors de l'inscription.",
 
+    "No": "Aucuns",
     "Users": "Utilisateurs",
+    "User": "Utilisateur",
+    "Mail Status Verification": " Status vérification mail",
+    "Update Date": " Date création",
+    "Creation Date": "Date mise à jour",
+    "Verified": "Vérifié",
+    "Unverified": "Non vérifié",
+
     "Poles":"Pôles",
+    "Pole":"Pôle",
     "Roles": "Rôles",
+    "Role": "Rôle",
     "Contacts": "Contacts",
+    "Contact": "Contact",
+
     "Allotments": "Logements",
+    "Allotment": "Logement",
+    "All Allotments": "Tous les Logements",
+
     "Events": "Évènements",
+    "Event": "Évènement",
+    "Events desc": "Ici vos réservations d'évènements et activités en cours et futures :",
+    "All Events": "Tous les Évènements",
+
     "Institutions": "Établissements",
+    "Institution": "Établissement",
+
     "Partners": "Partenaires",
+    "Partner": "Partenaire",
+
     "Pictures": "Images",
+    "Picture": "Image",
+
     "Services": "Services",
-    "Tournaments": "Tournois",
+    "Service": "Service",
+
+    "Tournaments": "Concours",
+    "Tournament": "Concours",
+
     "Transports": "Transports",
+    "Transport": "Transport",
+    "All Transports": "Tous les Transports",
+
     "Users Status": "Status Utilisateurs",
+    "Users Statu": "Status Utilisateur",
     "Videos": "Vidéos",
+    "Video": "Vidéo",
 
     "Password": "Mot de passe",
     "Email": "Email",
@@ -32,11 +66,18 @@
     "Date of Birth": "Date de naissance",
     "Address": "Adresse",
     "Zip code": "Code postal",
-    "Institution": "Établissement",
     "Select your status": "Sélectionnez vos status",
+    "Account": "Compte",
 
-    "Log in": "Connexion",
+    "Log In": "Connexion",
     "Log Out": "Déconnexion",
+    "Home": "Accueil",
+    "Booking": "Réservation",
+    "Bookings": "Réservations",
+    "Bookings desc": "Ici vos réservations de logement en cours et futures :",
+    "My Bookings": "Mes Réservations",
+    "Booked": "Réservés",
+    "to book": "à réserver",
 
     "Register": "Créer un compte",
     "Confirm Password": "Confirmer mot de passe",

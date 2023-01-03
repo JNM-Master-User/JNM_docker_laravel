@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('bookings_users_events', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->foreignUuid('id_user')->references('id')->on('users');
-            $table->foreignUuid('id_event')->references('id')->on('events');
+            $table->foreignUuid('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignUuid('id_event')->references('id')->on('events')->onDelete('cascade');
             $table->timestamps();
             $table->userstamps('uuid');
         });

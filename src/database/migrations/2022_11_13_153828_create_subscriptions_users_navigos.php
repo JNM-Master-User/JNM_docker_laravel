@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('subscriptions_users_navigos', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->foreignUuid('id_user')->unique()->references('id')->on('users');
-            $table->foreignUuid('id_navigo')->unique()->references('id')->on('navigos');
+            $table->foreignUuid('id_user')->unique()->references('id')->on('users')->onDelete('cascade');
+            $table->foreignUuid('id_navigo')->unique()->references('id')->on('navigos')->onDelete('cascade');
             $table->integer('card_id')->unique();
             $table->timestamps();
             $table->userstamps('uuid');

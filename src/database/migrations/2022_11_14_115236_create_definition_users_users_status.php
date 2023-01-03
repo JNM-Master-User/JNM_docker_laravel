@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('definitions_users_users_status', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->foreignUuid('id_user')->references('id')->on('users');
-            $table->foreignUuid('id_user_status')->references('id')->on('users_status');
+            $table->foreignUuid('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignUuid('id_user_status')->references('id')->on('users_status')->onDelete('cascade');
             $table->timestamps();
             $table->userstamps('uuid');
         });

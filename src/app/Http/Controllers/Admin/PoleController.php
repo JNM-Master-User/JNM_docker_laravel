@@ -19,12 +19,13 @@ class PoleController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function storePoles(Request $request)
+    public function storePole(Request $request)
     {
         try{
             session(['content'=>'content_poles']);
+
             $request->validate([
-                'name' => ['required','string', 'max:255'],
+                'name' => ['string', 'max:255'],
             ]);
             Pole::create([
                 'name' => $request->name,
@@ -42,7 +43,7 @@ class PoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroyPoles(Request $request)
+    public function destroyPole(Request $request)
     {
         try {
             $request->validate([
@@ -56,4 +57,26 @@ class PoleController extends Controller
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_poles', 'Pole not removed successfully');
         }
     }
+
+    public function updatePoles(Request $request)
+    {
+
+        try {
+            session(['content' => 'content_poles']);
+
+            $request->validate([
+                'id' => ['required', 'uuid', 'max:255'],
+                'name' => ['required','string', 'max:255'],
+            ]);
+
+            Pole::where('id', $request->id)->update([
+                'name' => $request->name,
+            ]);
+
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success_poles', 'Poles saved successfully');
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('error_poles', $e->errorInfo);
+        }
+    }
+
 }

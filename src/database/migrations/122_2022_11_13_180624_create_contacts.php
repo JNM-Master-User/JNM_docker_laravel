@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->foreignUuid('id_pole')->references('id')->on('poles');
-            $table->foreignUuid('id_role')->references('id')->on('roles');
+            $table->foreignUuid('id_pole')->references('id')->on('poles')->onDelete('cascade');
+            $table->foreignUuid('id_role')->references('id')->on('roles')->onDelete('cascade');
             $table->string('name');
             $table->string('last_name');
             $table->timestamps();

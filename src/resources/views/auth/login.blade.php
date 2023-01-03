@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @include('layouts.navigation_public')
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -26,7 +27,7 @@
                 <div class="flex items-start text-sm">
                     <label for="remember_me" class="inline-flex items-center">
                         <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                        <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        <span class="ml-2 text-sm text-gray-600 dark:text-white">{{ __('Remember me') }}</span>
                     </label>
                 @if (Route::has('password.request'))
                     <a class="ml-auto underline hover:underline no-underline text-red-700 font-bold"
@@ -38,9 +39,9 @@
             </div>
 
             <div class="mt-4 text-sm w-full">
-                <x-buttons.form-button name="{{ __('Log in') }}"></x-buttons.form-button>
+                <x-buttons.form-button name="{{ __('Log In') }}"></x-buttons.form-button>
             </div>
-            <div class="my-4 w-full text-sm">
+            <div class="my-4 w-full text-sm dark:text-white">
                 {{ __('No account yet?') }}
                 <a href="{{ route('register') }}" class="ml-1 underline hover:underline no-underline text-red-700 font-bold" href="{{ route('login') }}">
                     {{ __('Create Account') }}
