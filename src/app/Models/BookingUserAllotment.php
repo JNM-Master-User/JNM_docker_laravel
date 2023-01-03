@@ -7,7 +7,7 @@ use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Allotment extends Model
+class BookingUserAllotment extends Model
 {
     use HasFactory, Uuid, CreatedUpdatedBy;
 
@@ -19,8 +19,8 @@ class Allotment extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'address'
+        'id_user',
+        'id_allotment'
     ];
     /**
      * The attributes that should be cast.
@@ -32,11 +32,15 @@ class Allotment extends Model
     ];
     public $incrementing = false;
 
-    protected $table = 'allotments';
+    protected $table = 'bookings_users_allotments';
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'id_user');
+    }
+    public function allotment()
+    {
+        return $this->belongsTo(Allotment::class,'id_allotment');
     }
     public function creator()
     {

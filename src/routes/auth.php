@@ -24,6 +24,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\SaveUserSensitiveDataController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 
@@ -82,8 +83,32 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware('verified')->group(function () {
 
-        Route::get('profil', [ProfilController::class, 'create'])
+        Route::get('profil', [ProfilController::class, 'createProfil'])
             ->name('profil');
+        Route::post('profil', [ProfilController::class, 'destroyBookingUserEvent'])
+            ->name('booking.user.event.destroy');
+        Route::post('profil', [ProfilController::class, 'destroyBookingUserAllotment'])
+            ->name('booking.user.allotment.destroy');
+        Route::post('profil', [ProfilController::class, 'destroySubscriptionUserNavigo'])
+            ->name('subscription.user.navigo.destroy');
+
+        Route::get('bookings', [BookingController::class, 'createBookings'])
+            ->name('bookings');
+
+        Route::get('events', [BookingController::class, 'createEvents'])
+            ->name('events');
+        Route::post('events', [BookingController::class, 'storeBookingUserEvent'])
+            ->name('booking.user.event.store');
+
+        Route::get('allotments', [BookingController::class, 'createAllotments'])
+            ->name('allotments');
+        Route::post('allotments', [BookingController::class, 'storeBookingUserAllotment'])
+            ->name('booking.user.allotment.store');
+
+        Route::get('transports', [BookingController::class, 'createTransports'])
+            ->name('transports');
+        Route::post('transports', [BookingController::class, 'storeSubscriptionUserNavigo'])
+            ->name('subscription.user.navigo.store');
 
         Route::middleware('admin')->prefix('dashboard')->group(function () {
 

@@ -17,10 +17,13 @@ class AllotmentFactory extends Factory
      */
     public function definition()
     {
+        $unique = $this->faker->unique()->randomElement(['Appartement','T2','Hotel','Chalet','T1']);
+
         return [
-            'name' => $this->faker->unique()->randomElement(['Appartement','T2','Hotel','Chalet','T1']),
+            'name' => $unique,
             'address' => $this->faker->address,
-            'zip_code' => $this->faker->randomNumber(5),
+            'path_picture' => strtolower(str_replace(' ','_',$unique).'.png'),
+            'desc' => $this->faker->paragraph,
             'created_by' => User::where('email','root@example.com')->first()->id,
             'updated_by' => User::where('email','root@example.com')->first()->id,
         ];

@@ -1,4 +1,3 @@
-<!--Nav-->
 <nav id="header" class="bg-white shadow-lg dark:text-white dark:bg-gray-700 fixed w-full z-30 top-0 text-gray">
     <div class="w-full container mx-auto flex flex-wrap items-center mt-0 py-2">
         <div class="block lg:hidden pr-4">
@@ -21,7 +20,7 @@
                     <a class="inline-block dark:text-white text-black font-bold no-underline" href="{{ route('accueil') }}">{{__('Home')}}</a>
                 </li>
                 <li class="cursor-pointer my-2 pr-2 pl-2 mr-1 ml-1 text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-400 rounded-lg text-sm py-2">
-                    <a class="inline-block dark:text-white text-black font-bold no-underline" href="#">{{__('Booking')}}</a>
+                    <a class="inline-block dark:text-white text-black font-bold no-underline" href="{{ route('bookings') }}">{{__('Booking')}}</a>
                 </li>
                 <li class="cursor-pointer my-2 pr-2 pl-2 mr-1 ml-1 text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-400 rounded-lg text-sm py-2">
                     <a class="inline-block dark:text-white text-black font-bold no-underline" href="#">{{__('Partners')}}</a>
@@ -30,17 +29,19 @@
                     <a class="inline-block dark:text-white text-black font-bold no-underline" href="#">{{__('Tournament')}}</a>
                 </li>
             @auth
-            @if($user->userSensitiveData)
+            @if($user->userSensitiveData && !$user->EnsureIsAdmin())
                 <li class="my-2 pr-2 pl-2 mr-1 ml-1 text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-400 rounded-lg text-sm py-1">
-                    <a class="inline-block  text-black font-bold no-underline" href="{{ route('profil') }}">
-                        <div class="flex ml-4 mr-4">
-                            <img class="h-10 w-10 rounded-full" src="{{asset('storage/users_profile_picture/avatar_user_'.$user->id.'.png')}}" alt="">
-                            <div class="ml-3 text-sm font-normal text-gray-500 dark:text-white">
-                                <div class="text-base font-semibold text-gray-900 dark:text-white">{{$user->userSensitiveData->name ?? ''}} {{$user->userSensitiveData->last_name ?? ''}}</div>
-                                <div class="text-sm font-normal text-gray-500 dark:text-gray-200 ">{{$user->email}}</div>
+                    <form method="GET" action="{{ route('profil') }}">
+                        <button type="submit" class="inline-block  text-black font-bold no-underline">
+                            <div class="flex ml-1 mr-1">
+                                <img class="h-10 w-10 rounded-full" src="{{asset('storage/users_profile_picture/'.$user->userSensitiveData->path_picture)}}" alt="">
+                                <div class="ml-3 text-sm font-normal text-gray-500 dark:text-white">
+                                    <div class="text-base font-semibold text-gray-900 dark:text-white">{{$user->userSensitiveData->name ?? ''}} {{$user->userSensitiveData->last_name ?? ''}}</div>
+                                    <div class="text-sm font-normal text-gray-500 dark:text-gray-200 ">{{$user->email}}</div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </button>
+                    </form>
                 </li>
             @endif
             @endauth
@@ -49,6 +50,7 @@
             </x-buttons.dark-theme-toggle-button>
             @auth
             @if($user->EnsureIsAdmin())
+                <x-buttons.success-button class="my-2 mr-2 ml-2"><i class="fa-solid fa-screwdriver-wrench"></i></x-buttons.success-button>
                 <form method="GET" action="{{ route('dashboard.accueil') }}">
                     <x-buttons.link-button class="my-2 mr-2 ml-2" name="{{ __('Dashboard') }}"></x-buttons.link-button>
                 </form>
@@ -69,3 +71,84 @@
         </div>
     </div>
 </nav>
+<script>
+    var scrollpos = window.scrollY;
+    var header = document.getElementById("header");
+    var navcontent = document.getElementById("nav-content");
+    var navaction = document.getElementById("navAction");
+    var brandname = document.getElementById("brandname");
+    var toToggle = document.querySelectorAll(".toggleColour");
+
+    document.addEventListener("scroll", function () {
+        /*Apply classes for slide in bar*/
+        scrollpos = window.scrollY;
+
+        if (scrollpos > 10) {
+            header.classList.add("bg-white");
+            navaction.classList.remove("bg-white");
+            navaction.classList.add("gradient");
+            navaction.classList.remove("text-gray-800");
+            navaction.classList.add("text-white");
+            //Use to switch toggleColour colours
+            for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-gray-800");
+                toToggle[i].classList.remove("text-white");
+            }
+            header.classList.add("shadow");
+            navcontent.classList.remove("bg-gray-100");
+            navcontent.classList.add("bg-white");
+        } else {
+            header.classList.remove("bg-white");
+            navaction.classList.remove("gradient");
+            navaction.classList.add("bg-white");
+            navaction.classList.remove("text-white");
+            navaction.classList.add("text-gray-800");
+            //Use to switch toggleColour colours
+            for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-white");
+                toToggle[i].classList.remove("text-gray-800");
+            }
+
+            header.classList.remove("shadow");
+            navcontent.classList.remove("bg-white");
+            navcontent.classList.add("bg-gray-100");
+        }
+    });
+</script>
+<script>
+    /*Toggle dropdown list*/
+    /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+    var navMenuDiv = document.getElementById("nav-content");
+    var navMenu = document.getElementById("nav-toggle");
+
+    document.onclick = check;
+    function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+
+        //Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+            // click NOT on the menu
+            if (checkParent(target, navMenu)) {
+                // click on the link
+                if (navMenuDiv.classList.contains("hidden")) {
+                    navMenuDiv.classList.remove("hidden");
+                } else {
+                    navMenuDiv.classList.add("hidden");
+                }
+            } else {
+                // click both outside link and outside menu, hide menu
+                navMenuDiv.classList.add("hidden");
+            }
+        }
+    }
+    function checkParent(t, elm) {
+        while (t.parentNode) {
+            if (t == elm) {
+                return true;
+            }
+            t = t.parentNode;
+        }
+        return false;
+    }
+</script>

@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('allotments', function (Blueprint $table) {
+        Schema::create('bookings_users_allotments', function (Blueprint $table) {
             $table->uuid('id')->unique()->primaryKey();
-            $table->string('name');
-            $table->string('address');
-            $table->string('path_picture');
-            $table->text('desc')->nullable();
+            $table->foreignUuid('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignUuid('id_allotment')->references('id')->on('allotments')->onDelete('cascade');
             $table->timestamps();
             $table->userstamps('uuid');
         });
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('allotments');
+        Schema::dropIfExists('bookings_users_allotments');
     }
 };

@@ -24,22 +24,35 @@
     "Role": "Rôle",
     "Contacts": "Contacts",
     "Contact": "Contact",
+
     "Allotments": "Logements",
     "Allotment": "Logement",
+    "All Allotments": "Tous les Logements",
+
     "Events": "Évènements",
     "Event": "Évènement",
+    "Events desc": "Ici vos réservations d'évènements et activités en cours et futures :",
+    "All Events": "Tous les Évènements",
+
     "Institutions": "Établissements",
     "Institution": "Établissement",
+
     "Partners": "Partenaires",
     "Partner": "Partenaire",
+
     "Pictures": "Images",
     "Picture": "Image",
+
     "Services": "Services",
     "Service": "Service",
+
     "Tournaments": "Concours",
     "Tournament": "Concours",
+
     "Transports": "Transports",
     "Transport": "Transport",
+    "All Transports": "Tous les Transports",
+
     "Users Status": "Status Utilisateurs",
     "Users Statu": "Status Utilisateur",
     "Videos": "Vidéos",
@@ -60,6 +73,11 @@
     "Log Out": "Déconnexion",
     "Home": "Accueil",
     "Booking": "Réservation",
+    "Bookings": "Réservations",
+    "Bookings desc": "Ici vos réservations de logement en cours et futures :",
+    "My Bookings": "Mes Réservations",
+    "Booked": "Réservés",
+    "to book": "à réserver",
 
     "Register": "Créer un compte",
     "Confirm Password": "Confirmer mot de passe",

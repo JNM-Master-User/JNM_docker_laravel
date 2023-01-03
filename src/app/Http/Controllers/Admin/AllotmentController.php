@@ -45,7 +45,7 @@ class AllotmentController extends Controller
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)
                 ->with('error_allotment',
                     trans('admin.save-error',
-                        ['attribute' => trans('Allotment'), 'error' => $e]
+                        ['attribute' => trans('Allotment')]
                     ));
         }
     }
@@ -79,7 +79,7 @@ class AllotmentController extends Controller
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)
                 ->with('error_allotment',
                     trans('admin.update-error',
-                        ['attribute' => trans('Allotment'), 'error' => $e]
+                        ['attribute' => trans('Allotment')]
                     ));
         }
     }
@@ -111,7 +111,7 @@ class AllotmentController extends Controller
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)
                 ->with('error_allotment',
                     trans('admin.destroy-error',
-                        ['attribute' => trans('Allotment'), 'error' => $e]
+                        ['attribute' => trans('Allotment')]
                     ));
         }
     }
