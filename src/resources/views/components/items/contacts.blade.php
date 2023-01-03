@@ -56,9 +56,16 @@
                                 element2.disabled = true;
                                 document.getElementById('contact-name-{{$contact->id}}').innerHTML = `<input name="name" value='{{$contact->name}}' />`;
                                 document.getElementById('contact-last_name-{{$contact->id}}').innerHTML = `<input name="last_name" value='{{$contact->last_name}}'  />`;
-                                document.getElementById('contact-name_pole-{{$contact->id}}').innerHTML = `<input name="name_pole" value='{{$contact->pole->name}}' />`;
-                                document.getElementById('contact-name_role-{{$contact->id}}').innerHTML = `<input name="name_role" value='{{$contact->role->name}}'  />`;
-
+                                document.getElementById('contact-name_pole-{{$contact->id}}').innerHTML = `<select name="name_pole"
+                                     @foreach($poles as $pole)
+                                    <option value="{{ $pole->id }}"> {{ $pole->name }} </option>
+                                    @endforeach
+                                'select/>`;
+                                document.getElementById('contact-name_role-{{$contact->id}}').innerHTML = `<select name="name_role"
+                                     @foreach($roles as $role)
+                                    <option value="{{ $role->id }}"> {{ $role->name }} </option>
+                                    @endforeach
+                                'select/>`;
                             });
                         </script>
                     </td>

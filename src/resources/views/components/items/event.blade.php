@@ -73,7 +73,11 @@
                             document.getElementById('event-date-{{$event->id}}').innerHTML = `<input name="date" value='{{$event->date}}'  />`;
                             document.getElementById('event-path_picture-{{$event->id}}').innerHTML = `<input name="path_picture" value='{{$event->path_picture}}'  />`;
                             document.getElementById('event-desc-{{$event->id}}').innerHTML = `<input name="desc" value='{{$event->desc}}'  />`;
-                            document.getElementById('event-name_institution-{{$event->id}}').innerHTML = `<input name="name_institution" value='{{$event->institutionManager->name}}'  />`;
+                            document.getElementById('event-name_institution-{{$event->id}}').innerHTML = `<select name="name_institution"
+                                 @foreach($institutions as $institution)
+                                <option value="{{ $institution->id }}"> {{ $institution->name }} </option>
+                                @endforeach
+                            'select/>`;
                         });
                     </script>
                 </td>

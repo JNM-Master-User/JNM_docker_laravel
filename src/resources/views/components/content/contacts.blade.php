@@ -41,16 +41,17 @@
                         @endforeach
                     </x-inputs.select>
                 </div>
-                <div class="flex items-center justify-end mt-4">
-                    <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
-                </div>
             </x-cards.fieldset>
+            <div class="flex items-center justify-end mt-4">
+                <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
+            </div>
+
         </form>
     </x-cards.input>
     <x-cards.input>
         <x-table.contacts>
             @foreach($contacts as $contact)
-                <x-items.contacts :contact="$contact">
+                <x-items.contacts :contact="$contact" :poles="$poles" :roles="$roles">
                 </x-items.contacts>
             @endforeach
         </x-table.contacts>

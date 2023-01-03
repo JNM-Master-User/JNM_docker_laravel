@@ -64,7 +64,7 @@
     <x-cards.input>
         <x-table.events>
             @foreach($events as $event)
-                <x-items.event :event="$event">
+                <x-items.event :event="$event" :institutions="$institutions">
                 </x-items.event>
             @endforeach
         </x-table.events>

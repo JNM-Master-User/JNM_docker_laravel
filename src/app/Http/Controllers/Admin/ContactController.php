@@ -77,7 +77,7 @@ class ContactController extends Controller
     {
 
         try {
-            session(['content' => 'content_contacts ']);
+            session(['content' => 'content_contacts']);
 
             $request->validate([
                 'id' => ['required', 'uuid', 'max:255'],
