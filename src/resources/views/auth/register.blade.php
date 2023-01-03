@@ -101,7 +101,7 @@
                     <input checked id="red-checkbox" type="checkbox" value=""
                            class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="red-checkbox"
-                           class="ml-2 text-sm font-medium text-gray-900 dark:text-white">{{__('I accept the ')}}</label>
+                           class="ml-2 text-sm font-medium text-gray-900 dark:text-white">{{__('I accept the')}} </label>
                     <a class=" ml-1 underline hover:underline no-underline text-red-700 font-bold"
                        href="{{ route('login') }}">
                         {{ __('Terms and Conditions') }}

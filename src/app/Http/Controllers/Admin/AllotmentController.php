@@ -7,6 +7,7 @@ use App\Models\Allotment;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
+use App\Http\Controllers\Admin\PictureController as Picture;
 
 class AllotmentController extends Controller
 {
@@ -25,15 +26,24 @@ class AllotmentController extends Controller
 
             $request->validate([
                 'allotment_name' => ['required','string', 'max:255', 'unique:allotments,name'],
-                'allotment_address' => ['required','string', 'max:255','unique:allotments,address,NULL,id,zip_code,'.$request->allotment_zip_code],
-                'allotment_zip_code' => ['required','numeric', 'digits:5','unique:allotments,zip_code,NULL,id,address,'.$request->allotment_address]
+                'allotment_address' => ['required','string', 'max:255','unique:allotments,address'],
+                'allotment_date' => [ 'required','date'],
+                'allotment_picture' => ['required','image','mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+                'allotment_desc' => ['nullable','string','max:255']
+
             ]);
 
-            Allotment::create([
-                'name' => $request->allotment_name,
-                'address' => $request->allotment_address,
-                'zip_code' => $request->allotment_zip_code
-            ]);
+            if($request->hasFile('allotment_picture')){
+                $image_name = Picture::upload($request,Picture::ALLOTMENTS_STORAGE,'allotment_picture');
+
+                Allotment::create([
+                    'name' => strtolower(preg_replace("([^A-Za-z0-9])", "", $request->allotment_name)),
+                    'address' => $request->allotment_address,
+                    'date' => $request->allotment_date,
+                    'path_picture' => $image_name,
+                    'desc' => $request->allotment_desc
+                ]);
+            }
 
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)
                 ->with('success_allotment',
@@ -42,6 +52,7 @@ class AllotmentController extends Controller
                     ));
         }
         catch (QueryException $e) {
+            dd($e);
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)
                 ->with('error_allotment',
                     trans('admin.save-error',
@@ -59,14 +70,12 @@ class AllotmentController extends Controller
             $request->validate([
                 'allotment_id' => ['required', 'uuid', 'max:255'],
                 'allotment_name' => ['required', 'string', 'max:255','unique:allotments,name,'.$request->allotment_id],
-                'allotment_address' => ['string', 'max:255','unique:allotments,address,'.$request->allotment_id.',id,zip_code,'.$request->allotment_zip_code],
-                'allotment_zip_code' => ['numeric', 'digits:5', 'max:99999','unique:allotments,zip_code,'.$request->allotment_id.',id,address,'.$request->allotment_address]
+                'allotment_address' => ['string', 'max:255','unique:allotments,address,'.$request->allotment_id],
             ]);
 
             Allotment::where('id', $request->allotment_id)->update([
                 'name' => $request->allotment_name,
                 'address' => $request->allotment_address,
-                'zip_code' => $request->allotment_zip_code
             ]);
 
             return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)

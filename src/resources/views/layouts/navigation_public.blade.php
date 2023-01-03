@@ -23,7 +23,7 @@
                     <a class="inline-block dark:text-white text-black font-bold no-underline" href="{{ route('bookings') }}">{{__('Booking')}}</a>
                 </li>
                 <li class="cursor-pointer my-2 pr-2 pl-2 mr-1 ml-1 text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-400 rounded-lg text-sm py-2">
-                    <a class="inline-block dark:text-white text-black font-bold no-underline" href="#">{{__('Partners')}}</a>
+                    <a class="inline-block dark:text-white text-black font-bold no-underline" href="{{ route('partners') }}">{{__('Partners')}}</a>
                 </li>
                 <li class="cursor-pointer my-2 pr-2 pl-2 mr-1 ml-1 text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-400 rounded-lg text-sm py-2">
                     <a class="inline-block dark:text-white text-black font-bold no-underline" href="#">{{__('Tournament')}}</a>
@@ -71,50 +71,6 @@
         </div>
     </div>
 </nav>
-<script>
-    var scrollpos = window.scrollY;
-    var header = document.getElementById("header");
-    var navcontent = document.getElementById("nav-content");
-    var navaction = document.getElementById("navAction");
-    var brandname = document.getElementById("brandname");
-    var toToggle = document.querySelectorAll(".toggleColour");
-
-    document.addEventListener("scroll", function () {
-        /*Apply classes for slide in bar*/
-        scrollpos = window.scrollY;
-
-        if (scrollpos > 10) {
-            header.classList.add("bg-white");
-            navaction.classList.remove("bg-white");
-            navaction.classList.add("gradient");
-            navaction.classList.remove("text-gray-800");
-            navaction.classList.add("text-white");
-            //Use to switch toggleColour colours
-            for (var i = 0; i < toToggle.length; i++) {
-                toToggle[i].classList.add("text-gray-800");
-                toToggle[i].classList.remove("text-white");
-            }
-            header.classList.add("shadow");
-            navcontent.classList.remove("bg-gray-100");
-            navcontent.classList.add("bg-white");
-        } else {
-            header.classList.remove("bg-white");
-            navaction.classList.remove("gradient");
-            navaction.classList.add("bg-white");
-            navaction.classList.remove("text-white");
-            navaction.classList.add("text-gray-800");
-            //Use to switch toggleColour colours
-            for (var i = 0; i < toToggle.length; i++) {
-                toToggle[i].classList.add("text-white");
-                toToggle[i].classList.remove("text-gray-800");
-            }
-
-            header.classList.remove("shadow");
-            navcontent.classList.remove("bg-white");
-            navcontent.classList.add("bg-gray-100");
-        }
-    });
-</script>
 <script>
     /*Toggle dropdown list*/
     /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/

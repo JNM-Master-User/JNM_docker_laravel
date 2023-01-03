@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid('id')->unique()->primaryKey();
             $table->string('name');
             $table->string('address');
+            $table->date('date');
             $table->string('path_picture');
             $table->text('desc')->nullable();
             $table->timestamps();

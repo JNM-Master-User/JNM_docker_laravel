@@ -5,36 +5,15 @@
         </x-breadcrumb>
     </div>
     <!-- end breadcrumb -->
+    @if(session()->get('success_user'))
     <x-cards.input>
-        @if(session()->get('success_user'))
-            <x-input-success :messages="session()->get('success_user')" class="mt-2"/>
-        @elseif(session()->get('error_user'))
-            <x-input-error :messages="session()->get('error_user')" class="mt-2"/>
-        @endif
-        <form method="POST" action="{{ route('users.save') }}">
-            <x-cards.fieldset>
-                @csrf
-                <div>
-                    <x-input-label for="user_email" :value="__('Email')" />
-                    <x-text-input id="user_email" class="block mt-1 w-full" type="email" name="user_email" :value="old('user_email')" required />
-                    <x-input-error :messages="$errors->get('user_email')" class="mt-2" />
-                </div>
-                <div>
-                    <x-input-label for="password" :value="__('Password')" />
-                    <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                </div>
-                <div>
-                    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-                    <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                </div>
-                <div class="flex items-center justify-end mt-4">
-                    <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
-                </div>
-            </x-cards.fieldset>
-        </form>
+        <x-input-success :messages="session()->get('success_user')" class="mt-2"/>
     </x-cards.input>
+    @elseif(session()->get('error_user'))
+    <x-cards.input>
+        <x-input-error :messages="session()->get('error_user')" class="mt-2"/>
+    </x-cards.input>
+    @endif
     <x-cards.table>
         <x-table.users>
             @forelse($users as $user)

@@ -12,7 +12,7 @@
             <x-input-error :messages="session()->get('error_allotment')" class="mt-2"/>
         @endif
 
-            <form method="POST" action="{{ route('allotments.save') }}">
+            <form method="POST" action="{{ route('allotments.save') }}" enctype="multipart/form-data">
                 <x-cards.fieldset>
                     @csrf
                     <!-- Name -->
@@ -27,17 +27,27 @@
                         <x-input-error :messages="$errors->get('allotment_address')" class="mt-2"/>
                     </div>
                     <div>
-                        <x-input-label for="allotment_zip_code" :value="__('Zip_code')"/>
-                        <x-text-input id="allotment_zip_code" class="block mt-1 w-full" type="text" name="allotment_zip_code" autofocus required/>
-                        <x-input-error :messages="$errors->get('allotment_zip_code')" class="mt-2"/>
+                        <x-input-label for="allotment_date" :value="__('Date')"/>
+                        <x-text-input id="allotment_date" class="block mt-1 w-full" type="date" name="allotment_date" autofocus/>
+                        <x-input-error :messages="$errors->get('allotment_date')" class="mt-2"/>
                     </div>
-                    <div class="flex items-center justify-end mt-4">
-                        <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
+                    <div>
+                        <x-input-label for="allotment_desc" :value="__('Desc')"/>
+                        <x-text-input id="allotment_desc" class="block mt-1 w-full" type="text" name="allotment_desc" autofocus/>
+                        <x-input-error :messages="$errors->get('allotment_desc')" class="mt-2"/>
+                    </div>
+                    <div class="mt-4">
+                        <x-input-label for="allotment_picture" :value="__('Picture')"/>
+                        <x-inputs.dropzone id="allotment_picture" class="block mt-1 w-full" type="file" name="allotment_picture" autofocus/>
+                        <x-input-error :messages="$errors->get('allotment_picture')" class="mt-2"/>
                     </div>
                 </x-cards.fieldset>
+                <div class="flex items-center justify-end mt-4">
+                    <x-buttons.form-button name="{{ __('Save') }}"></x-buttons.form-button>
+                </div>
             </form>
     </x-cards.input>
-    <x-cards.table>
+    <x-cards.table class="md:mb-6">
         <x-table.allotments>
             @forelse($allotments as $allotment)
                     <x-items.allotment :allotment="$allotment">

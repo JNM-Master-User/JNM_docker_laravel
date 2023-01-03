@@ -30,7 +30,7 @@ class  TransportController extends Controller
             ]);
 
             if($request->hasFile('picture')){
-                $image_name = Picture::upload($request,Picture::TRANSPORTS_STORAGE);
+                $image_name = Picture::upload($request,Picture::TRANSPORTS_STORAGE,'picture');
 
                 Transport::create([
                     'name' => strtolower(preg_replace("([^A-Za-z0-9])", "", $request->name)),

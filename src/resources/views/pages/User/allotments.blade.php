@@ -5,14 +5,14 @@
     </div>
     <x-cards.input>
         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{__('All Allotments')}}</h5>
-    </x-cards.input>
-    <x-cards.input>
         @if(session()->get('success_allotments'))
             <x-input-success :messages="session()->get('success_allotments')" class="mt-2"/>
         @elseif(session()->get('error_allotments'))
             <x-input-error :messages="session()->get('error_allotments')" class="mt-2"/>
         @endif
-        <x-cards.title icon="fa-bed" title="{{__('Events')}}">
+    </x-cards.input>
+    <x-cards.input>
+        <x-cards.title icon="fa-bed" title="{{__('Allotments')}}">
             <x-slot name="icon">
                 <x-icons.allotments class="fa-2xl mb-10"></x-icons.allotments>
             </x-slot>
@@ -21,6 +21,7 @@
             <x-cards.booking img="{{asset('storage/allotments/'.$allotment->path_picture)}}"
                              name="{{$allotment->name}}"
                              address="{{$allotment->address}}"
+                             date="{{$allotment->date->format('d-m-Y')}}"
                              desc="{{$allotment->desc}}">
                 <div class="flex justify-end">
                     <form method="POST" action="{{ route('booking.user.allotment.store') }}">

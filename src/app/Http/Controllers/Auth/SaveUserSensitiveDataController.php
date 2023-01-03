@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Database\QueryException;
 
 class SaveUserSensitiveDataController extends Controller
 {
@@ -32,27 +33,41 @@ class SaveUserSensitiveDataController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['nullable', 'string', 'max:255'],
-            'last_name' => ['nullable', 'string', 'max:255'],
-            'date_of_birth' => ['nullable', 'date'],
-            'phone_number' => ['nullable', 'numeric', 'digits:10'],
-            'address' => ['nullable','string', 'max:255',]
-        ]);
+        try {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'date_of_birth' => ['required', 'date'],
+                'phone_number' => ['nullable', 'numeric', 'digits:10'],
+                'address' => ['nullable', 'string', 'max:255'],
+                'zip_code' => ['nullable', 'digits:5']
+            ]);
 
 
-        UserSensitiveData::updateOrCreate([
-            'id_user' => Auth::id()
-            ],[
-            'id_user' => Auth::id(),
-            'name' => Str::lower($request->name),
-            'last_name' => Str::lower($request->last_name),
-            'date_of_birth' => $request->date_of_birth,
-            'phone_number' => $request->phone_number,
-            'address' => Str::lower($request->address),
-        ]);
+            UserSensitiveData::updateOrCreate([
+                'id_user' => Auth::id()
+            ], [
+                'id_user' => Auth::id(),
+                'name' => Str::lower($request->name),
+                'last_name' => Str::lower($request->last_name),
+                'date_of_birth' => $request->date_of_birth,
+                'phone_number' => $request->phone_number,
+                'address' => Str::lower($request->address),
+                'zip_code' => Str::lower($request->zip_code),
+            ]);
 
-        return redirect(RouteServiceProvider::DASHBOARD_ACCUEIL)->with('success', 'Sensitive data saved successfully');
+            return redirect(RouteServiceProvider::PROFIL)
+                ->with('success_user-sensitive-data',
+                    trans('admin.update-success',
+                        ['attribute' => trans('Sensitive Data')]
+                    ));
+        } catch (QueryException $e) {
+            return redirect(RouteServiceProvider::PROFIL)
+                ->with('error_user-sensitive-data',
+                    trans('admin.save-error',
+                        ['attribute' => trans('Sensitive Data')]
+                    ));
+        }
     }
 
 

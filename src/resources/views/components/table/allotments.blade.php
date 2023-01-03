@@ -5,14 +5,11 @@
                 <table class="table-fixed min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-100 dark:bg-gray-700">
                     <tr>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Name
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 dark:text-white uppercase">
+                            {{__('Last Name')}}
                         </th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Address
-                        </th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">
-                            Zip code
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 dark:text-white uppercase">
+                            {{__('Address')}}
                         </th>
                         <th scope="col" class="p-4">
                         </th>

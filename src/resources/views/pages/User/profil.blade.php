@@ -4,35 +4,11 @@
         </x-breadcrumb>
     </div>
     <x-cards.input>
-        <div class="p-6">
-            {{ __("You're logged in!") }}
-            <label id="compteur"></label>
-            <script type="text/javascript">
-                var Affiche = document.getElementById("compteur");
-
-                function Rebour() {
-                    var date1 = new Date();
-                    var date2 = new Date("Dec 25, 2035 00:00:00");
-                    var sec = (date2 - date1) / 1000;
-                    var n = 24 * 3600;
-                    if (sec > 0) {
-                        j = Math.floor(sec / n);
-                        h = Math.floor((sec - (j * n)) / 3600);
-                        mn = Math.floor((sec - ((j * n + h * 3600))) / 60);
-                        sec = Math.floor(sec - ((j * n + h * 3600 + mn * 60)));
-                        Affiche.innerHTML = "" + j + " j " + h + " h " + mn + " min " + sec + " s";
-                    }
-                    tRebour = setTimeout("Rebour();", 1000);
-                }
-
-                Rebour();
-            </script>
-        </div>
         <div class="p-6 border-gray-200">
-            @if(session()->get('success'))
-                <div class="bg-green-200 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
-                    {{ session()->get('success') }}
-                </div>
+            @if(session()->get('success_user-sensitive-data'))
+                <x-input-success :messages="session()->get('success_user-sensitive-data')" class="mt-2"/>
+            @elseif(session()->get('error_user-sensitive-data'))
+                <x-input-error :messages="session()->get('error_user-sensitive-data')" class="mt-2"/>
             @endif
             <form method="POST" action="{{ route('user-sensitive-data.save') }}">
                 <x-cards.fieldset>
@@ -81,13 +57,13 @@
     </x-cards.input>
     <x-cards.input>
         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{__('My Bookings')}}</h5>
-    </x-cards.input>
-    <x-cards.input>
         @if(session()->get('success_profil'))
             <x-input-success :messages="session()->get('success_profil')" class="mt-2"/>
         @elseif(session()->get('error_profil'))
             <x-input-error :messages="session()->get('error_profil')" class="mt-2"/>
         @endif
+    </x-cards.input>
+    <x-cards.input>
         <x-cards.title icon="fa-bed" title="{{__('Events')}}" desc="{!!__('Events desc')!!}">
             <x-slot name="icon">
                 <x-icons.events class="fa-2xl mb-10"></x-icons.events>
@@ -102,7 +78,7 @@
                     <form method="POST" action="{{ route('booking.user.event.destroy') }}">
                         @csrf
                         <input type="hidden" name="booking_user_event_id" value="{{$booking_user_event->id}}">
-                        <x-buttons.form-button name="{{__('Cancel Event')}}"><i
+                        <x-buttons.form-button name="{{__('Cancel')}} {{__('Booking')}} {{__('Event')}}"><i
                                     class="mr-2 fa-lg fa-fw fa-solid fa-ban"></i></x-buttons.form-button>
                     </form>
                 </div>
@@ -110,6 +86,32 @@
         @empty
             <div class="mx-4 my-1 text-gray-900 dark:text-white">
                 {{__('No')}} {{__('Events')}} {{__('Booked')}}...
+            </div>
+        @endforelse
+    </x-cards.input>
+    <x-cards.input class="md:mb-6">
+        <x-cards.title icon="fa-bed" title="{{__('Allotments')}}" desc="{!!__('Allotments desc')!!}">
+            <x-slot name="icon">
+                <x-icons.allotments class="fa-2xl mb-10"></x-icons.allotments>
+            </x-slot>
+        </x-cards.title>
+        @forelse($bookings_users_allotments as $booking_user_allotment)
+            <x-cards.booking img="{{asset('storage/allotments/'.$booking_user_allotment->allotment->path_picture)}}"
+                             name="{{$booking_user_allotment->allotment->name}}"
+                             address="{{$booking_user_allotment->allotment->address}}"
+                            date="{{$booking_user_allotment->allotment->date->format('d-m-Y')}}">
+                <div class="flex justify-end">
+                    <form method="POST" action="{{ route('booking.user.allotment.destroy') }}">
+                        @csrf
+                        <input type="hidden" name="booking_user_allotment_id" value="{{$booking_user_allotment->id}}">
+                        <x-buttons.form-button name="{{__('Cancel')}} {{__('Booking')}} {{__('Allotment')}}">
+                            <i class="mr-2 fa-lg fa-fw fa-solid fa-ban"></i></x-buttons.form-button>
+                    </form>
+                </div>
+            </x-cards.booking>
+        @empty
+            <div class="mx-4 my-1 text-gray-900 dark:text-white">
+                {{__('No')}} {{__('Allotments')}} {{__('Booked')}}...
             </div>
         @endforelse
     </x-cards.input>

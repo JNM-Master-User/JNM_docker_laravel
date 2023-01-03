@@ -17,6 +17,7 @@
     "Creation Date": "Date mise à jour",
     "Verified": "Vérifié",
     "Unverified": "Non vérifié",
+    "Cancel": "Annuler",
 
     "Poles":"Pôles",
     "Pole":"Pôle",
@@ -28,11 +29,13 @@
     "Allotments": "Logements",
     "Allotment": "Logement",
     "All Allotments": "Tous les Logements",
+    "Book Allotment": "Réserver Logement",
 
     "Events": "Évènements",
     "Event": "Évènement",
     "Events desc": "Ici vos réservations d'évènements et activités en cours et futures :",
     "All Events": "Tous les Évènements",
+    "Book Event": "Réserver Évènement",
 
     "Institutions": "Établissements",
     "Institution": "Établissement",
@@ -74,10 +77,12 @@
     "Home": "Accueil",
     "Booking": "Réservation",
     "Bookings": "Réservations",
-    "Bookings desc": "Ici vos réservations de logement en cours et futures :",
+    "Bookings desc": "Ici vos réservations d'évènements en cours et futures :",
+    "Allotments desc": "Ici vos réservations de logement en cours et futures :",
     "My Bookings": "Mes Réservations",
     "Booked": "Réservés",
     "to book": "à réserver",
+    "Sensitive Data": "Données sensibles",
 
     "Register": "Créer un compte",
     "Confirm Password": "Confirmer mot de passe",
@@ -91,6 +96,8 @@
     "No account yet?": "Pas encore de compte?",
     "Create Account": "Créer un compte",
     "Login here": "Connexion",
+    "Terms and Conditions": "Termes et Conditions",
+    "I accept the": "J'accepte les",
 
 
     "Deletion impossible, :attribute is assigned.": "Suppression impossible, :attribute est assigné.",

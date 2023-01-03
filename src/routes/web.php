@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\PartnersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +22,8 @@ Route::get('/', function () {
 Route::get('bookings', [AccueilController::class, 'create'])
     ->name('accueil');
 
-Route::get('partners', [AccueilController::class, 'create'])
-    ->name('accueil');
-
-Route::get('tournaments', [AccueilController::class, 'create'])
-    ->name('accueil');
+Route::get('partners', [PartnersController::class, 'createPartners'])
+    ->name('partners');
 
 Route::get('accueil', [AccueilController::class, 'create'])
     ->name('accueil');

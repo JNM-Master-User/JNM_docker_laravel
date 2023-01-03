@@ -1,6 +1,6 @@
 <tr class="hover:bg-gray-100">
     <td class="w-72 p-2 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
-        <img class="h-10 w-10 rounded-full" src="{{asset('storage/users_profile_picture/avatar_user_'.$user->id.'.png')}}" alt="">
+        <img class="h-10 w-10 rounded-full" src="{{asset('storage/users_profile_picture/'.$user->userSensitiveData->path_picture)}}" alt="">
         <div class="text-sm font-normal text-gray-500">
             <div class="text-base font-semibold text-gray-900">{{$user->userSensitiveData->name ?? ''}} {{$user->userSensitiveData->last_name ?? ''}}</div>
             <div class="text-sm font-normal text-gray-500">{{$user->email}}</div>

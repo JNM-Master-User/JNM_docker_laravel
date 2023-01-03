@@ -22,6 +22,7 @@ class AllotmentFactory extends Factory
         return [
             'name' => $unique,
             'address' => $this->faker->address,
+            'date' => $this->faker->date,
             'path_picture' => strtolower(str_replace(' ','_',$unique).'.png'),
             'desc' => $this->faker->paragraph,
             'created_by' => User::where('email','root@example.com')->first()->id,
